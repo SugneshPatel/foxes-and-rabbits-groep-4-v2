@@ -80,7 +80,10 @@ public class SimulatorView extends JFrame
         
         //buttons
         stepOneButton = new JButton("Step 1");
+        stepOneButton.setPreferredSize(new Dimension(100,10));
+        
         stepHundredButton = new JButton("Step 100");
+        stepHundredButton.setPreferredSize(new Dimension(100,10));
         
         //nieuw panel waarin buttons komen
         JPanel buttonsLeft = new JPanel();
