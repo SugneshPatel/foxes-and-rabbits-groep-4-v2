@@ -29,12 +29,17 @@ public class SimulatorView extends JFrame
     private final String POPULATION_PREFIX = "Population: ";
     private JLabel stepLabel, population;
     private FieldView fieldView;
-    private Simulator simulator;
     
     // A map for storing colors for participants in the simulation
     private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
+    
+    // JButton voor het runnen van de simulatie voor 1 stap
+    JButton stepOneButton;
+    
+    // JButton voor het runnen van de simulatie voor 100 stappen
+    JButton stepHundredButton;
     
     /**
      * het maken van de menubalk
@@ -74,9 +79,8 @@ public class SimulatorView extends JFrame
         fieldView = new FieldView(height, width);
         
         //buttons
-        JButton stepOneButton = new JButton("Step 1");
-        stepOneButton.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e){stepOneHundred();}});
-        JButton stepHunderdButton = new JButton("Step 100");
+        stepOneButton = new JButton("Step 1");
+        stepHundredButton = new JButton("Step 100");
         
         //nieuw panel waarin buttons komen
         JPanel buttonsLeft = new JPanel();
@@ -85,7 +89,7 @@ public class SimulatorView extends JFrame
         
         //buttons toevoegen aan buttonsleft panel
         buttonsLeft.add(stepOneButton);
-        buttonsLeft.add(stepHunderdButton);
+        buttonsLeft.add(stepHundredButton);
 
         JPanel contents = (JPanel) getContentPane();
         contents.setBorder(new EmptyBorder(6, 6, 6, 6));
@@ -100,8 +104,6 @@ public class SimulatorView extends JFrame
         pack();
         setVisible(true);
         
-        //Simulator aanmaken
-        simulator = new Simulator();
     }
     
     /**
@@ -259,9 +261,23 @@ public class SimulatorView extends JFrame
         }
     }
     
-    private void stepOneHundred()
+    //aantal getters voor de JButtons
+    /**
+     * Getter voor de stepOne JButton
+     * @return JButton stepOne
+     */
+    public JButton getStepOneButton()
     {
-    	simulator.simulate(100);
+    	return stepOneButton;
+    }
+    
+    /**
+     * Getter de stepHundredButton
+     * @return JButton stepHundredButton
+     */
+    public JButton getStepHundredButton()
+    {
+    	return stepHundredButton;
     }
 }
 
