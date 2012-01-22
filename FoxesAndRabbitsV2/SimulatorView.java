@@ -257,11 +257,11 @@ public class SimulatorView extends JFrame
                 }
             }
         }
-        
-        private void stepOneHundred()
-        {
-        	simulator.simulate(100);
-        }
+    }
+    
+    private void stepOneHundred()
+    {
+    	simulator.simulate(100);
     }
 }
 
