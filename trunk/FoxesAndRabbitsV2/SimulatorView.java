@@ -1,6 +1,9 @@
 import java.awt.*;
+import javax.swing.border.*;
+
 import java.awt.event.*;
 import javax.swing.*;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,11 +29,31 @@ public class SimulatorView extends JFrame
     private final String POPULATION_PREFIX = "Population: ";
     private JLabel stepLabel, population;
     private FieldView fieldView;
+    private Simulator simulator;
     
     // A map for storing colors for participants in the simulation
     private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
+    
+    /**
+     * het maken van de menubalk
+     */
+    public void makeMenuBar()
+    {
+    	JMenuBar menubar = new JMenuBar();
+    	
+    	setJMenuBar(menubar);
+    	
+    	JMenu menu1 = new JMenu("Menu1");
+    	JMenu menu2 = new JMenu("Menu2");
+    	JMenu helpMenu = new JMenu("Help");
+    	
+    	menubar.add(menu1);
+    	menubar.add(menu2);
+    	menubar.add(helpMenu);
+    	
+    }
 
     /**
      * Create a view of the given width and height.
@@ -39,7 +62,7 @@ public class SimulatorView extends JFrame
      */
     public SimulatorView(int height, int width)
     {
-        stats = new FieldStats();
+    	stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
 
         setTitle("Fox and Rabbit Simulation");
@@ -49,13 +72,36 @@ public class SimulatorView extends JFrame
         setLocation(100, 50);
         
         fieldView = new FieldView(height, width);
+        
+        //buttons
+        JButton stepOneButton = new JButton("Step 1");
+        stepOneButton.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e){stepOneHundred();}});
+        JButton stepHunderdButton = new JButton("Step 100");
+        
+        //nieuw panel waarin buttons komen
+        JPanel buttonsLeft = new JPanel();
+        buttonsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
+        buttonsLeft.setLayout(new BoxLayout(buttonsLeft, BoxLayout.Y_AXIS));
+        
+        //buttons toevoegen aan buttonsleft panel
+        buttonsLeft.add(stepOneButton);
+        buttonsLeft.add(stepHunderdButton);
 
-        Container contents = getContentPane();
+        JPanel contents = (JPanel) getContentPane();
+        contents.setBorder(new EmptyBorder(6, 6, 6, 6));
+        
+        makeMenuBar();
+        
+        contents.setLayout(new BorderLayout());
         contents.add(stepLabel, BorderLayout.NORTH);
         contents.add(fieldView, BorderLayout.CENTER);
         contents.add(population, BorderLayout.SOUTH);
+        contents.add(buttonsLeft, BorderLayout.WEST);
         pack();
         setVisible(true);
+        
+        //Simulator aanmaken
+        simulator = new Simulator();
     }
     
     /**
@@ -210,6 +256,11 @@ public class SimulatorView extends JFrame
                     g.drawImage(fieldImage, 0, 0, currentSize.width, currentSize.height, null);
                 }
             }
+        }
+        
+        private void stepOneHundred()
+        {
+        	simulator.simulate(100);
         }
     }
 }
