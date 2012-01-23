@@ -55,7 +55,7 @@ public class SimulatorView extends JFrame
     	JMenu helpMenu = new JMenu("Help");
     	
     	//quit item
-    	JMenuItem quitItem = new JMenuItem("Exit");
+    	JMenuItem quitItem = new JMenuItem("Afsluiten");
     		quitItem.addActionListener(new ActionListener() {
     							public void actionPerformed(ActionEvent e) { quit(); }
     		});
