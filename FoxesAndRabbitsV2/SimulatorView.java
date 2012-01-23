@@ -130,6 +130,7 @@ public class SimulatorView extends JFrame
         contents.add(fieldView, BorderLayout.CENTER);
         contents.add(population, BorderLayout.SOUTH);
         container.add(buttonsLeft, BorderLayout.WEST);
+        container.add(versieLabel, BorderLayout.SOUTH);
         pack();
         setVisible(true);
         
