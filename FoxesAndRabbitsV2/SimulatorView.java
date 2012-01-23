@@ -105,7 +105,7 @@ public class SimulatorView extends JFrame
         //nieuw panel waarin buttons komen
         JPanel buttonsLeft = new JPanel();
         buttonsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
-        buttonsLeft.setLayout(new FlowLayout());
+        buttonsLeft.setLayout(new BoxLayout(buttonsLeft, BoxLayout.PAGE_AXIS));
         
         //buttons toevoegen aan buttonsleft panel
         buttonsLeft.add(stepOneButton);
