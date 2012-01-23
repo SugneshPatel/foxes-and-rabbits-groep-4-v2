@@ -54,9 +54,18 @@ public class SimulatorView extends JFrame
     	JMenu menu2 = new JMenu("Menu2");
     	JMenu helpMenu = new JMenu("Help");
     	
+    	//quit item
+    	JMenuItem quitItem = new JMenuItem("Exit");
+    		quitItem.addActionListener(new ActionListener() {
+    							public void actionPerformed(ActionEvent e) { quit(); }
+    		});
+    	
     	menubar.add(menu1);
     	menubar.add(menu2);
     	menubar.add(helpMenu);
+    	
+    	//menu items toevoegen aan menu1
+    	menu1.add(quitItem);
     	
     }
 
@@ -286,6 +295,15 @@ public class SimulatorView extends JFrame
     public JButton getStepHundredButton()
     {
     	return stepHundredButton;
+    }
+    
+    /**
+     * Quit functie
+     * sluit het programma af
+     */
+    private void quit()
+    {
+    	System.exit(0);
     }
 }
 
