@@ -111,8 +111,9 @@ public class SimulatorView extends JFrame
         buttonsLeft.add(stepOneButton);
         buttonsLeft.add(stepHundredButton);
         
-        Container container = getContentPane();
+        JPanel container = (JPanel)getContentPane();
         container.setLayout(new BorderLayout());
+        container.setBorder(new EmptyBorder(6,6,6,6));
         
         JPanel contents = new JPanel();
         
