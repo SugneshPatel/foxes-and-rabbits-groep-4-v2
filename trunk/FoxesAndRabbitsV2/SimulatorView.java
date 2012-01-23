@@ -36,10 +36,13 @@ public class SimulatorView extends JFrame
     private FieldStats stats;
     
     // JButton voor het runnen van de simulatie voor 1 stap
-    JButton stepOneButton;
+    private JButton stepOneButton;
     
     // JButton voor het runnen van de simulatie voor 100 stappen
-    JButton stepHundredButton;
+    private JButton stepHundredButton;
+    
+    // JLabel met versie nummer
+    private static final JLabel versieLabel = new JLabel("Version 0.0");
     
     /**
      * het maken van de menubalk
@@ -102,22 +105,31 @@ public class SimulatorView extends JFrame
         //nieuw panel waarin buttons komen
         JPanel buttonsLeft = new JPanel();
         buttonsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
-        buttonsLeft.setLayout(new BoxLayout(buttonsLeft, BoxLayout.Y_AXIS));
+        buttonsLeft.setLayout(new FlowLayout());
         
         //buttons toevoegen aan buttonsleft panel
         buttonsLeft.add(stepOneButton);
         buttonsLeft.add(stepHundredButton);
-
-        JPanel contents = (JPanel) getContentPane();
+        
+        Container container = getContentPane();
+        container.setLayout(new BorderLayout());
+        
+        JPanel contents = new JPanel();
+        
+        container.add(contents, BorderLayout.CENTER);
+        
         contents.setBorder(new EmptyBorder(6, 6, 6, 6));
         
         makeMenuBar();
+        
+        //JPanel die de buttons bevat
+        
         
         contents.setLayout(new BorderLayout());
         contents.add(stepLabel, BorderLayout.NORTH);
         contents.add(fieldView, BorderLayout.CENTER);
         contents.add(population, BorderLayout.SOUTH);
-        contents.add(buttonsLeft, BorderLayout.WEST);
+        container.add(buttonsLeft, BorderLayout.WEST);
         pack();
         setVisible(true);
         
