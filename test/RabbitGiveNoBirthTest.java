@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,6 +30,10 @@ public class RabbitGiveNoBirthTest {
 		assertEquals("Hier is sprake van kleine-konijnen-porno", 0, newRabbits.size());
 	}
 	
-	
+	@After
+	public void tearDownAfter()
+	{
+		rabbit.setDead();
+	}
 
 }
