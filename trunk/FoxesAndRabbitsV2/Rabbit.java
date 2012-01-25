@@ -71,7 +71,7 @@ public class Rabbit extends Animal
      * Increase the age.
      * This could result in the rabbit's death.
      */
-    private void incrementAge()
+    protected void incrementAge()
     {
         age++;
         if(age > MAX_AGE) {
@@ -119,6 +119,15 @@ public class Rabbit extends Animal
     private boolean canBreed()
     {
         return age >= BREEDING_AGE;
+    }
+    
+    /**
+     * Get the current age of an rabbit
+     * @return The current age of an rabbit
+     */
+    public int getAge()
+    {
+    	return this.age;
     }
 }
 
