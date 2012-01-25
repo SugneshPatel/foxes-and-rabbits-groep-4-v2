@@ -195,9 +195,22 @@ public class Fox extends Animal
         return age >= BREEDING_AGE;
     }
     
+    /**
+     * opvragen hoe oud een vos is
+     * @return de leeftijd van de vos
+     */
     public int getAge()
     {
     	return age;
+    }
+    
+    /**
+     * opvragen hoeveel voedsel de vos in zich heeft
+     * @return de hoeveelheid voedsel die de vos in zich heeft
+     */
+    public int getFoodLevel()
+    {
+    	return foodLevel;
     }
 }
 
