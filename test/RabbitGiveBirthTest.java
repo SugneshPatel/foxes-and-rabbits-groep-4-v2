@@ -16,13 +16,15 @@ public class RabbitGiveBirthTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.rabbit = new Rabbit(true, new Field(20, 20), new Location(10, 10));
+		this.rabbit = new Rabbit(false, new Field(20, 20), new Location(10, 10));
 		this.newRabbits = new ArrayList<Animal>();
 	}
 
 	@Test
-	public void testAct() {
-		//hier wil ik testen of het voortplanten van de rabbits goed gebeurd.
+	public void testIncrementingAge() {
+		// test of het ophogen van de leeftijd ook daadwerkelijk gebeurd
+		rabbit.incrementAge();
+		
 	}
 
 }
