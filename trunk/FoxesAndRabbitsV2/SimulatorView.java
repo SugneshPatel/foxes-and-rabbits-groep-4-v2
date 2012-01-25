@@ -41,6 +41,9 @@ public class SimulatorView extends JFrame
     // JButton voor het runnen van de simulatie voor 100 stappen
     private JButton stepHundredButton;
     
+    //JButton voor het oneindig laten draaien van de simulatie
+    private JButton runSimulationButton;
+    
     // JLabel met versie nummer
     private static final JLabel versieLabel = new JLabel("Version 0.0");
     
@@ -103,6 +106,13 @@ public class SimulatorView extends JFrame
         stepHundredButton.setMinimumSize(new Dimension(90,10));
         stepHundredButton.setMaximumSize(new Dimension(90,25));
         
+        
+        runSimulationButton = new JButton("Run simulation");
+        runSimulationButton.setPreferredSize(new Dimension(90,25));
+        runSimulationButton.setMinimumSize(new Dimension(90,10));
+        runSimulationButton.setMaximumSize(new Dimension(90,25));
+        
+        
         //nieuw panel waarin buttons komen
         JPanel buttonsLeft = new JPanel();
         buttonsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
@@ -111,6 +121,7 @@ public class SimulatorView extends JFrame
         //buttons toevoegen aan buttonsleft panel
         buttonsLeft.add(stepOneButton);
         buttonsLeft.add(stepHundredButton);
+        buttonsLeft.add(runSimulationButton);
         
         JPanel container = (JPanel)getContentPane();
         container.setLayout(new BorderLayout());
@@ -315,6 +326,15 @@ public class SimulatorView extends JFrame
     public JButton getStepHundredButton()
     {
     	return stepHundredButton;
+    }
+    
+    /**
+     * Getter de runSimulationButton
+     * @return JButton runSimulationButton
+     */
+    public JButton getRunSimulationButton()
+    {
+    	return runSimulationButton;
     }
     
     /**

@@ -70,6 +70,10 @@ public class Simulator
         view.setColor(Fox.class, Color.blue);
         
         // ActionListeners toevoegen aan de buttons
+        // ActionListeners toevoegen aan runSimulationButton
+        view.getRunSimulationButton().addActionListener(new ActionListener() {
+        								public void actionPerformed(ActionEvent e){ while (true){simulateOneStep();}}
+        							});
         // ActionListener toevoegen aan stepOneButton
         view.getStepOneButton().addActionListener(new ActionListener() {
         								public void actionPerformed(ActionEvent e){ simulateOneStep(); }
