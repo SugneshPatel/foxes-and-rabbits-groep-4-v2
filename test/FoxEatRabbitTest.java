@@ -6,8 +6,6 @@ import org.junit.Test;
 
 public class FoxEatRabbitTest {
 	
-	// proefkonijn
-	private Rabbit rabbit;
 	// hongerige vos
 	private Fox fox;
 	// veld waarin vos en konijn komen
@@ -16,7 +14,7 @@ public class FoxEatRabbitTest {
 	@Before
 	public void setUp() throws Exception {
 		field = new Field(20, 20);
-		rabbit = new Rabbit(false, field, new Location(10,10));
+		new Rabbit(false, field, new Location(10,10));
 		fox = new Fox(false, field, new Location(10,11), 1);
 	}
 	

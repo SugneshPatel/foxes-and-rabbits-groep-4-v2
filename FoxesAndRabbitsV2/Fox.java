@@ -119,7 +119,7 @@ public class Fox extends Animal
     /**
      * Make this fox more hungry. This could result in the fox's death.
      */
-    private void incrementHunger()
+    public void incrementHunger()
     {
         foodLevel--;
         if(foodLevel <= 0) {
