@@ -89,7 +89,7 @@ public class SimulatorView extends JFrame
         setLocation(100, 50);
         
         fieldView = new FieldView(height, width);
-        fieldView.setBorder(BorderFactory.createLineBorder(Color.black)) ;
+        
         
         //buttons
         stepOneButton = new JButton("Step 1");
@@ -126,11 +126,16 @@ public class SimulatorView extends JFrame
         
         //JPanel die de buttons bevat
         
+        JPanel rightSide = new JPanel();
+        rightSide.setLayout(new BorderLayout());
+        rightSide.add(stepLabel, BorderLayout.NORTH);
+        rightSide.add(fieldView, BorderLayout.CENTER);
+        rightSide.add(population, BorderLayout.SOUTH);
+        rightSide.setBorder(BorderFactory.createLineBorder(Color.black));
+        
         
         contents.setLayout(new BorderLayout());
-        contents.add(stepLabel, BorderLayout.NORTH);
-        contents.add(fieldView, BorderLayout.CENTER);
-        contents.add(population, BorderLayout.SOUTH);
+        container.add(rightSide, BorderLayout.EAST);
         container.add(buttonsLeft, BorderLayout.WEST);
         container.add(versieLabel, BorderLayout.SOUTH);
         pack();
