@@ -89,6 +89,7 @@ public class SimulatorView extends JFrame
         setLocation(100, 50);
         
         fieldView = new FieldView(height, width);
+        fieldView.setBorder(BorderFactory.createLineBorder(Color.black)) ;
         
         //buttons
         stepOneButton = new JButton("Step 1");
