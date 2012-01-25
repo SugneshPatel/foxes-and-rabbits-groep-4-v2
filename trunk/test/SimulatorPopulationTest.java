@@ -22,7 +22,7 @@ public class SimulatorPopulationTest {
 	@Test
 	public void test() {
 		Random rand = Randomizer.getRandom();
-        for(int i = 0; i < 10000; i++) {
+        for(int i = 0; i < 10000000; i++) {
             if(rand.nextDouble() <= Simulator.FOX_CREATION_PROBABILITY) {
                 aantalVossen++;
             }
@@ -30,6 +30,10 @@ public class SimulatorPopulationTest {
                 aantalKonijnen++;
             }
         }
+        
+        double uitkomst = aantalVossen / aantalKonijnen;
+        
+        assertEquals("Verhouding niet goed", 0.25, uitkomst, 2);
 	}
 
 }
