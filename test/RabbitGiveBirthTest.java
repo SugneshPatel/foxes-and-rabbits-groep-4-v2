@@ -24,7 +24,7 @@ public class RabbitGiveBirthTest {
 	public void testIncrementingAge() {
 		// test of het ophogen van de leeftijd ook daadwerkelijk gebeurd
 		rabbit.incrementAge();
-		
+		assertEquals("Leeftijd niet juist opgehoogt", 1, rabbit.getAge());
 	}
 
 }
