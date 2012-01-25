@@ -4,7 +4,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 
 @RunWith(Suite.class)
-@SuiteClasses({ RabbitIncrementAgeTest.class, RabbitTest.class })
+@SuiteClasses({ RabbitGiveBirthTest.class, RabbitIncrementAgeTest.class, RabbitTest.class })
 public class AllRabbitTests {
 
 }
