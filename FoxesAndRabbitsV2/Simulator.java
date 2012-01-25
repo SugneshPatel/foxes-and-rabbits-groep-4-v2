@@ -72,7 +72,7 @@ public class Simulator
         // ActionListeners toevoegen aan de buttons
         // ActionListeners toevoegen aan runSimulationButton
         view.getRunSimulationButton().addActionListener(new ActionListener() {
-        								public void actionPerformed(ActionEvent e){ while (true){simulateOneStep();}}
+        								public void actionPerformed(ActionEvent e){ runSimulation();}
         							});
         // ActionListener toevoegen aan stepOneButton
         view.getStepOneButton().addActionListener(new ActionListener() {
@@ -170,6 +170,11 @@ public class Simulator
                 // else leave the location empty.
             }
         }
+    }
+    
+    public void runSimulation()
+    {
+    	    	
     }
 }
 
