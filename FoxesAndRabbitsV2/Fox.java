@@ -55,6 +55,26 @@ public class Fox extends Animal
     }
     
     /**
+     * Maakt een vos.
+     * @param randomAge If true, the fox wil have random age and hunger level.
+     * @param fiel The field currently occupied
+     * @param location The location within the field.
+     * @param foodLevel The starting foodLevel of a fox.
+     */
+    public Fox(boolean randomAge, Field field, Location location, int foodLevel)
+    {
+    	super(field, location);
+    	if(randomAge) {
+    		age = rand.nextInt(MAX_AGE);
+    		this.foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
+    	}
+    	else {
+    		age = 0;
+    		this.foodLevel = foodLevel;
+    	}
+    }
+    
+    /**
      * This is what the fox does most of the time: it hunts for
      * rabbits. In the process, it might breed, die of hunger,
      * or die of old age.
