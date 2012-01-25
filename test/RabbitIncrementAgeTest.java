@@ -26,5 +26,16 @@ public class RabbitIncrementAgeTest {
 		rabbit.incrementAge();
 		assertEquals("Leeftijd niet juist opgehoogt", 1, rabbit.getAge());
 	}
+	
+	@Test
+	public void testIncrementingAgeFourTimes()
+	{
+		// test of het ophogen vier keer lukt;
+		for(int i = 1; i < 5; i++) {
+			rabbit.incrementAge();
+		}
+		
+		assertEquals("Leeftijd niet juist opgehoogd na 4 keer", 4, rabbit.getAge());
+	}
 
 }
