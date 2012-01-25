@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class RabbitGiveBirthTest {
+public class RabbitIncrementAgeTest {
 	
 	// rabbit
 	private Rabbit rabbit;
