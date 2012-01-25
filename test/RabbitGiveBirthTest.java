@@ -28,6 +28,15 @@ public class RabbitGiveBirthTest {
 	}
 	
 	@Test
+	public void testActTwo()
+	{
+		for(int j = 0; j < 5; j++) {
+			rabbitTwo.act(newRabbitsTwo);
+		}
+		assertEquals("Deze test mag fout gaan, maar moet vaker goed dan fout gaan", 0, newRabbitsTwo.size());
+	}
+	
+	@Test
 	public void testActOne() {
 		for(int i = 0; i < 4; i++) {
 			rabbit.act(newRabbits);
@@ -35,13 +44,6 @@ public class RabbitGiveBirthTest {
 		assertEquals("Hier is sprake van kleine-konijnen-porno", 0, newRabbits.size());
 	}
 	
-	@Test
-	public void testActTwo()
-	{
-		for(int i = 0; i < 5; i++) {
-			rabbitTwo.act(newRabbitsTwo);
-		}
-		assertEquals("Deze test mag fout gaan, maar moet vaker goed dan fout gaan", 0, newRabbitsTwo.size());
-	}
+	
 
 }
