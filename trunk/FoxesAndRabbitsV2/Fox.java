@@ -108,7 +108,7 @@ public class Fox extends Animal
     /**
      * Increase the age. This could result in the fox's death.
      */
-    private void incrementAge()
+    protected void incrementAge()
     {
         age++;
         if(age > MAX_AGE) {
@@ -193,6 +193,11 @@ public class Fox extends Animal
     private boolean canBreed()
     {
         return age >= BREEDING_AGE;
+    }
+    
+    public int getAge()
+    {
+    	return age;
     }
 }
 
