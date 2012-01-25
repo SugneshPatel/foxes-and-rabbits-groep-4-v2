@@ -37,7 +37,7 @@ public class RabbitIncrementAgeTest {
 	public void testIncrementingAgeFourTimes()
 	{
 		// test of het ophogen vier keer lukt;
-		for(int i = 0; i < 5; i++) {
+		for(int i = 1; i < 5; i++) {
 			rabbitTwo.incrementAge();
 		}
 		
