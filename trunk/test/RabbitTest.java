@@ -1,15 +1,24 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class RabbitTest {
+	
+	// rabbit
+	private Rabbit rabbit;
 
+	@Before
+	public void setUp() throws Exception {
+		this.rabbit = new Rabbit(false, new Field(20, 20), new Location(10, 10));
+	}
+	
 	@Test
 	public void testRabbit() {
-		Field field = new Field(10, 10);
-		Location location = new Location(2, 2);
-		Rabbit rabbit = new Rabbit(true, field, location);
 		assertEquals("Is een kind geboren?", rabbit instanceof Rabbit, true);
 	}
 
