@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class FoxEatRabbitTest {
 	
+	// proefkonijn
+	private Rabbit rabbit;
 	// hongerige vos
 	private Fox fox;
 	// veld waarin vos en konijn komen
@@ -14,7 +16,7 @@ public class FoxEatRabbitTest {
 	@Before
 	public void setUp() throws Exception {
 		field = new Field(20, 20);
-		new Rabbit(false, field, new Location(10,10));
+		rabbit = new Rabbit(false, field, new Location(10,10));
 		fox = new Fox(false, field, new Location(10,11), 1);
 	}
 	
@@ -29,6 +31,7 @@ public class FoxEatRabbitTest {
 		Location location = fox.getLocation();
 		fox.findFood(location);
 		assertEquals("De vos heeft het konijn gespaard", 7, fox.getFoodLevel());
+		assertEquals("Konijn gaat niet dood", false, rabbit.isAlive());
 	}
 
 }
