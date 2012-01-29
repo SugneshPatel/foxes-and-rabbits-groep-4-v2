@@ -26,11 +26,13 @@ public class Simulator
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 100;
     // The probability that a fox will be created in any given grid position.
-    protected static final double FOX_CREATION_PROBABILITY = 0.02;
+    protected static final double FOX_CREATION_PROBABILITY = 0.03;
     // The probability that a rabbit will be created in any given grid position.
-    protected static final double RABBIT_CREATION_PROBABILITY = 0.08;    
+    protected static final double RABBIT_CREATION_PROBABILITY = 0.09;    
     // The kans dat een jager gemaakt wordt op een bepaalde gegeven locatie
     protected static final double HUNTER_CREATION_PROBABILITY = 0.01;
+    // De kans dat een wolf gemaakt wordt op een bepaalde gegeven locatie.
+    protected static final double WOLF_CREATION_PROBABILITY = 0.02;
 
     // List of animals in the field.
     private List<Animal> animals;
@@ -71,6 +73,7 @@ public class Simulator
         view.setColor(Rabbit.class, Color.orange);
         view.setColor(Fox.class, Color.blue);
         view.setColor(Hunter.class, Color.red);
+        view.setColor(Wolf.class, Color.black);
         
         // ActionListeners toevoegen aan de buttons
         // ActionListener toevoegen aan stepOneButton
@@ -160,6 +163,11 @@ public class Simulator
             		Location location = new Location(row, col);
             		Hunter hunter = new Hunter(true, field, location);
             		animals.add(hunter);
+            	}
+            	else if(rand.nextDouble() <= WOLF_CREATION_PROBABILITY) {
+            		Location location = new Location(row, col);
+            		Wolf wolf = new Wolf(true, field, location);
+            		animals.add(wolf);
             	}
             	else if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
