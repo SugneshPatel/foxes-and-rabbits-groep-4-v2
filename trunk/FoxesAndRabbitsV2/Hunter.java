@@ -21,9 +21,11 @@ public class Hunter extends Animal
     private static final double BREEDING_PROBABILITY = 0.01;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 1;
-    // The food value of a single rabbit. In effect, this is the
+    // The food value of a single fox. In effect, this is the
     // number of steps a fox can go before it has to eat again.
     private static final int FOX_FOOD_VALUE = 7;
+    // the food value of a single wolf.
+    private static final int WOLF_FOOD_VALUE = 10;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -145,6 +147,15 @@ public class Hunter extends Animal
                     // Remove the dead rabbit from the field.
                     return where;
                 }
+            }
+            else if(animal instanceof Wolf) {
+            	Wolf wolf = (Wolf) animal;
+            	if(wolf.isAlive()) {
+            		wolf.setDead();
+            		foodLevel = WOLF_FOOD_VALUE;
+            		// Remove the dead wolf from the field.
+            		return where;
+            	}
             }
         }
         return null;
