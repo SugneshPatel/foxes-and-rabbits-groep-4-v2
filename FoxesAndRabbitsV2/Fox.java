@@ -200,5 +200,24 @@ public class Fox extends Animal
     {
     	return BREEDING_AGE;
     }
+    
+    /**
+     * Retourneer de voortplantingskans van dit dier
+     * @return de voortplantingskans van dit dier
+     */
+    public double getBreedingProbability()
+    {
+    	return BREEDING_PROBABILITY;
+    }
+    
+    /**
+     * Retourneer het maximale aantal jongen van een dier
+     * @return het maixmale aantal jongen van een dier
+     */
+    public int getMaxLitterSize()
+    {
+    	return MAX_LITTER_SIZE;
+    }
+    
 }
 
