@@ -116,5 +116,14 @@ public abstract class Animal
     	this.age = age;
     }
     
+    /**
+     * Retourneer de leeftijd van het dier
+     * @return de leeftijd van het dier
+     */
+    public int getAge()
+    {
+    	return age;
+    }
+    
 }
 

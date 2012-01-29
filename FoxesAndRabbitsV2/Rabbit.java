@@ -71,8 +71,8 @@ public class Rabbit extends Animal
      */
     protected void incrementAge()
     {
-        setAge(getAge()++);
-        if(age > MAX_AGE) {
+        setAge(getAge() + 1);
+        if(getAge() > MAX_AGE) {
             setDead();
         }
     }
@@ -108,15 +108,6 @@ public class Rabbit extends Animal
             births = rand.nextInt(MAX_LITTER_SIZE) + 1;
         }
         return births;
-    }
-    
-    /**
-     * Get the current age of an rabbit
-     * @return The current age of an rabbit
-     */
-    public int getAge()
-    {
-    	return this.age;
     }
     
     /**
