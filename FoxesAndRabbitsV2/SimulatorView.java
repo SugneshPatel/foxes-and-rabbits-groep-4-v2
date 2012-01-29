@@ -41,6 +41,9 @@ public class SimulatorView extends JFrame
     // JButton voor het runnen van de simulatie voor 100 stappen
     private JButton stepHundredButton;
     
+    // Jbutton voor het runnen van de simulatie oneindig lang
+    private JButton runSimulationButton;
+    
     // JLabel met versie nummer
     private static final JLabel versieLabel = new JLabel("Version 0.0");
     
