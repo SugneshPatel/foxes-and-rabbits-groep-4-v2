@@ -79,12 +79,12 @@ public class Hunter extends Animal
      * @param field The field currently occupied.
      * @param newFoxes A list to add newly born foxes to.
      */
-    public void act(List<Animal> newFoxes)
+    public void act(List<Animal> newHunters)
     {
         incrementAge();
         incrementHunger();
         if(isAlive()) {
-            giveBirth(newFoxes);            
+            giveBirth(newHunters);            
             // Move towards a source of food if found.
             Location location = getLocation();
             Location newLocation = findFood(location);
@@ -137,10 +137,10 @@ public class Hunter extends Animal
         while(it.hasNext()) {
             Location where = it.next();
             Object animal = field.getObjectAt(where);
-            if(animal instanceof Rabbit) {
-                Rabbit rabbit = (Rabbit) animal;
-                if(rabbit.isAlive()) { 
-                    rabbit.setDead();
+            if(animal instanceof Fox) {
+                Fox fox = (Fox) animal;
+                if(fox.isAlive()) { 
+                    fox.setDead();
                     foodLevel = FOX_FOOD_VALUE;
                     // Remove the dead rabbit from the field.
                     return where;
@@ -155,7 +155,7 @@ public class Hunter extends Animal
      * New births will be made into free adjacent locations.
      * @param newFoxes A list to add newly born foxes to.
      */
-    private void giveBirth(List<Animal> newFoxes)
+    private void giveBirth(List<Animal> newHunters)
     {
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.
@@ -164,8 +164,8 @@ public class Hunter extends Animal
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Fox young = new Fox(false, field, loc);
-            newFoxes.add(young);
+            Hunter young = new Hunter(false, field, loc);
+            newHunters.add(young);
         }
     }
     
