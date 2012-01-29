@@ -107,5 +107,14 @@ public abstract class Animal
      */
     abstract protected int getBreedingAge();
     
+    /**
+     * Geef het dier een leeftijd
+     * @param age
+     */
+    public void setAge(int age)
+    {
+    	this.age = age;
+    }
+    
 }
 
