@@ -186,14 +186,6 @@ public class Fox extends Animal
         }
         return births;
     }
-
-    /**
-     * A fox can breed if it has reached the breeding age.
-     */
-    private boolean canBreed()
-    {
-        return age >= BREEDING_AGE;
-    }
     
     /**
      * opvragen hoe oud een vos is
@@ -211,6 +203,15 @@ public class Fox extends Animal
     public int getFoodLevel()
     {
     	return foodLevel;
+    }
+    
+    /**
+     * Retourneer de leeftijd waarop een vos zich begint voort te planten.
+     * @return De leeftijd waarop een vos zich begint voort te planten.
+     */
+    public int getBreedingAge()
+    {
+    	return BREEDING_AGE;
     }
 }
 
