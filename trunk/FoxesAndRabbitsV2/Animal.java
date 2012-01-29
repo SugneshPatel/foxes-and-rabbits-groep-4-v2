@@ -14,6 +14,8 @@ public abstract class Animal
     private Field field;
     // The animal's position in the field.
     private Location location;
+    // De leeftijd van het dier
+    private int age;
     
     /**
      * Create a new animal at location in field.
@@ -88,6 +90,22 @@ public abstract class Animal
         location = newLocation;
         field.place(this, newLocation);
     }
+    
+    /**
+     * Een dier kan zich voortplanten als het de 
+     * voorplantingsleeftijd heeft bereikt
+     * @return true als het dier zich kan voortplanten
+     */
+    public boolean canBreed()
+    {
+    	return age >= getBreedingAge();
+    }
+    
+    /**
+     * Retourneer de voortplantingsleeftijd van dit dier
+     * @return De voortplantingsleeftijd van dit dier
+     */
+    abstract protected int getBreedingAge();
     
 }
 
