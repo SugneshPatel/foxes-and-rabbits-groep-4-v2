@@ -158,7 +158,7 @@ public abstract class Animal
         }
     }
     
-    private int breed()
+    public int breed()
     {
         int births = 0;
         if(canBreed() && rand.nextDouble() <= getBreedingProbability()) {
