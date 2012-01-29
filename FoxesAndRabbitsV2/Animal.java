@@ -32,13 +32,6 @@ public abstract class Animal
         this.field = field;
         setLocation(location);
     }
-    
-    /**
-     * Make this animal act - that is: make it do
-     * whatever it wants/needs to do.
-     * @param newAnimals A list to add newly born animals to.
-     */
-    abstract public void act(List<Animal> newAnimals);
 
     /**
      * Check whether the animal is alive or not.
@@ -105,18 +98,6 @@ public abstract class Animal
     }
     
     /**
-     * Retourneer de voortplantingsleeftijd van dit dier
-     * @return De voortplantingsleeftijd van dit dier
-     */
-    abstract protected int getBreedingAge();
-    
-    /**
-     * Retourneer de voortplantingskans van dit dier
-     * @return de voortplantingskans van dit dier
-     */
-    abstract protected double getBreedingProbability();
-    
-    /**
      * Geef het dier een leeftijd
      * @param age
      */
@@ -135,18 +116,6 @@ public abstract class Animal
     }
     
     /**
-     * Retourneer de maximale leeftijd van een dier
-     * @return De maximale leeftijd van een dier
-     */
-    abstract public int getMaxAge();
-    
-    /**
-     * Retourneer het maximale aantal jongen van een dier
-     * @return het maixmale aantal jongen van een dier
-     */
-    abstract public int getMaxLitterSize();
-    
-    /**
      * Verhoog de leeftijd van het dier.
      * Dit kan leiden tot de dood van het dier.
      */
@@ -158,6 +127,10 @@ public abstract class Animal
         }
     }
     
+    /**
+     * Retourneer het aantal jongen dat dit dier zal voortbrengen
+     * @return het aantal jongen dat dit dier zal voorbrengen
+     */
     public int breed()
     {
         int births = 0;
@@ -166,6 +139,37 @@ public abstract class Animal
         }
         return births;
     }
+    
+    /**
+     * Retourneer de voortplantingsleeftijd van dit dier
+     * @return De voortplantingsleeftijd van dit dier
+     */
+    abstract public int getBreedingAge();
+    
+    /**
+     * Retourneer de voortplantingskans van dit dier
+     * @return de voortplantingskans van dit dier
+     */
+    abstract public double getBreedingProbability();
+    
+    /**
+     * Make this animal act - that is: make it do
+     * whatever it wants/needs to do.
+     * @param newAnimals A list to add newly born animals to.
+     */
+    abstract public void act(List<Animal> newAnimals);
+    
+    /**
+     * Retourneer de maximale leeftijd van een dier
+     * @return De maximale leeftijd van een dier
+     */
+    abstract public int getMaxAge();
+    
+    /**
+     * Retourneer het maximale aantal jongen van een dier
+     * @return het maixmale aantal jongen van een dier
+     */
+    abstract public int getMaxLitterSize();
     
 }
 
