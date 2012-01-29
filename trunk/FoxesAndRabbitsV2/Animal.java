@@ -125,5 +125,23 @@ public abstract class Animal
     	return age;
     }
     
+    /**
+     * Retourneer de maximale leeftijd van een dier
+     * @return De maximale leeftijd van een dier
+     */
+    abstract public int getMaxAge();
+    
+    /**
+     * Verhoog de leeftijd van het dier.
+     * Dit kan leiden tot de dood van het dier.
+     */
+    public void incrementAge()
+    {
+        setAge(getAge() + 1);
+        if(getAge() > getMaxAge()) {
+            setDead();
+        }
+    }
+    
 }
 

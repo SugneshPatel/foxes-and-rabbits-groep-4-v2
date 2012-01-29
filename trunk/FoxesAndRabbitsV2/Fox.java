@@ -102,17 +102,6 @@ public class Fox extends Animal
             }
         }
     }
-
-    /**
-     * Increase the age. This could result in the fox's death.
-     */
-    protected void incrementAge()
-    {
-        setAge(getAge() + 1);
-        if(getAge() > MAX_AGE) {
-            setDead();
-        }
-    }
     
     /**
      * Retourneer de maximale leeftijd van een vos.
