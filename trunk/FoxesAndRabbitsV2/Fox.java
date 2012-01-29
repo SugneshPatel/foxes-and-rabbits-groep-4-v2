@@ -115,6 +115,15 @@ public class Fox extends Animal
     }
     
     /**
+     * Retourneer de maximale leeftijd van een vos.
+     * @return maximale leeftijd van een vos
+     */
+    public int getMaxAge()
+    {
+    	return MAX_AGE;
+    }
+    
+    /**
      * Make this fox more hungry. This could result in the fox's death.
      */
     public void incrementHunger()

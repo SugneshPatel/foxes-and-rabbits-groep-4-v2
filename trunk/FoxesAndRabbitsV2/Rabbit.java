@@ -78,6 +78,15 @@ public class Rabbit extends Animal
     }
     
     /**
+     * Retourneer de maximale leeftijd van een konijn.
+     * @return maximale leeftijd van een konijn
+     */
+    public int getMaxAge()
+    {
+    	return MAX_AGE;
+    }
+    
+    /**
      * Check whether or not this rabbit is to give birth at this step.
      * New births will be made into free adjacent locations.
      * @param newRabbits A list to add newly born rabbits to.
