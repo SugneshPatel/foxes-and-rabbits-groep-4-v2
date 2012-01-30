@@ -3,95 +3,81 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- * A simple model of a fox.
+ * A simple model of a hunter.
  * Foxes age, move, eat rabbits, and die.
  * 
- * @author David J. Barnes and Michael Kolling
+ * @author Malcolm Kindermans
  * @version 2008.03.30
  */
-public class Hunter extends Animal
+public class Hunter extends Actor
 {
-    // Characteristics shared by all foxes (static fields).
+	// Whether the hunter is active or not.
+    private boolean alive;
+    // The animal's field.
+    private Field field;
+    // The animal's position in the field.
+    private Location location;
     
-    // The age at which a fox can start to breed.
-    private static final int BREEDING_AGE = 10;
-    // The age to which a fox can live.
-    private static final int MAX_AGE = 500;
-    // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.01;
-    // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 2;
-    // The food value of a single fox. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
-    private static final int FOX_FOOD_VALUE = 7;
-    // the food value of a single wolf.
-    private static final int WOLF_FOOD_VALUE = 10;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
-    
-    // Individual characteristics (instance fields).
-    // The fox's food level, which is increased by eating rabbits.
-    private int foodLevel;
 
     /**
-     * Create a fox. A fox can be created as a new born (age zero
-     * and not hungry) or with a random age and food level.
+     * Create a hunter.
      * 
-     * @param randomAge If true, the fox will have random age and hunger level.
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Hunter(boolean randomAge, Field field, Location location)
+    public Hunter(Field field, Location location)
     {
-        super(field, location);
-        if(randomAge) {
-            setAge(rand.nextInt(MAX_AGE));
-            foodLevel = rand.nextInt(FOX_FOOD_VALUE);
-        }
-        else {
-            setAge(0);
-            foodLevel = FOX_FOOD_VALUE;
-        }
+    	alive = true;
+        this.field = field;
+        setLocation(location);
     }
     
     /**
-     * Maakt een vos.
-     * @param randomAge If true, the fox wil have random age and hunger level.
-     * @param fiel The field currently occupied
-     * @param location The location within the field.
-     * @param foodLevel The starting foodLevel of a fox.
+     * Place the hunter at the new location in the given field.
+     * @param newLocation The hunter's new location.
      */
-    public Hunter(boolean randomAge, Field field, Location location, int foodLevel)
+    public void setLocation(Location newLocation)
     {
-    	super(field, location);
-    	if(randomAge) {
-    		setAge(rand.nextInt(MAX_AGE));
-    		this.foodLevel = rand.nextInt(FOX_FOOD_VALUE);
-    	}
-    	else {
-    		setAge(0);
-    		this.foodLevel = foodLevel;
-    	}
+        if(location != null) {
+            field.clear(location);
+        }
+        location = newLocation;
+        field.place(this, newLocation);
     }
     
     /**
-     * This is what the fox does most of the time: it hunts for
-     * rabbits. In the process, it might breed, die of hunger,
-     * or die of old age.
+     * Return the hunter's location.
+     * @return The hunter's location.
+     */
+    public Location getLocation()
+    {
+        return location;
+    }
+    
+    /**
+     * Return the hunter's field.
+     * @return The hunter's field.
+     */
+    public Field getField()
+    {
+        return field;
+    }
+    
+    /**
+     * This is what the hunter does most of the time: it hunts for
+     * foxes and wolfes.
      * @param field The field currently occupied.
-     * @param newFoxes A list to add newly born foxes to.
      */
     public void act(List<Actor> newHunters)
     {
-        incrementAge();
-        incrementHunger();
-        if(isActive()) {
-            giveBirth(newHunters);            
+        if(isActive()) {           
             // Move towards a source of food if found.
             Location location = getLocation();
             Location newLocation = findFood(location);
             if(newLocation == null) { 
-                // No food found - try to move to a free location.
+                // No pray found - try to move to a free location.
                 newLocation = getField().freeAdjacentLocation(location);
             }
             // See if it was possible to move.
@@ -106,30 +92,33 @@ public class Hunter extends Animal
     }
     
     /**
-     * Retourneer de maximale leeftijd van een vos.
-     * @return maximale leeftijd van een vos
+     * Indicate that the hunter is no longer active.
+     * It is removed from the field.
      */
-    public int getMaxAge()
+    public void setDead()
     {
-    	return MAX_AGE;
-    }
-    
-    /**
-     * Make this fox more hungry. This could result in the fox's death.
-     */
-    public void incrementHunger()
-    {
-        foodLevel--;
-        if(foodLevel <= 0) {
-            setDead();
+        alive = false;
+        if(location != null) {
+            field.clear(location);
+            location = null;
+            field = null;
         }
     }
     
     /**
-     * Tell the fox to look for rabbits adjacent to its current location.
-     * Only the first live rabbit is eaten.
+     * Check whether the hunter is alive or not.
+     * @return true if the hunter is still alive.
+     */
+    public boolean isActive()
+    {
+        return alive;
+    }
+    
+    /**
+     * Tell the hunter to look for foxes and wolfes adjacent to its current location.
+     * Only the first live fox or wolf is shot.
      * @param location Where in the field it is located.
-     * @return Where food was found, or null if it wasn't.
+     * @return Where pray was found, or null if it wasn't.
      */
     public Location findFood(Location location)
     {
@@ -143,7 +132,6 @@ public class Hunter extends Animal
                 Fox fox = (Fox) animal;
                 if(fox.isActive()) { 
                     fox.setDead();
-                    foodLevel = FOX_FOOD_VALUE;
                     // Remove the dead rabbit from the field.
                     return where;
                 }
@@ -152,68 +140,12 @@ public class Hunter extends Animal
             	Wolf wolf = (Wolf) animal;
             	if(wolf.isActive()) {
             		wolf.setDead();
-            		foodLevel = WOLF_FOOD_VALUE;
             		// Remove the dead wolf from the field.
             		return where;
             	}
             }
         }
         return null;
-    }
-    
-    /**
-     * Check whether or not this fox is to give birth at this step.
-     * New births will be made into free adjacent locations.
-     * @param newFoxes A list to add newly born foxes to.
-     */
-    private void giveBirth(List<Actor> newHunters)
-    {
-        // New foxes are born into adjacent locations.
-        // Get a list of adjacent free locations.
-        Field field = getField();
-        List<Location> free = field.getFreeAdjacentLocations(getLocation());
-        int births = breed();
-        for(int b = 0; b < births && free.size() > 0; b++) {
-            Location loc = free.remove(0);
-            Hunter young = new Hunter(false, field, loc);
-            newHunters.add(young);
-        }
-    }
-    
-    /**
-     * opvragen hoeveel voedsel de vos in zich heeft
-     * @return de hoeveelheid voedsel die de vos in zich heeft
-     */
-    public int getFoodLevel()
-    {
-    	return foodLevel;
-    }
-    
-    /**
-     * Retourneer de leeftijd waarop een vos zich begint voort te planten.
-     * @return De leeftijd waarop een vos zich begint voort te planten.
-     */
-    public int getBreedingAge()
-    {
-    	return BREEDING_AGE;
-    }
-    
-    /**
-     * Retourneer de voortplantingskans van dit dier
-     * @return de voortplantingskans van dit dier
-     */
-    public double getBreedingProbability()
-    {
-    	return BREEDING_PROBABILITY;
-    }
-    
-    /**
-     * Retourneer het maximale aantal jongen van een dier
-     * @return het maixmale aantal jongen van een dier
-     */
-    public int getMaxLitterSize()
-    {
-    	return MAX_LITTER_SIZE;
     }
     
 }
