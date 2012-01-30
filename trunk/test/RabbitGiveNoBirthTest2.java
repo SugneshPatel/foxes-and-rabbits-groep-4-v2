@@ -13,12 +13,12 @@ public class RabbitGiveNoBirthTest2 {
 	private Rabbit rabbit;
 	
 	// konijnenhok, bevat nieuwe jonge konijntjes
-	private List<Animal> newRabbits;
+	private List<Actor> newRabbits;
 	
 	@Before
 	public void setUp() throws Exception {
 		rabbit = new Rabbit(false, new Field(20, 20), new Location(10, 10));
-		newRabbits = new ArrayList<Animal>();
+		newRabbits = new ArrayList<Actor>();
 	}
 
 	@Test

@@ -36,12 +36,12 @@ public class FoxDieFromHungerTest {
 	 */
 	@Test
 	public void testDieFromHunger() {
-		assertEquals("Vos leeft niet", true, fox.isAlive());
+		assertEquals("Vos leeft niet", true, fox.isActive());
 		int currentFoodLevel = fox.getFoodLevel();
 		for (int i = 0; i < currentFoodLevel; i++) {
 			fox.incrementHunger();
 		}
-		assertEquals("Vos heeft geen konijnen nodig", false, fox.isAlive());
+		assertEquals("Vos heeft geen konijnen nodig", false, fox.isActive());
 	}
 
 }

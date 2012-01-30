@@ -43,14 +43,14 @@ public class RabbitIncrementAgeTest {
 	@Test
 	public void testRabbitAlive()
 	{
-		assertEquals("Konijn is een zombie", true, rabbitThree.isAlive());
+		assertEquals("Konijn is een zombie", true, rabbitThree.isActive());
 	}
 	
 	@Test
 	public void testDieingRabbit()
 	{
 		rabbitFour.setDead();
-		assertEquals("Konijn is onsterfelijk", false, rabbitFour.isAlive());
+		assertEquals("Konijn is onsterfelijk", false, rabbitFour.isActive());
 	}
 
 }

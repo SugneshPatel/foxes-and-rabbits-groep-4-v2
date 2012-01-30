@@ -31,7 +31,7 @@ public class FoxEatRabbitTest {
 		Location location = fox.getLocation();
 		fox.findFood(location);
 		assertEquals("De vos heeft het konijn gespaard", 7, fox.getFoodLevel());
-		assertEquals("Konijn gaat niet dood", false, rabbit.isAlive());
+		assertEquals("Konijn gaat niet dood", false, rabbit.isActive());
 	}
 
 }
