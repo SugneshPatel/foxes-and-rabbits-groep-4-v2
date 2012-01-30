@@ -7,7 +7,7 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public abstract class Animal
+public abstract class Animal extends Actor
 {
     // Whether the animal is alive or not.
     private boolean alive;
@@ -37,7 +37,7 @@ public abstract class Animal
      * Check whether the animal is alive or not.
      * @return true if the animal is still alive.
      */
-    public boolean isAlive()
+    public boolean isActive()
     {
         return alive;
     }
@@ -157,7 +157,7 @@ public abstract class Animal
      * whatever it wants/needs to do.
      * @param newAnimals A list to add newly born animals to.
      */
-    abstract public void act(List<Animal> newAnimals);
+    abstract public void act(List<Actor> newAnimals);
     
     /**
      * Retourneer de maximale leeftijd van een dier
