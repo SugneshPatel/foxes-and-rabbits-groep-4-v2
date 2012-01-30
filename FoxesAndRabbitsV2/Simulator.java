@@ -166,7 +166,7 @@ public class Simulator
             for(int col = 0; col < field.getWidth(); col++) {
             	if(rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
             		Location location = new Location(row, col);
-            		Hunter hunter = new Hunter(true, field, location);
+            		Hunter hunter = new Hunter(field, location);
             		animals.add(hunter);
             	}
             	else if(rand.nextDouble() <= WOLF_CREATION_PROBABILITY) {
