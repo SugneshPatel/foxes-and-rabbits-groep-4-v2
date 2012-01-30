@@ -44,14 +44,14 @@ public class FoxIncrementAgeTest {
 	@Test
 	public void testFoxAlive()
 	{
-		assertEquals("Vos is een zombie", true, foxThree.isAlive());
+		assertEquals("Vos is een zombie", true, foxThree.isActive());
 	}
 	
 	@Test
 	public void testDieingFox()
 	{
 		foxFour.setDead();
-		assertEquals("Vos is onsterfelijk", false, foxFour.isAlive());
+		assertEquals("Vos is onsterfelijk", false, foxFour.isActive());
 	}
 
 }
