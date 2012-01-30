@@ -45,7 +45,7 @@ public class SimulatorView extends JFrame
     private JButton runSimulationButton;
     
     // JLabel met versie nummer
-    private static final JLabel VERSIELABEL = new JLabel("Version 0.70");
+    private static final JLabel VERSIELABEL = new JLabel("Version 0.72");
     
     /**
      * het maken van de menubalk
