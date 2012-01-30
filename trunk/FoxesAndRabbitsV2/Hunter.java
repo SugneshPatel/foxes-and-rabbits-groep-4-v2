@@ -81,11 +81,11 @@ public class Hunter extends Animal
      * @param field The field currently occupied.
      * @param newFoxes A list to add newly born foxes to.
      */
-    public void act(List<Animal> newHunters)
+    public void act(List<Actor> newHunters)
     {
         incrementAge();
         incrementHunger();
-        if(isAlive()) {
+        if(isActive()) {
             giveBirth(newHunters);            
             // Move towards a source of food if found.
             Location location = getLocation();
@@ -141,7 +141,7 @@ public class Hunter extends Animal
             Object animal = field.getObjectAt(where);
             if(animal instanceof Fox) {
                 Fox fox = (Fox) animal;
-                if(fox.isAlive()) { 
+                if(fox.isActive()) { 
                     fox.setDead();
                     foodLevel = FOX_FOOD_VALUE;
                     // Remove the dead rabbit from the field.
@@ -150,7 +150,7 @@ public class Hunter extends Animal
             }
             else if(animal instanceof Wolf) {
             	Wolf wolf = (Wolf) animal;
-            	if(wolf.isAlive()) {
+            	if(wolf.isActive()) {
             		wolf.setDead();
             		foodLevel = WOLF_FOOD_VALUE;
             		// Remove the dead wolf from the field.
@@ -166,7 +166,7 @@ public class Hunter extends Animal
      * New births will be made into free adjacent locations.
      * @param newFoxes A list to add newly born foxes to.
      */
-    private void giveBirth(List<Animal> newHunters)
+    private void giveBirth(List<Actor> newHunters)
     {
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.
