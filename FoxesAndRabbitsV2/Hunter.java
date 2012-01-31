@@ -122,13 +122,14 @@ public class Hunter implements Actor
     	while(it.hasNext() && shotsFired <= bullets) {
     		Location where = it.next();
     		Object animal = field.getObjectAt(where);
-    		if(animal instanceof Fox) {
-    			Fox fox = (Fox) animal;
-    			if(fox.isActive()) {
-    				fox.setDead();
+    		if(animal instanceof Rabbit) {
+    			Rabbit rabbit = (Rabbit) animal;
+    			if(rabbit.isActive()) {
+    				rabbit.setDead();
     				shotsFired++;
     			}
     		}
+    		/*
     		else if(animal instanceof Wolf) {
     			Wolf wolf = (Wolf) animal;
     			if(wolf.isActive()) {
@@ -136,10 +137,11 @@ public class Hunter implements Actor
     				shotsFired++;
     			}
     		}
-    		else if(animal instanceof Rabbit) {
-    			Rabbit rabbit = (Rabbit) animal;
-    			if(rabbit.isActive()) {
-    				rabbit.setDead();
+    		*/
+    		else if(animal instanceof Fox) {
+    			Fox fox = (Fox) animal;
+    			if(fox.isActive()) {
+    				fox.setDead();
     				shotsFired++;
     			}
     		}
