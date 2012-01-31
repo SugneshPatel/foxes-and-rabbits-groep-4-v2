@@ -1,6 +1,5 @@
 import java.util.List;
 import java.util.Iterator;
-import java.util.Random;
 
 /**
  * A simple model of a hunter.
@@ -17,9 +16,6 @@ public class Hunter extends Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
-    
-    // A shared random number generator to control breeding.
-    private static final Random rand = Randomizer.getRandom();
 
     /**
      * Create a hunter.
