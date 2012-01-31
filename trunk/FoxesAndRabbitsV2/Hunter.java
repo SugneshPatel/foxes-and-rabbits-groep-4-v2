@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @author Malcolm Kindermans
  * @version 2008.03.30
  */
-public class Hunter extends Actor
+public class Hunter implements Actor
 {
 	// Whether the hunter is active or not.
     private boolean alive;

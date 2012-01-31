@@ -7,7 +7,7 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public abstract class Animal extends Actor
+public abstract class Animal implements Actor
 {
     // Whether the animal is alive or not.
     private boolean alive;

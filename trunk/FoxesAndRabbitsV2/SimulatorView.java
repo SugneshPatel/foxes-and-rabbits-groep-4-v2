@@ -42,7 +42,7 @@ public class SimulatorView extends JFrame
     private JButton stepHundredButton;
     
     // JLabel met versie nummer
-    private static final JLabel VERSIELABEL = new JLabel("Version 0.74");
+    private static final JLabel VERSIELABEL = new JLabel("Version 0.75");
     
     /**
      * het maken van de menubalk
