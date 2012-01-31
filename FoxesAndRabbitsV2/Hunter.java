@@ -16,6 +16,8 @@ public class Hunter implements Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
+    // aantal keer dat een jager kan schieten.
+    private static final int BULLETS = 1;
 
     /**
      * Create a hunter.
@@ -71,18 +73,14 @@ public class Hunter implements Actor
         if(isActive()) {           
             // Move towards a source of food if found.
             Location location = getLocation();
-            Location newLocation = findFood(location);
-            if(newLocation == null) { 
-                // No pray found - try to move to a free location.
-                newLocation = getField().freeAdjacentLocation(location);
-            }
+            shoot(BULLETS, location);
+            Location newLocation = getField().freeAdjacentLocation(location);
             // See if it was possible to move.
             if(newLocation != null) {
                 setLocation(newLocation);
             }
             else {
-                // Overcrowding.
-                setDead();
+                setLocation(location);
             }
         }
     }
@@ -108,6 +106,44 @@ public class Hunter implements Actor
     public boolean isActive()
     {
         return alive;
+    }
+    
+    /**
+     * Vertel de jager waar hij moet schieten en hoe vaak.
+     * @param bullets Hoe vaak een jager kan schieten
+     * @param location Waar de jager zelf op dit moment zich bevindt
+     */
+    public void shoot(int bullets, Location location)
+    {
+    	Field field = getField();
+    	List<Location> randomLocations = field.getRandomLocations(bullets, getLocation());
+    	Iterator<Location> it = randomLocations.iterator();
+    	int shotsFired = 0;
+    	while(it.hasNext() && shotsFired <= bullets) {
+    		Location where = it.next();
+    		Object animal = field.getObjectAt(where);
+    		if(animal instanceof Fox) {
+    			Fox fox = (Fox) animal;
+    			if(fox.isActive()) {
+    				fox.setDead();
+    				shotsFired++;
+    			}
+    		}
+    		else if(animal instanceof Wolf) {
+    			Wolf wolf = (Wolf) animal;
+    			if(wolf.isActive()) {
+    				wolf.setDead();
+    				shotsFired++;
+    			}
+    		}
+    		else if(animal instanceof Rabbit) {
+    			Rabbit rabbit = (Rabbit) animal;
+    			if(rabbit.isActive()) {
+    				rabbit.setDead();
+    				shotsFired++;
+    			}
+    		}
+    	}
     }
     
     /**

@@ -203,5 +203,25 @@ public class Field
     {
         return width;
     }
+    
+    /**
+     * Genereer een lijst met random locations.
+     * Deze lijst is drie keer zo groot als het aantal keer dat een jager kan schieten.
+     * @param bullets Aantal keer dat een jager kan schieten
+     * @param location Huidige locatie van de jager
+     * @return Lijst met random locaties
+     */
+	public List<Location> getRandomLocations(int bullets, Location location)
+	{
+		List<Location> randomLocations = new LinkedList<Location>();
+		if(location != null) {
+			for(int i = 0; i < bullets * 3; i++) {
+				int row = rand.nextInt(getDepth());
+				int col = rand.nextInt(getWidth());
+				randomLocations.add(new Location(row, col));
+			}
+		}
+		return randomLocations;
+	}
 }
 

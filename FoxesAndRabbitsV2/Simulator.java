@@ -49,6 +49,9 @@ public class Simulator
     public Simulator()
     {
         this(DEFAULT_DEPTH, DEFAULT_WIDTH);
+        while(true) {
+        	simulate(1);
+        }
     }
     
     /**
