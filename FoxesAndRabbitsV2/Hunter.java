@@ -72,7 +72,7 @@ public class Hunter implements Actor
     {
         if(isActive()) {           
             // Move towards a source of food if found.
-            Location location = getLocation();
+            Location location = null;
             shoot(BULLETS, location);
             Location newLocation = getField().freeAdjacentLocation(location);
             // See if it was possible to move.
@@ -111,12 +111,16 @@ public class Hunter implements Actor
     /**
      * Vertel de jager waar hij moet schieten en hoe vaak.
      * @param bullets Hoe vaak een jager kan schieten
-     * @param location Waar de jager zelf op dit moment zich bevindt
+     * @param location optioneel ogegeven locatie waar de jager moet schieten. Als null dan random
      */
     public void shoot(int bullets, Location location)
     {
     	Field field = getField();
     	List<Location> randomLocations = field.getRandomLocations(bullets, getLocation());
+    	if(location != null) {
+    		randomLocations.clear();
+    		randomLocations.add(location);
+    	}
     	Iterator<Location> it = randomLocations.iterator();
     	int shotsFired = 0;
     	while(it.hasNext() && shotsFired <= bullets) {
