@@ -52,20 +52,13 @@ public class SimulationRunner extends JFrame {
         container.setLayout(new BorderLayout());
         container.setBorder(new EmptyBorder(6,6,6,6));
         
-        JPanel contents = new JPanel();
-        
-        container.add(contents, BorderLayout.CENTER);
-        
-        contents.setBorder(new EmptyBorder(6, 6, 6, 6));
-        
-        // makeMenuBar();
         
         setJMenuBar(menuController.getMenu());
         
         
         
-        contents.setLayout(new BorderLayout());
-        container.add(simulatorview.getField(), BorderLayout.EAST);
+        // contents.setLayout(new BorderLayout());
+        container.add(simulatorview.getField(), BorderLayout.CENTER);
         container.add(buttonController.getButtons(), BorderLayout.WEST);
         container.add(VERSIELABEL, BorderLayout.SOUTH);
         pack();
@@ -73,27 +66,5 @@ public class SimulationRunner extends JFrame {
         
         brain.reset();
 	}
-	/*
-	public void makeMenuBar()
-    {
-    	JMenuBar menubar = new JMenuBar();
-    	
-    	setJMenuBar(menubar);
-    	
-    	JMenu menu1 = new JMenu("Menu1");
-    	JMenu menu2 = new JMenu("Menu2");
-    	JMenu helpMenu = new JMenu("Help");
-    	
-    	//quit item
-    	JMenuItem quitItem = new JMenuItem("Afsluiten");
-    	
-    	menubar.add(menu1);
-    	menubar.add(menu2);
-    	menubar.add(helpMenu);
-    	
-    	//menu items toevoegen aan menu1
-    	menu1.add(quitItem);
-    	
-    }
-    */
+	
 }
