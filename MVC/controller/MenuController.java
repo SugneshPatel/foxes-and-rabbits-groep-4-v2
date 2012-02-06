@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,7 +16,7 @@ public class MenuController extends AbstractController implements ActionListener
 	 * 
 	 */
 	private static final long serialVersionUID = 4698842680020675242L;
-	private JMenuItem quitItem;
+	private JMenuItem quitItem, configItem;
 	
 	public MenuController(Simulator brain){
 		super(brain);
@@ -38,6 +39,8 @@ public class MenuController extends AbstractController implements ActionListener
     	//quit item
     	quitItem = new JMenuItem("Afsluiten");
     	quitItem.addActionListener(this);
+    	configItem = new JMenuItem("Config");
+    	configItem.addActionListener(this);
     	
     	menubar.add(menu1);
     	menubar.add(menu2);
@@ -45,6 +48,7 @@ public class MenuController extends AbstractController implements ActionListener
     	
     	//menu items toevoegen aan menu1
     	menu1.add(quitItem);
+    	menu2.add(configItem);
     	
     	return menubar;
 	}
@@ -53,9 +57,28 @@ public class MenuController extends AbstractController implements ActionListener
 		if (e.getSource()==quitItem) {
 			quit();
 		}
+		if (e.getSource()==configItem) {
+			config();
+		}
 	}
 	
 	private void quit(){
 		System.exit(0);
+	}
+	
+	private void config(){
+		JFrame config = new JFrame("Config");
+		
+		AbstractController configController = new ConfigController(brain);
+		
+		JPanel container = (JPanel)config.getContentPane();
+		
+		container.add(configController.getButtons());
+		
+		config.pack();
+		config.setVisible(true);
+		
+		
+		
 	}
 }
