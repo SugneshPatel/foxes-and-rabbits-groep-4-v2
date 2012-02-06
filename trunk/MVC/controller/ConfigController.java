@@ -14,6 +14,10 @@ import model.Simulator;
 
 public class ConfigController extends AbstractController implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 5629702526729726101L;
 	private JButton addButton, removeButton;
 	
 	public ConfigController(Simulator brain){
