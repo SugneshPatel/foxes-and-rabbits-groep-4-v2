@@ -48,6 +48,19 @@ public class FieldStats
         return buffer.toString();
     }
     
+    public int getCount(Field field, Class<?> animalClass) {
+    	int buffer = 0;
+        if(!countsValid) {
+            generateCounts(field);
+        }
+         
+            Counter info = counters.get(animalClass);
+            
+            buffer = info.getCount();
+      
+        return buffer;
+    }
+    
     /**
      * Invalidate the current set of statistics; reset all 
      * counts to zero.
