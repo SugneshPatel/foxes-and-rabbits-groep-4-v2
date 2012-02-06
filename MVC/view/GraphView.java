@@ -45,7 +45,7 @@ public class GraphView extends AbstractView
 
 	@Override
 	public JPanel getField() {
-		graph = new GraphPanel(300, 150, 500);
+		graph = new GraphPanel(600, 300, 500);
 		
 		JPanel graphView = new JPanel();
 		graphView.setLayout(new BorderLayout());
