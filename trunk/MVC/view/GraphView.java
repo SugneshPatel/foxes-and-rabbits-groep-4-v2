@@ -15,8 +15,11 @@ import model.*;
 
 public class GraphView extends AbstractView
 {
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 8408351482084593575L;
 	private static final Color LIGHT_GRAY = new Color(0, 0, 0, 40);
-	private static final Color UNKNOWN_COLOR = Color.gray;
 	private Map<Class<?>, Color> colors;
 	private static GraphPanel graph;
 	private Set<Class<?>> classes;
@@ -66,6 +69,11 @@ public class GraphView extends AbstractView
     class GraphPanel extends JComponent
     {
         
+
+		/**
+		 * 
+		 */
+		private static final long	serialVersionUID	= -93224324839379620L;
 
 		private static final double SCALE_FACTOR = 0.8;
 
@@ -264,8 +272,7 @@ public class GraphView extends AbstractView
          */
         public void paintComponent(Graphics g)
         {
-            Dimension size = getSize();
-            //g.clearRect(0, 0, size.width, size.height);
+            
             if(graphImage != null) {
                 g.drawImage(graphImage, 0, 0, null);
             }
