@@ -18,17 +18,8 @@ public abstract class AbstractModel {
 		views.add(view);
 	}
 	
-	public void statusUpdate(int step, Field field) {
-		for(AbstractView v: views) v.showStatus(step, field);
-	}
-	
-	public boolean checkViable(Field field){
-		
-		boolean viable = false;
-		for(AbstractView v: views){
-			viable = v.isViable(field);
-		}
-		return viable;
+	public void statusUpdate() {
+		for(AbstractView v: views) v.showStatus();
 	}
 	
 	public abstract void reset();

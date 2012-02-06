@@ -22,9 +22,9 @@ public abstract class AbstractView extends JPanel {
 	
 	public abstract void setColor(Class<?> animalClass, Color color);
 	
-	public abstract void showStatus(int step, Field field);
-	
-	public abstract boolean isViable(Field field);
+	public abstract void showStatus();
 	
 	public abstract JPanel getField();
+	
+	
 }
