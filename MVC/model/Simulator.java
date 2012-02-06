@@ -11,7 +11,7 @@ import java.util.Iterator;
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public class Simulator extends AbstractModel
+public class Simulator extends AbstractModel implements Runnable
 {
 	
     // Constants representing configuration information for the simulation.
@@ -34,6 +34,8 @@ public class Simulator extends AbstractModel
     private Field field;
     // The current step of the simulation.
     private int step;
+    
+    private boolean run;
     
     
     /**
@@ -145,5 +147,24 @@ public class Simulator extends AbstractModel
             }
         }
     }
+    
+    public void start(){
+    	new Thread(this).start();
+    }
+    
+    public void stop() {
+    	run = false;
+    }
+
+	@Override
+	public void run() {
+		run=true;
+		while(run) {
+			simulateOneStep();
+			try {
+				Thread.sleep(100);
+			} catch (Exception e) {} 
+		}
+	}
 }
 
