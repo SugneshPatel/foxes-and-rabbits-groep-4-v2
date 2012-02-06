@@ -80,7 +80,7 @@ public class GraphView extends AbstractView
         // An internal image buffer that is used for painting. For
         // actual display, this image buffer is then copied to screen.
         private BufferedImage graphImage;
-        private int lastVal1, lastVal2;
+        private int lastVal1, lastVal2, lastVal3, lastVal4;
         private int yMax;
 
         /**
@@ -110,6 +110,9 @@ public class GraphView extends AbstractView
             g.drawLine(width-2, 0, width-2, height);
             lastVal1 = height;
             lastVal2 = height;
+            lastVal3 = height;
+            lastVal4 = height;
+            
             repaint();
         }
 
@@ -171,8 +174,8 @@ public class GraphView extends AbstractView
                 g.setColor(LIGHT_GRAY);
                 g.drawLine(width-2, y, width-2, height);
                 g.setColor(colors.get(class3));
-                g.drawLine(width-3, lastVal1, width-2, y);
-                lastVal1 = y;
+                g.drawLine(width-3, lastVal3, width-2, y);
+                lastVal3 = y;
                 
                 y = height - ((height * count4) / yMax) - 1;
                 while (y<0) {
@@ -182,8 +185,8 @@ public class GraphView extends AbstractView
                 g.setColor(LIGHT_GRAY);
                 g.drawLine(width-2, y, width-2, height);
                 g.setColor(colors.get(class4));
-                g.drawLine(width-3, lastVal1, width-2, y);
-                lastVal1 = y;
+                g.drawLine(width-3, lastVal4, width-2, y);
+                lastVal4 = y;
                 
                 repaintNow();
 
