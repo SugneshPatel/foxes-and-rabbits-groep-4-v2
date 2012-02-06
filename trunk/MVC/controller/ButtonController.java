@@ -18,7 +18,7 @@ public class ButtonController extends AbstractController implements ActionListen
 	 * 
 	 */
 	private static final long serialVersionUID = -4557571779645953349L;
-	private JButton stepOneButton, stepHundredButton;
+	private JButton stepOneButton, stepHundredButton, runButton, stopButton, resetButton;
 	
 	
 	public ButtonController(Simulator brain){
@@ -39,6 +39,24 @@ public class ButtonController extends AbstractController implements ActionListen
         stepHundredButton.setMaximumSize(new Dimension(90,25));
         stepHundredButton.addActionListener(this);
         
+        runButton = new JButton("Run");
+        runButton.setPreferredSize(new Dimension(90,25));
+        runButton.setMinimumSize(new Dimension(90,10));
+        runButton.setMaximumSize(new Dimension(90,25));
+        runButton.addActionListener(this);
+        
+        stopButton = new JButton("Stop");
+        stopButton.setPreferredSize(new Dimension(90,25));
+        stopButton.setMinimumSize(new Dimension(90,10));
+        stopButton.setMaximumSize(new Dimension(90,25));
+        stopButton.addActionListener(this);
+        
+        resetButton = new JButton("Reset");
+        resetButton.setPreferredSize(new Dimension(90,25));
+        resetButton.setMinimumSize(new Dimension(90,10));
+        resetButton.setMaximumSize(new Dimension(90,25));
+        resetButton.addActionListener(this);
+        
         
         //nieuw panel waarin buttons komen
         JPanel buttonsLeft = new JPanel();
@@ -48,6 +66,9 @@ public class ButtonController extends AbstractController implements ActionListen
         //buttons toevoegen aan buttonsleft panel
         buttonsLeft.add(stepOneButton);
         buttonsLeft.add(stepHundredButton);
+        buttonsLeft.add(runButton);
+        buttonsLeft.add(stopButton);
+        buttonsLeft.add(resetButton);
         
         return buttonsLeft;
 	}
@@ -58,6 +79,15 @@ public class ButtonController extends AbstractController implements ActionListen
 		}
 		if (e.getSource()==stepHundredButton) {
 			brain.simulate(100);
+		}
+		if (e.getSource()==runButton) {
+			brain.start();
+		}
+		if (e.getSource()==stopButton) {
+			brain.stop();
+		}
+		if (e.getSource()==resetButton) {
+			brain.reset();
 		}
 	}
 
