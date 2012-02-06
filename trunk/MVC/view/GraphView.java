@@ -35,14 +35,12 @@ public class GraphView extends AbstractView
 	public void setColor(Class<?> animalClass, Color color) {
 		colors.put(animalClass, color);
         classes = colors.keySet();
-		
 	}
 	
 
 	@Override
 	public void showStatus() {
 		graph.update(brain.getStep(), brain.getField(), brain.getFieldStats());
-		
 	}
 
 	@Override
@@ -179,8 +177,6 @@ public class GraphView extends AbstractView
                 g.drawLine(width-3, lastVal1, width-2, y);
                 lastVal1 = y;
                 
-               
-
                 repaintNow();
 
                 stepLabel.setText("" + step);
