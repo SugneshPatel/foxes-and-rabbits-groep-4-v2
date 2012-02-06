@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import view.AbstractView;
 import view.GraphView;
+import view.PieView;
 
 import model.Fox;
 import model.Hunter;
@@ -24,7 +25,7 @@ public class MenuController extends AbstractController implements ActionListener
 	 * 
 	 */
 	private static final long serialVersionUID = 4698842680020675242L;
-	private JMenuItem quitItem, configItem, graphItem;
+	private JMenuItem quitItem, configItem, graphItem, pieView;
 	
 	public MenuController(Simulator brain){
 		super(brain);
@@ -51,6 +52,8 @@ public class MenuController extends AbstractController implements ActionListener
     	configItem.addActionListener(this);
     	graphItem = new JMenuItem("Graph");
     	graphItem.addActionListener(this);
+    	pieView = new JMenuItem("PieView");
+    	pieView.addActionListener(this);
     	
     	menubar.add(menu1);
     	menubar.add(menu2);
@@ -60,6 +63,7 @@ public class MenuController extends AbstractController implements ActionListener
     	menu1.add(quitItem);
     	menu1.add(configItem);
     	menu2.add(graphItem);
+    	menu2.add(pieView);
     	
     	return menubar;
 	}
@@ -73,6 +77,9 @@ public class MenuController extends AbstractController implements ActionListener
 		}
 		if (e.getSource()==graphItem) {
 			graphView();
+		}
+		if (e.getSource()==pieView) {
+			pieView();
 		}
 	}
 	
@@ -108,5 +115,21 @@ public class MenuController extends AbstractController implements ActionListener
 		
 		config.pack();
 		config.setVisible(true);
+	}
+	
+	private void pieView() {
+		JFrame pieview = new JFrame("PieView");
+		AbstractView pieView = new PieView(brain);
+		pieView.setColor(Rabbit.class, Color.orange);
+		pieView.setColor(Fox.class, Color.blue);
+		pieView.setColor(Hunter.class, Color.red);
+		pieView.setColor(Wolf.class, Color.black);
+		
+		JPanel container = (JPanel)pieview.getContentPane();
+		
+		container.add(pieView.getField());
+		
+		pieview.pack();
+		pieview.setVisible(true);
 	}
 }
