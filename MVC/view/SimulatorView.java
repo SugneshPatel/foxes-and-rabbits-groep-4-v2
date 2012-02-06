@@ -38,8 +38,7 @@ public class SimulatorView extends AbstractView
     
     // A map for storing colors for participants in the simulation
     private Map<Class<?>, Color> colors;
-    // A statistics object computing and storing simulation information
-    private FieldStats stats;
+   
     
     
   
@@ -51,8 +50,9 @@ public class SimulatorView extends AbstractView
     public SimulatorView(Simulator brain)
     {
     	super(brain);
-    	stats = new FieldStats();
+    
         colors = new LinkedHashMap<Class<?>, Color>();
+        fieldView = new FieldView(100, 100);
         
     }
     
@@ -60,7 +60,7 @@ public class SimulatorView extends AbstractView
     	
     	stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
-        fieldView = new FieldView(100, 100);
+     
         
         //JPanel die de buttons bevat
         
@@ -105,22 +105,24 @@ public class SimulatorView extends AbstractView
      * @param step Which iteration step it is.
      * @param field The field whose status is to be displayed.
      */
-    public void showStatus(int step, Field field)
+    public void showStatus()
     {
         if(!isVisible()) {
             setVisible(true);
         }
-            
-        stepLabel.setText(STEP_PREFIX + step);
-        stats.reset();
+        
+        stepLabel.setText(STEP_PREFIX + brain.getStep());
+        
+        brain.getFieldStats().reset();
+        
         
         fieldView.preparePaint();
-
-        for(int row = 0; row < field.getDepth(); row++) {
-            for(int col = 0; col < field.getWidth(); col++) {
-                Object animal = field.getObjectAt(row, col);
+        
+        for(int row = 0; row < brain.getField().getDepth(); row++) {
+            for(int col = 0; col < brain.getField().getWidth(); col++) {
+                Object animal = brain.getField().getObjectAt(row, col);
                 if(animal != null) {
-                    stats.incrementCount(animal.getClass());
+                	brain.getFieldStats().incrementCount(animal.getClass());
                     fieldView.drawMark(col, row, getColor(animal.getClass()));
                 }
                 else {
@@ -128,20 +130,13 @@ public class SimulatorView extends AbstractView
                 }
             }
         }
-        stats.countFinished();
+       
+        brain.getFieldStats().countFinished();
 
-        population.setText(POPULATION_PREFIX + stats.getPopulationDetails(field));
+        population.setText(POPULATION_PREFIX + brain.getFieldStats().getPopulationDetails(brain.getField()));
         fieldView.repaint();
     }
 
-    /**
-     * Determine whether the simulation should continue to run.
-     * @return true If there is more than one species alive.
-     */
-    public boolean isViable(Field field)
-    {
-        return stats.isViable(field);
-    }
     
     /**
      * Provide a graphical view of a rectangular field. This is 

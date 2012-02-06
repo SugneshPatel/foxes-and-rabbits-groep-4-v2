@@ -37,6 +37,8 @@ public class Simulator extends AbstractModel implements Runnable
     
     private boolean run;
     
+    private FieldStats stats;
+    
     
     /**
      * Create a simulation field with the given size.
@@ -48,6 +50,7 @@ public class Simulator extends AbstractModel implements Runnable
         
         animals = new ArrayList<Actor>();
         field = new Field(DEFAULT_WIDTH, DEFAULT_DEPTH);
+        stats = new FieldStats();
 
         
         // Setup a valid starting point.
@@ -70,7 +73,7 @@ public class Simulator extends AbstractModel implements Runnable
      */
     public void simulate(int numSteps)
     {
-        for(int step = 1; step <= numSteps && checkViable(field); step++) {
+        for(int step = 1; step <= numSteps && isViable(); step++) {
             simulateOneStep();
         }
     }
@@ -97,8 +100,8 @@ public class Simulator extends AbstractModel implements Runnable
                
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
-
-        statusUpdate(step, field);
+        statusUpdate();
+   
     }
         
     /**
@@ -111,7 +114,8 @@ public class Simulator extends AbstractModel implements Runnable
         populate();
         
         // Show the starting state in the view.
-        statusUpdate(step, field);
+        statusUpdate();
+ 
     }
     
     /**
@@ -147,6 +151,27 @@ public class Simulator extends AbstractModel implements Runnable
             }
         }
     }
+    // vanaf hier
+    public int getStep() {
+    	return step;
+    }
+    
+    public FieldStats getFieldStats() {
+    	return stats;
+    }
+    
+    public Field getField() {
+    	return field;
+    }
+    
+    public boolean isViable()
+    {
+        return stats.isViable(field);
+    	
+    }
+    // tot hier
+    
+    
     
     public void start(){
     	new Thread(this).start();
