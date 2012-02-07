@@ -48,15 +48,15 @@ public class GraphView extends AbstractView
 
 	@Override
 	public JPanel getField() {
-		graph = new GraphPanel(600, 300, 500);
+		graph = new GraphPanel(200, 200, 500);
 		
 		JPanel graphView = new JPanel();
-		graphView.setLayout(new BorderLayout());
-        graphView.add(graph, BorderLayout.CENTER);
-        stepLabel = new JLabel("");
-        countLabel = new JLabel(" ");
-        graphView.add(stepLabel, BorderLayout.NORTH);
-        graphView.add(countLabel, BorderLayout.SOUTH);
+		// graphView.setLayout(new BorderLayout());
+        graphView.add(graph);
+        // stepLabel = new JLabel("");
+        // countLabel = new JLabel(" ");
+        // graphView.add(stepLabel, BorderLayout.NORTH);
+        // graphView.add(countLabel, BorderLayout.SOUTH);
 
       
 
@@ -190,8 +190,8 @@ public class GraphView extends AbstractView
                 
                 repaint();
 
-                stepLabel.setText("" + step);
-                countLabel.setText(stats.getPopulationDetails(field));
+                // stepLabel.setText("" + step);
+                // countLabel.setText(stats.getPopulationDetails(field));
             }
         }
 
