@@ -61,6 +61,15 @@ public class Simulator extends AbstractModel implements Runnable
     }
     
     /**
+     * returns the config
+     * @return config
+     */
+    public Config getConfig()
+    {
+    	return config;
+    }
+    
+    /**
      * Run the simulation from its current state for a reasonably long period,
      * e.g. 500 steps.
      */
