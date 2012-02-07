@@ -3,6 +3,8 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -76,16 +78,49 @@ public class SimulationRunner extends JFrame {
         
         //tot aan hier
         
+        // Panel aan de linkerkant
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BorderLayout());
+        
+        // buttons toevoegen aan linker paneel
+        leftPanel.add(buttonController.getButtons(), BorderLayout.NORTH);
+        
+        JPanel legendaPanel = new JPanel();
+        legendaPanel.setLayout(new GridLayout(0, 2));
+        
+        // legenda
+        // rabbit icon
+        ImageIcon icon = createImageIcon("images2/bugs_bunny22.gif", "een konijntje");
+        
+        JLabel konijnenLabel = new JLabel("Image and Text", icon, JLabel.CENTER);
+        
+        legendaPanel.add(konijnenLabel);
+        
+        leftPanel.add(legendaPanel, BorderLayout.SOUTH);
+        
+        
+        
         // contents.setLayout(new BorderLayout());
         container.add(viewsLeft, BorderLayout.EAST);
         container.add(simulatorview.getField(), BorderLayout.CENTER);
-        container.add(buttonController.getButtons(), BorderLayout.WEST);
+        container.add(leftPanel, BorderLayout.WEST);
         container.add(VERSIELABEL, BorderLayout.SOUTH);
         pack();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         
         brain.reset();
+	}
+
+	protected ImageIcon createImageIcon(String path, String description) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if(imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		}
+		else {
+			System.err.println("Couldn't find file: " + path);
+			return null;
+		}
 	}
 	
 }

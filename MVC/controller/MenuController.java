@@ -80,4 +80,8 @@ public class MenuController extends AbstractController implements ActionListener
 		config.pack();
 		config.setVisible(true);
 	}
+
+	public static void main(String[] args) {
+		buttonController.getButtons();
+	}
 }
