@@ -108,14 +108,14 @@ public class ConfigController extends AbstractController implements ActionListen
 		JLabel foxMaxLitterSizeLabel = new JLabel("Max litter size:");
 		JLabel foxRabbitFoodValueLabel = new JLabel("Rabbit food value:");
 		
-		int tempBreedProbFox = (int) (Config.getFoxBreedingProbability() * 100);
+		int tempBreedProbFox = (int) (brain.getConfig().getFoxBreedingProbability() * 100);
 		
 		// fox sliders
-		JSlider foxBreedingSlider = new JSlider(0, Config.getFoxMaxAge(), Config.getFoxBreedingAge());
-		JSlider foxMaxAgeSlider = new JSlider(0, 200, Config.getFoxMaxAge());
+		JSlider foxBreedingSlider = new JSlider(0, brain.getConfig().getFoxMaxAge(), brain.getConfig().getFoxBreedingAge());
+		JSlider foxMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getFoxMaxAge());
 		JSlider foxBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbFox);
-		JSlider foxRabbitFoodValueSlider = new JSlider(0, 25, Config.getFoxRabbitFoodValue());
-		JSlider foxMaxLitterSizeSlider = new JSlider(0, 20, Config.getFoxMaxLitterSize());
+		JSlider foxRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getFoxRabbitFoodValue());
+		JSlider foxMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getFoxMaxLitterSize());
 		
 		foxBreedingSlider.setMajorTickSpacing(25);
 		foxBreedingSlider.setMinorTickSpacing(5);
@@ -166,13 +166,13 @@ public class ConfigController extends AbstractController implements ActionListen
 		JLabel rabbitBreedingProbabilityLabel = new JLabel("Breeding probability:");
 		JLabel rabbitMaxLitterSizeLabel = new JLabel("Max litter size:");
 		
-		int tempBreedProbRabbit = (int) (Config.getRabbitBreedingProbability() * 100);
+		int tempBreedProbRabbit = (int) (brain.getConfig().getRabbitBreedingProbability() * 100);
 		
 		// rabbit sliders
-		JSlider rabbitBreedingSlider = new JSlider(0, Config.getRabbitMaxAge(), Config.getRabbitBreedingAge());
-		JSlider rabbitMaxAgeSlider = new JSlider(0, 200, Config.getRabbitMaxAge());
+		JSlider rabbitBreedingSlider = new JSlider(0, brain.getConfig().getRabbitMaxAge(), brain.getConfig().getRabbitBreedingAge());
+		JSlider rabbitMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getRabbitMaxAge());
 		JSlider rabbitBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbRabbit);
-		JSlider rabbitMaxLitterSizeSlider = new JSlider(0, 20, Config.getRabbitMaxLitterSize());
+		JSlider rabbitMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getRabbitMaxLitterSize());
 		
 		rabbitBreedingSlider.setMajorTickSpacing(25);
 		rabbitBreedingSlider.setMinorTickSpacing(5);
@@ -216,15 +216,15 @@ public class ConfigController extends AbstractController implements ActionListen
 		JLabel wolfRabbitFoodValueLabel = new JLabel("Rabbit food value:");
 		JLabel wolfFoxFoodValueLabel = new JLabel("Fox food value:");
 		
-		int tempBreedProbWolf = (int) (Config.getWolfBreedingProbability() * 100);
+		int tempBreedProbWolf = (int) (brain.getConfig().getWolfBreedingProbability() * 100);
 		
 		// rabbit sliders
-		JSlider wolfBreedingSlider = new JSlider(0, Config.getWolfMaxAge(), Config.getWolfBreedingAge());
-		JSlider wolfMaxAgeSlider = new JSlider(0, 200, Config.getWolfMaxAge());
+		JSlider wolfBreedingSlider = new JSlider(0, brain.getConfig().getWolfMaxAge(), brain.getConfig().getWolfBreedingAge());
+		JSlider wolfMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getWolfMaxAge());
 		JSlider wolfBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbWolf);
-		JSlider wolfMaxLitterSizeSlider = new JSlider(0, 20, Config.getWolfMaxLitterSize());
-		JSlider wolfRabbitFoodValueSlider = new JSlider(0, 25, Config.getWolfRabbitFoodValue());
-		JSlider wolfFoxFoodValueSlider = new JSlider(0, 25, Config.getWolfFoxFoodValue());
+		JSlider wolfMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getWolfMaxLitterSize());
+		JSlider wolfRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfRabbitFoodValue());
+		JSlider wolfFoxFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfFoxFoodValue());
 		
 		wolfBreedingSlider.setMajorTickSpacing(25);
 		wolfBreedingSlider.setMinorTickSpacing(5);
@@ -280,7 +280,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		JLabel hunterBulletLabel = new JLabel("Number of bullets:");
 		
 		// hunter sliders
-		JSlider hunterBulletSlider = new JSlider(0, 20, Config.getHunterBullets());
+		JSlider hunterBulletSlider = new JSlider(0, 20, brain.getConfig().getHunterBullets());
 		
 		hunterBulletSlider.setMajorTickSpacing(5);
 		hunterBulletSlider.setMinorTickSpacing(1);

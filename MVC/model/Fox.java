@@ -12,19 +12,6 @@ import java.util.Random;
  */
 public class Fox extends Animal
 {
-    // Characteristics shared by all foxes (static fields).
-    
-    // The age at which a fox can start to breed.
-    private static int BREEDING_AGE = Config.getFoxBreedingAge();
-    // The age to which a fox can live.
-    private static int MAX_AGE = Config.getFoxMaxAge();
-    // The likelihood of a fox breeding.
-    private static double BREEDING_PROBABILITY = Config.getFoxBreedingProbability();
-    // The maximum number of births.
-    private static int MAX_LITTER_SIZE = Config.getFoxMaxLitterSize();
-    // The food value of a single rabbit. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
-    private static int RABBIT_FOOD_VALUE = Config.getFoxRabbitFoodValue();
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -40,16 +27,16 @@ public class Fox extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Fox(boolean randomAge, Field field, Location location)
+    public Fox(boolean randomAge, Field field, Location location, Simulator brain)
     {
-        super(field, location);
+        super(field, location, brain);
         if(randomAge) {
-            setAge(rand.nextInt(MAX_AGE));
-            foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
+            setAge(rand.nextInt(brain.getConfig().getFoxMaxAge()));
+            foodLevel = rand.nextInt(brain.getConfig().getFoxRabbitFoodValue());
         }
         else {
             setAge(0);
-            foodLevel = RABBIT_FOOD_VALUE;
+            foodLevel = brain.getConfig().getFoxRabbitFoodValue();
         }
     }
     
@@ -60,12 +47,12 @@ public class Fox extends Animal
      * @param location The location within the field.
      * @param foodLevel The starting foodLevel of a fox.
      */
-    public Fox(boolean randomAge, Field field, Location location, int foodLevel)
+    public Fox(boolean randomAge, Field field, Location location, int foodLevel, Simulator brain)
     {
-    	super(field, location);
+    	super(field, location, brain);
     	if(randomAge) {
-    		setAge(rand.nextInt(MAX_AGE));
-    		this.foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
+    		setAge(rand.nextInt(brain.getConfig().getFoxMaxAge()));
+    		this.foodLevel = rand.nextInt(brain.getConfig().getFoxRabbitFoodValue());
     	}
     	else {
     		setAge(0);
@@ -110,7 +97,7 @@ public class Fox extends Animal
      */
     public int getMaxAge()
     {
-    	return MAX_AGE;
+    	return brain.getConfig().getFoxMaxAge();
     }
     
     /**
@@ -142,7 +129,7 @@ public class Fox extends Animal
                 Rabbit rabbit = (Rabbit) animal;
                 if(rabbit.isActive()) { 
                     rabbit.setDead();
-                    foodLevel = RABBIT_FOOD_VALUE;
+                    foodLevel = brain.getConfig().getFoxRabbitFoodValue();
                     // Remove the dead rabbit from the field.
                     return where;
                 }
@@ -165,7 +152,7 @@ public class Fox extends Animal
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Fox young = new Fox(false, field, loc);
+            Fox young = new Fox(false, field, loc, brain);
             newFoxes.add(young);
         }
     }
@@ -185,7 +172,7 @@ public class Fox extends Animal
      */
     public int getBreedingAge()
     {
-    	return BREEDING_AGE;
+    	return brain.getConfig().getFoxBreedingAge();
     }
     
     /**
@@ -194,7 +181,7 @@ public class Fox extends Animal
      */
     public double getBreedingProbability()
     {
-    	return BREEDING_PROBABILITY;
+    	return brain.getConfig().getFoxBreedingProbability();
     }
     
     /**
@@ -203,7 +190,7 @@ public class Fox extends Animal
      */
     public int getMaxLitterSize()
     {
-    	return MAX_LITTER_SIZE;
+    	return brain.getConfig().getFoxMaxLitterSize();
     }
     
 }

@@ -107,67 +107,67 @@ public class Config
 	 * GETTERS
 	 */
 
-	public static int getFoxBreedingAge() {
+	public int getFoxBreedingAge() {
 		return FOX_BREEDING_AGE;
 	}
 
-	public static int getFoxMaxAge() {
+	public int getFoxMaxAge() {
 		return FOX_MAX_AGE;
 	}
 
-	public static double getFoxBreedingProbability() {
+	public double getFoxBreedingProbability() {
 		return FOX_BREEDING_PROBABILITY;
 	}
 
-	public static int getFoxMaxLitterSize() {
+	public int getFoxMaxLitterSize() {
 		return FOX_MAX_LITTER_SIZE;
 	}
 
-	public static int getFoxRabbitFoodValue() {
+	public int getFoxRabbitFoodValue() {
 		return FOX_RABBIT_FOOD_VALUE;
 	}
 
-	public static double getRabbitBreedingProbability() {
+	public double getRabbitBreedingProbability() {
 		return RABBIT_BREEDING_PROBABILITY;
 	}
 
-	public static int getRabbitMaxLitterSize() {
+	public int getRabbitMaxLitterSize() {
 		return RABBIT_MAX_LITTER_SIZE;
 	}
 
-	public static int getRabbitMaxAge() {
+	public int getRabbitMaxAge() {
 		return RABBIT_MAX_AGE;
 	}
 
-	public static int getRabbitBreedingAge() {
+	public int getRabbitBreedingAge() {
 		return RABBIT_BREEDING_AGE;
 	}
 
-	public static double getWolfBreedingProbability() {
+	public double getWolfBreedingProbability() {
 		return WOLF_BREEDING_PROBABILITY;
 	}
 
-	public static int getWolfMaxAge() {
+	public int getWolfMaxAge() {
 		return WOLF_MAX_AGE;
 	}
 
-	public static int getWolfBreedingAge() {
+	public int getWolfBreedingAge() {
 		return WOLF_BREEDING_AGE;
 	}
 
-	public static int getWolfMaxLitterSize() {
+	public int getWolfMaxLitterSize() {
 		return WOLF_MAX_LITTER_SIZE;
 	}
 
-	public static int getWolfRabbitFoodValue() {
+	public int getWolfRabbitFoodValue() {
 		return WOLF_RABBIT_FOOD_VALUE;
 	}
 
-	public static int getWolfFoxFoodValue() {
+	public int getWolfFoxFoodValue() {
 		return WOLF_FOX_FOOD_VALUE;
 	}
 
-	public static int getHunterBullets() {
+	public int getHunterBullets() {
 		return HUNTER_BULLETS;
 	}
 	

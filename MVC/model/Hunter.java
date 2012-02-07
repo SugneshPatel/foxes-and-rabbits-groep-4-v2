@@ -17,8 +17,8 @@ public class Hunter implements Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
-    // aantal keer dat een jager kan schieten.
-    private static final int BULLETS = 1;
+    // het simulatie brein
+    protected Simulator brain;
 
     /**
      * Create a hunter.
@@ -26,8 +26,9 @@ public class Hunter implements Actor
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Hunter(Field field, Location location)
+    public Hunter(Field field, Location location, Simulator brain)
     {
+    	this.brain = brain;
     	alive = true;
         this.field = field;
         setLocation(location);
@@ -74,7 +75,7 @@ public class Hunter implements Actor
         if(isActive()) {           
             // Move towards a source of food if found.
             Location location = getLocation();
-            shoot(BULLETS, location);
+            shoot(brain.getConfig().getHunterBullets(), location);
             Location newLocation = getField().freeAdjacentLocation(location);
             // See if it was possible to move.
             if(newLocation != null) {
