@@ -2,85 +2,173 @@ package model;
 
 public class Config
 {
+	
+	// fox variabelen
+	private static int FOX_BREEDING_AGE = 10;
+	private static int FOX_MAX_AGE = 150;
+	private static double FOX_BREEDING_PROBABILITY = 0.35;
+	private static int FOX_MAX_LITTER_SIZE = 5;
+	private static int FOX_RABBIT_FOOD_VALUE = 7;
+	
+	// rabbit variabelen
+	private static int RABBIT_BREEDING_AGE = 5;
+	private static int RABBIT_MAX_AGE = 40;
+	private static double RABBIT_BREEDING_PROBABILITY = 0.15;
+	private static int RABBIT_MAX_LITTER_SIZE = 4;
+	
+	// wolf variabelen
+	private static int WOLF_BREEDING_AGE = 10;
+	private static int WOLF_MAX_AGE = 150;
+	private static double WOLF_BREEDING_PROBABILITY = 0.01;
+	private static int WOLF_MAX_LITTER_SIZE = 5;
+	private static int WOLF_RABBIT_FOOD_VALUE = 7;
+	private static int WOLF_FOX_FOOD_VALUE = 20;
+	
+	// hunter variabelen
+	private static int HUNTER_BULLETS = 1;
+	
+	/*
+	 * SETTERS
+	 */
+	
+	// fox setters
+	public void setFoxBreedingAge(int i) {
+		FOX_BREEDING_AGE = i;
+	}
+	
+	public void setFoxMaxAge(int i) {
+		FOX_MAX_AGE = i;
+	}
+	
+	public void setFoxBreedingProbability(double d) {
+		FOX_BREEDING_PROBABILITY = d;
+	}
+	
+	public void setFoxMaxLitterSize(int i) {
+		FOX_MAX_LITTER_SIZE = i;
+	}
+	
+	public void setFoxRabbitFoodValue(int i) {
+		FOX_RABBIT_FOOD_VALUE = i;
+	}
+	
+
+
+	// rabbit setters
+	public void setRabbitBreedingAge(int i) {
+		RABBIT_BREEDING_AGE = i;
+	}
+	
+	public void setRabbitMaxAge(int i) {
+		RABBIT_MAX_AGE = i;
+	}
+	
+	public void setRabbitBreedingProbability(double d) {
+		RABBIT_BREEDING_PROBABILITY = d;
+	}
+	
+	public void setRabbitMaxLitterSize(int i) {
+		RABBIT_MAX_LITTER_SIZE = i;
+	}
+	
+	
+	// wolf setters
+	public void setWolfBreedingAge(int i) {
+		WOLF_BREEDING_AGE = i;
+	}
+	
+	public void setWolfMaxAge(int i) {
+		WOLF_MAX_AGE = i;
+	}
+	
+	public void setWolfBreedingProbability(double d) {
+		WOLF_BREEDING_PROBABILITY = d;
+	}
+	
+	public void setWolfMaxLitterSize(int i) {
+		WOLF_MAX_LITTER_SIZE = i;
+	}
+	
+	public void setWolfRabbitFoodValue(int i) {
+		WOLF_RABBIT_FOOD_VALUE = i;
+	}
+	
+	public void setWolfFoxFoodValue(int i) {
+		WOLF_FOX_FOOD_VALUE = i;
+	}
+	
+	
+	// hunter setters
+	public void setHunterBullets(int i) {
+		HUNTER_BULLETS = i;
+	}
+	
+	/*
+	 * GETTERS
+	 */
 
 	public static int getFoxBreedingAge() {
-		// TODO Auto-generated method stub
-		return 0;
+		return FOX_BREEDING_AGE;
 	}
 
 	public static int getFoxMaxAge() {
-		// TODO Auto-generated method stub
-		return 150;
+		return FOX_MAX_AGE;
 	}
 
 	public static double getFoxBreedingProbability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return FOX_BREEDING_PROBABILITY;
 	}
 
 	public static int getFoxMaxLitterSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return FOX_MAX_LITTER_SIZE;
 	}
 
 	public static int getFoxRabbitFoodValue() {
-		// TODO Auto-generated method stub
-		return 7;
+		return FOX_RABBIT_FOOD_VALUE;
 	}
 
-	public static int getRabbitBreedingProbability() {
-		// TODO Auto-generated method stub
-		return 0;
+	public static double getRabbitBreedingProbability() {
+		return RABBIT_BREEDING_PROBABILITY;
 	}
 
 	public static int getRabbitMaxLitterSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return RABBIT_MAX_LITTER_SIZE;
 	}
 
 	public static int getRabbitMaxAge() {
-		// TODO Auto-generated method stub
-		return 0;
+		return RABBIT_MAX_AGE;
 	}
 
 	public static int getRabbitBreedingAge() {
-		// TODO Auto-generated method stub
-		return 0;
+		return RABBIT_BREEDING_AGE;
 	}
 
-	public static int getWolfBreedingProbability() {
-		// TODO Auto-generated method stub
-		return 0;
+	public static double getWolfBreedingProbability() {
+		return WOLF_BREEDING_PROBABILITY;
 	}
 
 	public static int getWolfMaxAge() {
-		// TODO Auto-generated method stub
-		return 0;
+		return WOLF_MAX_AGE;
 	}
 
 	public static int getWolfBreedingAge() {
-		// TODO Auto-generated method stub
-		return 0;
+		return WOLF_BREEDING_AGE;
 	}
 
 	public static int getWolfMaxLitterSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return WOLF_MAX_LITTER_SIZE;
 	}
 
 	public static int getWolfRabbitFoodValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return WOLF_RABBIT_FOOD_VALUE;
 	}
 
 	public static int getWolfFoxFoodValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return WOLF_FOX_FOOD_VALUE;
 	}
 
 	public static int getHunterBullets() {
-		// TODO Auto-generated method stub
-		return 0;
+		return HUNTER_BULLETS;
 	}
 	
 }
