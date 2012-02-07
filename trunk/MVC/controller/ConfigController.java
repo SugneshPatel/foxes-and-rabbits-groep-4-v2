@@ -24,6 +24,8 @@ public class ConfigController extends AbstractController implements ActionListen
 	 */
 	private static final long	serialVersionUID	= 5629702526729726101L;
 	
+	private JLabel foxBreedingLabel;
+	
 	public ConfigController(Simulator brain){
 		super(brain);
 	}
@@ -103,7 +105,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		
 		//fox labels
-		JLabel foxBreedingLabel = new JLabel("Breeding age:");
+		foxBreedingLabel = new JLabel("Breeding age:");
 		JLabel foxMaxAgeLabel = new JLabel("Max age:");
 		JLabel foxBreedingProbabilityLabel = new JLabel("Breeding probability:");
 		JLabel foxMaxLitterSizeLabel = new JLabel("Max litter size:");
@@ -318,6 +320,11 @@ public class ConfigController extends AbstractController implements ActionListen
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		// TODO Auto-generated method stub
-		
+		JSlider source = (JSlider)e.getSource();
+		if (source.getValueIsAdjusting()) {
+			int fps = (int)source.getValue();
+			String temp = Integer.toString(fps);
+			foxBreedingLabel.setText("Breeding age (" + temp + "):");
+		}
 	}
 }
