@@ -10,6 +10,8 @@ import java.util.Random;
  */
 public abstract class Animal implements Actor
 {
+	// het simulatie brein
+	protected Simulator brain;
     // Whether the animal is alive or not.
     private boolean alive;
     // The animal's field.
@@ -27,8 +29,9 @@ public abstract class Animal implements Actor
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Animal(Field field, Location location)
+    public Animal(Field field, Location location, Simulator brain)
     {
+    	this.brain = brain;
         alive = true;
         this.field = field;
         setLocation(location);

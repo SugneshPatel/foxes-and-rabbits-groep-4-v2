@@ -141,7 +141,7 @@ public class Simulator extends AbstractModel implements Runnable
             for(int col = 0; col < field.getWidth(); col++) {
             	if(rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
             		Location location = new Location(row, col);
-            		Hunter hunter = new Hunter(field, location);
+            		Hunter hunter = new Hunter(field, location, this);
             		animals.add(hunter);
             	}
             	else if(rand.nextDouble() <= WOLF_CREATION_PROBABILITY) {
@@ -151,12 +151,12 @@ public class Simulator extends AbstractModel implements Runnable
             	}
             	else if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Fox fox = new Fox(true, field, location);
+                    Fox fox = new Fox(true, field, location, this);
                     animals.add(fox);
                 }
                 else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Rabbit rabbit = new Rabbit(true, field, location);
+                    Rabbit rabbit = new Rabbit(true, field, location, this);
                     animals.add(rabbit);
                 }
                 // else leave the location empty.

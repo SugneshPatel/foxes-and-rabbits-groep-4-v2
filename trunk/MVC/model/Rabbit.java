@@ -11,16 +11,6 @@ import java.util.Random;
  */
 public class Rabbit extends Animal
 {
-    // Characteristics shared by all rabbits (static fields).
-
-    // The age at which a rabbit can start to breed.
-    private static final int BREEDING_AGE = 5;
-    // The age to which a rabbit can live.
-    private static final int MAX_AGE = 40;
-    // The likelihood of a rabbit breeding.
-    private static final double BREEDING_PROBABILITY = 0.15;
-    // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 4;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -35,12 +25,12 @@ public class Rabbit extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Rabbit(boolean randomAge, Field field, Location location)
+    public Rabbit(boolean randomAge, Field field, Location location, Simulator brain)
     {
-        super(field, location);
+        super(field, location, brain);
         setAge(0);
         if(randomAge) {
-            setAge(rand.nextInt(MAX_AGE));
+            setAge(rand.nextInt(brain.getConfig().getRabbitMaxAge()));
         }
     }
     
@@ -72,7 +62,7 @@ public class Rabbit extends Animal
      */
     public int getMaxAge()
     {
-    	return MAX_AGE;
+    	return brain.getConfig().getRabbitMaxAge();
     }
     
     /**
@@ -89,7 +79,7 @@ public class Rabbit extends Animal
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Rabbit young = new Rabbit(false, field, loc);
+            Rabbit young = new Rabbit(false, field, loc, brain);
             newRabbits.add(young);
         }
     }
@@ -100,7 +90,7 @@ public class Rabbit extends Animal
      */
     public int getBreedingAge()
     {
-    	return BREEDING_AGE;
+    	return brain.getConfig().getRabbitBreedingAge();
     }
     
     /**
@@ -109,7 +99,7 @@ public class Rabbit extends Animal
      */
     public double getBreedingProbability()
     {
-    	return BREEDING_PROBABILITY;
+    	return brain.getConfig().getRabbitBreedingProbability();
     }
     
     /**
@@ -118,7 +108,7 @@ public class Rabbit extends Animal
      */
     public int getMaxLitterSize()
     {
-    	return MAX_LITTER_SIZE;
+    	return brain.getConfig().getRabbitMaxLitterSize();
     }
 }
 
