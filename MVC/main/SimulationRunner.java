@@ -40,6 +40,7 @@ public class SimulationRunner extends JFrame {
 		simulatorview.setColor(Fox.class, Color.blue);
 		simulatorview.setColor(Hunter.class, Color.red);
 		simulatorview.setColor(Wolf.class, Color.black);
+		simulatorview.setColor(Grass.class, Color.green);
 		buttonController = new ButtonController(brain);
 		menuController = new MenuController(brain);
 		

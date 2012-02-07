@@ -4,28 +4,33 @@ public class Config
 {
 	
 	// fox variabelen
-	private static int FOX_BREEDING_AGE = 10;
+	private static int FOX_BREEDING_AGE = 8;
 	private static int FOX_MAX_AGE = 150;
 	private static double FOX_BREEDING_PROBABILITY = 0.35;
-	private static int FOX_MAX_LITTER_SIZE = 5;
-	private static int FOX_RABBIT_FOOD_VALUE = 7;
+	private static int FOX_MAX_LITTER_SIZE = 3;
+	private static int FOX_RABBIT_FOOD_VALUE = 8;
 	
 	// rabbit variabelen
 	private static int RABBIT_BREEDING_AGE = 5;
 	private static int RABBIT_MAX_AGE = 40;
-	private static double RABBIT_BREEDING_PROBABILITY = 0.15;
+	private static double RABBIT_BREEDING_PROBABILITY = 0.45;
 	private static int RABBIT_MAX_LITTER_SIZE = 4;
+	private static int RABBIT_GRASS_FOOD_VALUE = 4;
 	
 	// wolf variabelen
 	private static int WOLF_BREEDING_AGE = 10;
 	private static int WOLF_MAX_AGE = 150;
-	private static double WOLF_BREEDING_PROBABILITY = 0.01;
+	private static double WOLF_BREEDING_PROBABILITY = 0.050;
 	private static int WOLF_MAX_LITTER_SIZE = 5;
 	private static int WOLF_RABBIT_FOOD_VALUE = 7;
 	private static int WOLF_FOX_FOOD_VALUE = 20;
 	
 	// hunter variabelen
 	private static int HUNTER_BULLETS = 1;
+	
+	// grass variabelen
+	private static double GRASS_BREEDING_PROBABILITY = 0.40;
+	private static int GRASS_MAX_LITTER_SIZE = 6;
 	
 	/*
 	 * SETTERS
@@ -71,6 +76,10 @@ public class Config
 		RABBIT_MAX_LITTER_SIZE = i;
 	}
 	
+	public void setRabbitGrassFoodValue(int i) {
+		RABBIT_GRASS_FOOD_VALUE = i;
+	}
+	
 	
 	// wolf setters
 	public void setWolfBreedingAge(int i) {
@@ -101,6 +110,15 @@ public class Config
 	// hunter setters
 	public void setHunterBullets(int i) {
 		HUNTER_BULLETS = i;
+	}
+	
+	// grass setters
+	public void setGrassBreedingProbability(int i) {
+		GRASS_BREEDING_PROBABILITY = i;
+	}
+	
+	public void setGrassMaxLitterSize(int i) {
+		GRASS_MAX_LITTER_SIZE = i;
 	}
 	
 	/*
@@ -142,6 +160,10 @@ public class Config
 	public int getRabbitBreedingAge() {
 		return RABBIT_BREEDING_AGE;
 	}
+	
+	public int getRabbitGrassFoodValue() {
+		return RABBIT_GRASS_FOOD_VALUE;
+	}
 
 	public double getWolfBreedingProbability() {
 		return WOLF_BREEDING_PROBABILITY;
@@ -171,4 +193,13 @@ public class Config
 		return HUNTER_BULLETS;
 	}
 	
+	//getters grass
+	
+	public double getGrassBreedingProbability() {
+		return GRASS_BREEDING_PROBABILITY;
+	}
+	
+	public int getGrassMaxLitterSize() {
+		return GRASS_MAX_LITTER_SIZE;
+	}
 }

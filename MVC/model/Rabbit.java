@@ -1,4 +1,5 @@
 package model;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +15,7 @@ public class Rabbit extends Animal
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
+    private int foodLevel;
     // Individual characteristics (instance fields).
     
 
@@ -29,8 +31,10 @@ public class Rabbit extends Animal
     {
         super(field, location, brain);
         setAge(0);
+        foodLevel = brain.getConfig().getRabbitGrassFoodValue();
         if(randomAge) {
             setAge(rand.nextInt(brain.getConfig().getRabbitMaxAge()));
+            foodLevel = rand.nextInt(brain.getConfig().getRabbitGrassFoodValue());
         }
     }
     
@@ -42,10 +46,17 @@ public class Rabbit extends Animal
     public void act(List<Actor> newRabbits)
     {
         incrementAge();
+        incrementHunger();
         if(isActive()) {
             giveBirth(newRabbits);            
             // Try to move into a free location.
-            Location newLocation = getField().freeAdjacentLocation(getLocation());
+            Location location = getLocation();
+            Location newLocation = findFood(location);
+            if(newLocation == null) { 
+                // No food found - try to move to a free location.
+                newLocation = getField().freeAdjacentLocation(location);
+            }
+            // See if it was possible to move.
             if(newLocation != null) {
                 setLocation(newLocation);
             }
@@ -84,6 +95,36 @@ public class Rabbit extends Animal
         }
     }
     
+    public Location findFood(Location location)
+    {
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object actor = field.getObjectAt(where);
+            if(actor instanceof Grass) {
+                Grass grass = (Grass) actor;
+                if(grass.isActive()) { 
+                    grass.setDead();
+                    foodLevel = brain.getConfig().getRabbitGrassFoodValue();;
+                    // Remove the dead rabbit from the field.
+                   
+                }
+                return where;
+            }
+        }
+        return null;
+    }
+    
+    public void incrementHunger()
+    {
+        foodLevel--;
+        if(foodLevel <= 0) {
+            setDead();
+        }
+    }
+    
     /**
      * Retourneer de leeftijd waarop een konijn zich begint voort te planten.
      * @return De leeftijd waarop een konijn zich begint voort te planten.
@@ -110,5 +151,7 @@ public class Rabbit extends Animal
     {
     	return brain.getConfig().getRabbitMaxLitterSize();
     }
+    
+    
 }
 
