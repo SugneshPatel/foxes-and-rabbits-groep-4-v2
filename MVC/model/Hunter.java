@@ -129,6 +129,7 @@ public class Hunter implements Actor
     			if(rabbit.isActive()) {
     				rabbit.setDead();
     				shotsFired++;
+    				brain.getConfig().incrementDeathByBullet();
     			}
     		}
     		/*
@@ -145,6 +146,7 @@ public class Hunter implements Actor
     			if(fox.isActive()) {
     				fox.setDead();
     				shotsFired++;
+    				brain.getConfig().incrementDeathByBullet();
     			}
     		}
     	}

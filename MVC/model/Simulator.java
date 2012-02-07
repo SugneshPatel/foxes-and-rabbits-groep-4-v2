@@ -126,7 +126,10 @@ public class Simulator extends AbstractModel implements Runnable
     {
         step = 0;
         animals.clear();
+        config.resetDeath();
+        stats.reset();
         populate();
+        
         
         // Show the starting state in the view.
         statusUpdate();

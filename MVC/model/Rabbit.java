@@ -63,6 +63,7 @@ public class Rabbit extends Animal
             else {
                 // Overcrowding.
                 setDead();
+                brain.getConfig().incrementDeathByCrowd();
             }
         }
     }
@@ -122,6 +123,7 @@ public class Rabbit extends Animal
         foodLevel--;
         if(foodLevel <= 0) {
             setDead();
+            brain.getConfig().incrementDeathByStarvation();
         }
     }
     
