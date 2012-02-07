@@ -24,7 +24,22 @@ public class ConfigController extends AbstractController implements ActionListen
 	 */
 	private static final long	serialVersionUID	= 5629702526729726101L;
 	
-	private JLabel foxBreedingLabel;
+	// fox labels
+	private JLabel foxBreedingLabel, foxMaxAgeLabel, foxBreedingProbabilityLabel, foxMaxLitterSizeLabel, foxRabbitFoodValueLabel;
+	// rabbit labels
+	private JLabel rabbitBreedingLabel, rabbitMaxAgeLabel, rabbitBreedingProbabilityLabel, rabbitMaxLitterSizeLabel;
+	// wolf labels
+	private JLabel wolfBreedingLabel, wolfMaxAgeLabel, wolfBreedingProbabilityLabel, wolfMaxLitterSizeLabel, wolfRabbitFoodValueLabel, wolfFoxFoodValueLabel;
+	// hunter labels
+	private JLabel hunterBulletLabel;
+	// fox sliders
+	private JSlider foxBreedingSlider, foxMaxAgeSlider, foxBreedingProbabilitySlider, foxRabbitFoodValueSlider, foxMaxLitterSizeSlider;
+	// rabbit sliders
+	private JSlider rabbitBreedingSlider, rabbitMaxAgeSlider, rabbitBreedingProbabilitySlider, rabbitMaxLitterSizeSlider;
+	// wolf sliders
+	private JSlider wolfBreedingSlider, wolfMaxAgeSlider, wolfBreedingProbabilitySlider, wolfMaxLitterSizeSlider, wolfRabbitFoodValueSlider, wolfFoxFoodValueSlider;
+	// hunter sliders
+	private JSlider hunterBulletSlider;
 	
 	public ConfigController(Simulator brain){
 		super(brain);
@@ -104,22 +119,23 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		
 		int tempBreedProbFox = (int) (brain.getConfig().getFoxBreedingProbability() * 100);
+		double tempBreedProbFox2 = (double) (brain.getConfig().getFoxBreedingProbability());
 		
 		//fox labels
 		foxBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getFoxBreedingAge() + "):");
-		JLabel foxMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getFoxMaxAge() + "):");
-		JLabel foxBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbFox + "):");
-		JLabel foxMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getFoxMaxLitterSize() + "):");
-		JLabel foxRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getFoxRabbitFoodValue() + "):");
+		foxMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getFoxMaxAge() + "):");
+		foxBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbFox2 + "):");
+		foxMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getFoxMaxLitterSize() + "):");
+		foxRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getFoxRabbitFoodValue() + "):");
 		
 		
 		
 		// fox sliders
-		JSlider foxBreedingSlider = new JSlider(0, brain.getConfig().getFoxMaxAge(), brain.getConfig().getFoxBreedingAge());
-		JSlider foxMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getFoxMaxAge());
-		JSlider foxBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbFox);
-		JSlider foxRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getFoxRabbitFoodValue());
-		JSlider foxMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getFoxMaxLitterSize());
+		foxBreedingSlider = new JSlider(0, brain.getConfig().getFoxMaxAge(), brain.getConfig().getFoxBreedingAge());
+		foxMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getFoxMaxAge());
+		foxBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbFox);
+		foxRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getFoxRabbitFoodValue());
+		foxMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getFoxMaxLitterSize());
 		
 		foxBreedingSlider.setMajorTickSpacing(25);
 		foxBreedingSlider.setMinorTickSpacing(5);
@@ -131,21 +147,25 @@ public class ConfigController extends AbstractController implements ActionListen
 		foxMaxAgeSlider.setMinorTickSpacing(10);
 		foxMaxAgeSlider.setPaintTicks(true);
 		foxMaxAgeSlider.setPaintLabels(true);
+		foxMaxAgeSlider.addChangeListener(this);
 		
 		foxBreedingProbabilitySlider.setMajorTickSpacing(10);
 		foxBreedingProbabilitySlider.setMinorTickSpacing(2);
 		foxBreedingProbabilitySlider.setPaintTicks(true);
 		foxBreedingProbabilitySlider.setPaintLabels(true);
+		foxBreedingProbabilitySlider.addChangeListener(this);
 		
 		foxRabbitFoodValueSlider.setMajorTickSpacing(5);
 		foxRabbitFoodValueSlider.setMinorTickSpacing(1);
 		foxRabbitFoodValueSlider.setPaintTicks(true);
 		foxRabbitFoodValueSlider.setPaintLabels(true);
+		foxRabbitFoodValueSlider.addChangeListener(this);
 		
 		foxMaxLitterSizeSlider.setMajorTickSpacing(5);
 		foxMaxLitterSizeSlider.setMinorTickSpacing(1);
 		foxMaxLitterSizeSlider.setPaintTicks(true);
 		foxMaxLitterSizeSlider.setPaintLabels(true);
+		foxMaxLitterSizeSlider.addChangeListener(this);
 		
 		foxConfigPart.add(foxBreedingLabel);
 		foxConfigPart.add(foxBreedingSlider);
@@ -164,39 +184,44 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		
 		int tempBreedProbRabbit = (int) (brain.getConfig().getRabbitBreedingProbability() * 100);
+		double tempBreedProbRabbit2 = (double) (brain.getConfig().getRabbitBreedingProbability());
 		
 		//rabbit labels
-		JLabel rabbitBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getRabbitBreedingAge() + "):");
-		JLabel rabbitMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getRabbitMaxAge() + "):");
-		JLabel rabbitBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbRabbit + "):");
-		JLabel rabbitMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getRabbitMaxLitterSize() + "):");
+		rabbitBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getRabbitBreedingAge() + "):");
+		rabbitMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getRabbitMaxAge() + "):");
+		rabbitBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbRabbit2 + "):");
+		rabbitMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getRabbitMaxLitterSize() + "):");
 		
 		
 		// rabbit sliders
-		JSlider rabbitBreedingSlider = new JSlider(0, brain.getConfig().getRabbitMaxAge(), brain.getConfig().getRabbitBreedingAge());
-		JSlider rabbitMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getRabbitMaxAge());
-		JSlider rabbitBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbRabbit);
-		JSlider rabbitMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getRabbitMaxLitterSize());
+		rabbitBreedingSlider = new JSlider(0, brain.getConfig().getRabbitMaxAge(), brain.getConfig().getRabbitBreedingAge());
+		rabbitMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getRabbitMaxAge());
+		rabbitBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbRabbit);
+		rabbitMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getRabbitMaxLitterSize());
 		
 		rabbitBreedingSlider.setMajorTickSpacing(25);
 		rabbitBreedingSlider.setMinorTickSpacing(5);
 		rabbitBreedingSlider.setPaintTicks(true);
 		rabbitBreedingSlider.setPaintLabels(true);
+		rabbitBreedingSlider.addChangeListener(this);
 		
 		rabbitMaxAgeSlider.setMajorTickSpacing(50);
 		rabbitMaxAgeSlider.setMinorTickSpacing(10);
 		rabbitMaxAgeSlider.setPaintTicks(true);
 		rabbitMaxAgeSlider.setPaintLabels(true);
+		rabbitMaxAgeSlider.addChangeListener(this);
 		
 		rabbitBreedingProbabilitySlider.setMajorTickSpacing(10);
 		rabbitBreedingProbabilitySlider.setMinorTickSpacing(2);
 		rabbitBreedingProbabilitySlider.setPaintTicks(true);
 		rabbitBreedingProbabilitySlider.setPaintLabels(true);
+		rabbitBreedingProbabilitySlider.addChangeListener(this);
 		
 		rabbitMaxLitterSizeSlider.setMajorTickSpacing(5);
 		rabbitMaxLitterSizeSlider.setMinorTickSpacing(1);
 		rabbitMaxLitterSizeSlider.setPaintTicks(true);
 		rabbitMaxLitterSizeSlider.setPaintLabels(true);
+		rabbitMaxLitterSizeSlider.addChangeListener(this);
 		
 		rabbitConfigPart.add(rabbitBreedingLabel);
 		rabbitConfigPart.add(rabbitBreedingSlider);
@@ -212,54 +237,61 @@ public class ConfigController extends AbstractController implements ActionListen
 				
 		
 		int tempBreedProbWolf = (int) (brain.getConfig().getWolfBreedingProbability() * 100);
+		double tempBreedProbWolf2 = (double) (brain.getConfig().getWolfBreedingProbability());
 		
 		//wolf labels
-		JLabel wolfBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getWolfBreedingAge() + "):");
-		JLabel wolfMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getWolfMaxAge() + "):");
-		JLabel wolfBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbWolf + "):");
-		JLabel wolfMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getWolfMaxLitterSize() + "):");
-		JLabel wolfRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getWolfRabbitFoodValue() + "):");
-		JLabel wolfFoxFoodValueLabel = new JLabel("Fox food value (" + brain.getConfig().getWolfFoxFoodValue() + "):");
+		wolfBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getWolfBreedingAge() + "):");
+		wolfMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getWolfMaxAge() + "):");
+		wolfBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbWolf2 + "):");
+		wolfMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getWolfMaxLitterSize() + "):");
+		wolfRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getWolfRabbitFoodValue() + "):");
+		wolfFoxFoodValueLabel = new JLabel("Fox food value (" + brain.getConfig().getWolfFoxFoodValue() + "):");
 		
 		
 		
 		// rabbit sliders
-		JSlider wolfBreedingSlider = new JSlider(0, brain.getConfig().getWolfMaxAge(), brain.getConfig().getWolfBreedingAge());
-		JSlider wolfMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getWolfMaxAge());
-		JSlider wolfBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbWolf);
-		JSlider wolfMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getWolfMaxLitterSize());
-		JSlider wolfRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfRabbitFoodValue());
-		JSlider wolfFoxFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfFoxFoodValue());
+		wolfBreedingSlider = new JSlider(0, brain.getConfig().getWolfMaxAge(), brain.getConfig().getWolfBreedingAge());
+		wolfMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getWolfMaxAge());
+		wolfBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbWolf);
+		wolfMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getWolfMaxLitterSize());
+		wolfRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfRabbitFoodValue());
+		wolfFoxFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfFoxFoodValue());
 		
 		wolfBreedingSlider.setMajorTickSpacing(25);
 		wolfBreedingSlider.setMinorTickSpacing(5);
 		wolfBreedingSlider.setPaintTicks(true);
 		wolfBreedingSlider.setPaintLabels(true);
+		wolfBreedingSlider.addChangeListener(this);
 		
 		wolfMaxAgeSlider.setMajorTickSpacing(50);
 		wolfMaxAgeSlider.setMinorTickSpacing(10);
 		wolfMaxAgeSlider.setPaintTicks(true);
 		wolfMaxAgeSlider.setPaintLabels(true);
+		wolfMaxAgeSlider.addChangeListener(this);
 		
 		wolfBreedingProbabilitySlider.setMajorTickSpacing(10);
 		wolfBreedingProbabilitySlider.setMinorTickSpacing(2);
 		wolfBreedingProbabilitySlider.setPaintTicks(true);
 		wolfBreedingProbabilitySlider.setPaintLabels(true);
+		wolfBreedingProbabilitySlider.addChangeListener(this);
 		
 		wolfMaxLitterSizeSlider.setMajorTickSpacing(5);
 		wolfMaxLitterSizeSlider.setMinorTickSpacing(1);
 		wolfMaxLitterSizeSlider.setPaintTicks(true);
 		wolfMaxLitterSizeSlider.setPaintLabels(true);
+		wolfMaxLitterSizeSlider.addChangeListener(this);
 		
 		wolfRabbitFoodValueSlider.setMajorTickSpacing(5);
 		wolfRabbitFoodValueSlider.setMinorTickSpacing(1);
 		wolfRabbitFoodValueSlider.setPaintTicks(true);
 		wolfRabbitFoodValueSlider.setPaintLabels(true);
+		wolfRabbitFoodValueSlider.addChangeListener(this);
 		
 		wolfFoxFoodValueSlider.setMajorTickSpacing(5);
 		wolfFoxFoodValueSlider.setMinorTickSpacing(1);
 		wolfFoxFoodValueSlider.setPaintTicks(true);
 		wolfFoxFoodValueSlider.setPaintLabels(true);
+		wolfFoxFoodValueSlider.addChangeListener(this);
 		
 		wolfConfigPart.add(wolfBreedingLabel);
 		wolfConfigPart.add(wolfBreedingSlider);
@@ -282,15 +314,16 @@ public class ConfigController extends AbstractController implements ActionListen
 				
 				
 		//hunter labels
-		JLabel hunterBulletLabel = new JLabel("Number of bullets (" + brain.getConfig().getHunterBullets() + "):");
+		hunterBulletLabel = new JLabel("Number of bullets (" + brain.getConfig().getHunterBullets() + "):");
 		
 		// hunter sliders
-		JSlider hunterBulletSlider = new JSlider(0, 20, brain.getConfig().getHunterBullets());
+		hunterBulletSlider = new JSlider(0, 20, brain.getConfig().getHunterBullets());
 		
 		hunterBulletSlider.setMajorTickSpacing(5);
 		hunterBulletSlider.setMinorTickSpacing(1);
 		hunterBulletSlider.setPaintTicks(true);
 		hunterBulletSlider.setPaintLabels(true);
+		hunterBulletSlider.addChangeListener(this);
 		
 		hunterConfigPart.add(hunterBulletLabel);
 		hunterConfigPart.add(hunterBulletSlider);
@@ -308,24 +341,198 @@ public class ConfigController extends AbstractController implements ActionListen
 
 	@Override
 	public JMenuBar getMenu() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
 		JSlider source = (JSlider)e.getSource();
-		if (source.getValueIsAdjusting()) {
-			int fps = (int)source.getValue();
-			String temp = Integer.toString(fps);
-			foxBreedingLabel.setText("Breeding age (" + temp + "):");
+		if(source==foxBreedingSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				foxBreedingLabel.setText("Breeding age (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setFoxBreedingAge(fps);
+			}
+		}
+		else if(source==foxMaxAgeSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				foxMaxAgeLabel.setText("Max age (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setFoxMaxAge(fps);
+			}
+		}
+		else if(source==foxBreedingProbabilitySlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				foxBreedingProbabilityLabel.setText("Breeding probability (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setFoxBreedingProbability(temp);
+			}
+		}
+		else if(source==foxRabbitFoodValueSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				foxRabbitFoodValueLabel.setText("Rabbit food value (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setFoxRabbitFoodValue(fps);
+			}
+		}
+		else if(source==foxMaxLitterSizeSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				foxMaxLitterSizeLabel.setText("Max litter size (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setFoxMaxLitterSize(fps);
+			}
+		}
+		else if(source==rabbitBreedingSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				rabbitBreedingLabel.setText("Breeding age (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setRabbitBreedingAge(fps);
+			}
+		}
+		else if(source==rabbitMaxAgeSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				rabbitMaxAgeLabel.setText("Max age (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setRabbitMaxAge(fps);
+			}
+		}
+		else if(source==rabbitBreedingProbabilitySlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				rabbitBreedingProbabilityLabel.setText("Breeding probability (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setRabbitBreedingProbability(temp);
+			}
+		}
+		else if(source==rabbitMaxLitterSizeSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				rabbitMaxLitterSizeLabel.setText("Max litter size (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setRabbitMaxLitterSize(fps);
+			}
+		}
+		else if(source==wolfBreedingSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				wolfBreedingLabel.setText("Breeding age (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setWolfBreedingAge(fps);
+			}
+		}
+		else if(source==wolfMaxAgeSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				wolfMaxAgeLabel.setText("Max age (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setWolfMaxAge(fps);
+			}
+		}
+		else if(source==wolfBreedingProbabilitySlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				wolfBreedingProbabilityLabel.setText("Breeding probability (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setWolfBreedingProbability(temp);
+			}
+		}
+		else if(source==wolfRabbitFoodValueSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				wolfRabbitFoodValueLabel.setText("Rabbit food value (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setWolfRabbitFoodValue(fps);
+			}
+		}
+		else if(source==wolfMaxLitterSizeSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				wolfMaxLitterSizeLabel.setText("Max litter size (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setWolfMaxLitterSize(fps);
+			}
+		}
+		else if(source==wolfFoxFoodValueSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				wolfFoxFoodValueLabel.setText("Fox food value (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setWolfFoxFoodValue(fps);
+			}
+		}
+		else if(source==hunterBulletSlider) {
+			if (source.getValueIsAdjusting()) {
+				int fps = (int)source.getValue();
+				String temp = Integer.toString(fps);
+				hunterBulletLabel.setText("Number of bullets (" + temp + "):");
+			}
+			else {
+				int fps = (int)source.getValue();
+				brain.getConfig().setHunterBullets(fps);
+			}
 		}
 	}
 }
