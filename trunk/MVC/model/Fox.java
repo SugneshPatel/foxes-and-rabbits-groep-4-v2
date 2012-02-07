@@ -87,6 +87,7 @@ public class Fox extends Animal
             else {
                 // Overcrowding.
                 setDead();
+                brain.getConfig().incrementDeathByCrowd();
             }
         }
     }
@@ -108,6 +109,7 @@ public class Fox extends Animal
         foodLevel--;
         if(foodLevel <= 0) {
             setDead();
+            brain.getConfig().incrementDeathByStarvation();
         }
     }
     
@@ -129,6 +131,7 @@ public class Fox extends Animal
                 Rabbit rabbit = (Rabbit) animal;
                 if(rabbit.isActive()) { 
                     rabbit.setDead();
+                    brain.getConfig().incrementDeathByEaten();
                     foodLevel = brain.getConfig().getFoxRabbitFoodValue();
                     // Remove the dead rabbit from the field.
                     return where;

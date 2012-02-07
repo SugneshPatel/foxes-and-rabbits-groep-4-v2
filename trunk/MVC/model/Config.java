@@ -32,6 +32,11 @@ public class Config
 	private static double GRASS_BREEDING_PROBABILITY = 0.40;
 	private static int GRASS_MAX_LITTER_SIZE = 6;
 	
+	// deathcount
+	private static int DEATH_BY_CROWD = 0;
+	private static int DEATH_BY_STARVATION = 0;
+	private static int DEATH_BY_BULLET = 0;
+	private static int DEATH_BY_EATEN = 0;
 	/*
 	 * SETTERS
 	 */
@@ -121,6 +126,23 @@ public class Config
 		GRASS_MAX_LITTER_SIZE = i;
 	}
 	
+	// deathcount setters
+	public void incrementDeathByCrowd() {
+		DEATH_BY_CROWD++;
+	}
+	
+	public void incrementDeathByStarvation() {
+		DEATH_BY_STARVATION++;
+	}
+	
+	public void incrementDeathByBullet() {
+		DEATH_BY_BULLET++;
+	}
+	
+	public void incrementDeathByEaten() {
+		DEATH_BY_EATEN++;
+	}
+	
 	/*
 	 * GETTERS
 	 */
@@ -201,5 +223,31 @@ public class Config
 	
 	public int getGrassMaxLitterSize() {
 		return GRASS_MAX_LITTER_SIZE;
+	}
+	
+	//getters deathcount
+	public int getDeathByCrowd() {
+		return DEATH_BY_CROWD;
+	}
+	
+	public int getDeathByStarvation() {
+		return DEATH_BY_STARVATION;
+	}
+	
+	public int getDeathByBullet() {
+		return DEATH_BY_BULLET;
+	}
+	
+	public int getDeathByEaten() {
+		return DEATH_BY_EATEN;
+	}
+	
+	// reset count
+	
+	public void resetDeath(){
+		DEATH_BY_CROWD = 0;
+		DEATH_BY_STARVATION = 0;
+		DEATH_BY_BULLET = 0;
+		DEATH_BY_EATEN = 0;
 	}
 }
