@@ -64,18 +64,18 @@ public class PieView extends AbstractView
 		 * 
 		 */
 		private static final long	serialVersionUID	= 3755418793825034588L;
-		private BufferedImage graphImage;
+		private BufferedImage pieImage;
 		
 		public ViewOfPie(){
-			graphImage = new BufferedImage(200, 200, BufferedImage.TYPE_INT_RGB);
+			pieImage = new BufferedImage(200, 200, BufferedImage.TYPE_INT_RGB);
 			clearImage();
 		}
 		
 		public void clearImage()
         {
-            Graphics g = graphImage.getGraphics();
+            Graphics g = pieImage.getGraphics();
             g.setColor(Color.WHITE);
-            g.fillRect(0, 0, graphImage.getWidth(), graphImage.getHeight());
+            g.fillRect(0, 0, pieImage.getWidth(), pieImage.getHeight());
             repaint();
         }
 
@@ -99,7 +99,7 @@ public class PieView extends AbstractView
 	        
 	        int total = count1 + count2 + count3 + count4;
 			
-	        Graphics g = graphImage.getGraphics();
+	        Graphics g = pieImage.getGraphics();
 			
 			double angle1 = (double) count1 / total * 360;
 			double angle2 = (double) count2 / total * 360;
@@ -120,26 +120,26 @@ public class PieView extends AbstractView
 			g.setColor(colors.get(class4));
 			g.fillArc(10, 10, 180, 180, hoek1 + hoek2 + hoek3, hoek4);
 			
-			repaintNow();
+			repaint();
 		
 		 }
 		}
 		
 		 public Dimension getPreferredSize()
 	        {
-	            return new Dimension(graphImage.getWidth(), graphImage.getHeight());
+	            return new Dimension(pieImage.getWidth(), pieImage.getHeight());
 	        }
 		 public void repaintNow()
 	        {
-	            paintImmediately(0, 0, graphImage.getWidth(), graphImage.getHeight());
+	            paintImmediately(0, 0, pieImage.getWidth(), pieImage.getHeight());
 	        }
 
 		
 		 public void paintComponent(Graphics g)
 	        {
 	            
-	            if(graphImage != null) {
-	                g.drawImage(graphImage, 0, 0, null);
+	            if(pieImage != null) {
+	                g.drawImage(pieImage, 0, 0, null);
 	            }
 	        }
 }

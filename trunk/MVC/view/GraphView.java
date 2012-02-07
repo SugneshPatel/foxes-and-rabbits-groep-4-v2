@@ -188,7 +188,7 @@ public class GraphView extends AbstractView
                 g.drawLine(width-3, lastVal4, width-2, y);
                 lastVal4 = y;
                 
-                repaintNow();
+                repaint();
 
                 stepLabel.setText("" + step);
                 countLabel.setText(stats.getPopulationDetails(field));
