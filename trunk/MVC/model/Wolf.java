@@ -12,20 +12,6 @@ import java.util.Random;
  */
 public class Wolf extends Animal
 {
-    // Characteristics shared by all wolfs (static fields).
-    
-    // The age at which a wolf can start to breed.
-    private static final int BREEDING_AGE = 10;
-    // The age to which a wolf can live.
-    private static final int MAX_AGE = 150;
-    // The likelihood of a wolf breeding.
-    private static final double BREEDING_PROBABILITY = 0.01;
-    // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 5;
-    // The food value of a single rabbit.
-    private static final int RABBIT_FOOD_VALUE = 7;
-    // The food value of a single fox. 
-    private static final int FOX_FOOD_VALUE = 20;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -41,16 +27,16 @@ public class Wolf extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Wolf(boolean randomAge, Field field, Location location)
+    public Wolf(boolean randomAge, Field field, Location location, Simulator brain)
     {
-        super(field, location);
+        super(field, location, brain);
         if(randomAge) {
-            setAge(rand.nextInt(MAX_AGE));
-            foodLevel = rand.nextInt(FOX_FOOD_VALUE);
+            setAge(rand.nextInt(brain.getConfig().getWolfMaxAge()));
+            foodLevel = rand.nextInt(brain.getConfig().getWolfFoxFoodValue());
         }
         else {
             setAge(0);
-            foodLevel = FOX_FOOD_VALUE;
+            foodLevel = brain.getConfig().getWolfFoxFoodValue();
         }
     }
     
@@ -61,12 +47,12 @@ public class Wolf extends Animal
      * @param location The location within the field.
      * @param foodLevel The starting foodLevel of a wolf.
      */
-    public Wolf(boolean randomAge, Field field, Location location, int foodLevel)
+    public Wolf(boolean randomAge, Field field, Location location, int foodLevel, Simulator brain)
     {
-    	super(field, location);
+    	super(field, location, brain);
     	if(randomAge) {
-    		setAge(rand.nextInt(MAX_AGE));
-    		this.foodLevel = rand.nextInt(FOX_FOOD_VALUE);
+    		setAge(rand.nextInt(brain.getConfig().getWolfMaxAge()));
+    		this.foodLevel = rand.nextInt(brain.getConfig().getWolfFoxFoodValue());
     	}
     	else {
     		setAge(0);
@@ -111,7 +97,7 @@ public class Wolf extends Animal
      */
     public int getMaxAge()
     {
-    	return MAX_AGE;
+    	return brain.getConfig().getWolfMaxAge();
     }
     
     /**
@@ -143,7 +129,7 @@ public class Wolf extends Animal
                 Rabbit rabbit = (Rabbit) animal;
                 if(rabbit.isActive()) { 
                     rabbit.setDead();
-                    foodLevel = RABBIT_FOOD_VALUE;
+                    foodLevel = brain.getConfig().getWolfRabbitFoodValue();
                     // Remove the dead rabbit from the field.
                     return where;
                 }
@@ -152,7 +138,7 @@ public class Wolf extends Animal
             	Fox fox = (Fox) animal;
             	if(fox.isActive()) {
             		fox.setDead();
-            		foodLevel = FOX_FOOD_VALUE;
+            		foodLevel = brain.getConfig().getWolfFoxFoodValue();
             		// Remove the dead fox from the field
             		return where;
             	}
@@ -175,7 +161,7 @@ public class Wolf extends Animal
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Wolf young = new Wolf(false, field, loc);
+            Wolf young = new Wolf(false, field, loc, brain);
             newWolfes.add(young);
         }
     }
@@ -195,7 +181,7 @@ public class Wolf extends Animal
      */
     public int getBreedingAge()
     {
-    	return BREEDING_AGE;
+    	return brain.getConfig().getWolfBreedingAge();
     }
     
     /**
@@ -204,7 +190,7 @@ public class Wolf extends Animal
      */
     public double getBreedingProbability()
     {
-    	return BREEDING_PROBABILITY;
+    	return brain.getConfig().getWolfBreedingProbability();
     }
     
     /**
@@ -213,7 +199,7 @@ public class Wolf extends Animal
      */
     public int getMaxLitterSize()
     {
-    	return MAX_LITTER_SIZE;
+    	return brain.getConfig().getWolfMaxLitterSize();
     }
     
 }

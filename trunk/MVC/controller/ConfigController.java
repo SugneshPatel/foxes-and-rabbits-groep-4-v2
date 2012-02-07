@@ -13,7 +13,6 @@ import javax.swing.JSlider;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import model.Config;
 import model.Simulator;
 
 public class ConfigController extends AbstractController implements ActionListener
