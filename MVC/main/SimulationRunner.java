@@ -54,14 +54,35 @@ public class SimulationRunner extends JFrame {
         
         
         setJMenuBar(menuController.getMenu());
+        // vanaf hier
+        AbstractView graphView = new GraphView(brain);
+		graphView.setColor(Rabbit.class, Color.orange);
+		graphView.setColor(Fox.class, Color.blue);
+		graphView.setColor(Hunter.class, Color.red);
+		graphView.setColor(Wolf.class, Color.black);
+		
+		AbstractView pieView = new PieView(brain);
+		pieView.setColor(Rabbit.class, Color.orange);
+		pieView.setColor(Fox.class, Color.blue);
+		pieView.setColor(Hunter.class, Color.red);
+		pieView.setColor(Wolf.class, Color.black);
         
+        JPanel viewsLeft = new JPanel();
+        viewsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
+        viewsLeft.setLayout(new BoxLayout(viewsLeft, BoxLayout.PAGE_AXIS));
         
+        viewsLeft.add(pieView.getField());
+        viewsLeft.add(graphView.getField());
+        
+        //tot aan hier
         
         // contents.setLayout(new BorderLayout());
+        container.add(viewsLeft, BorderLayout.EAST);
         container.add(simulatorview.getField(), BorderLayout.CENTER);
         container.add(buttonController.getButtons(), BorderLayout.WEST);
         container.add(VERSIELABEL, BorderLayout.SOUTH);
         pack();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         
         brain.reset();
