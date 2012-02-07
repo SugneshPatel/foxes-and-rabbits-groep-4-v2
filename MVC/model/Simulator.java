@@ -146,7 +146,7 @@ public class Simulator extends AbstractModel implements Runnable
             	}
             	else if(rand.nextDouble() <= WOLF_CREATION_PROBABILITY) {
             		Location location = new Location(row, col);
-            		Wolf wolf = new Wolf(true, field, location);
+            		Wolf wolf = new Wolf(true, field, location, this);
             		animals.add(wolf);
             	}
             	else if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
