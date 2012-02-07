@@ -121,6 +121,10 @@ public class GraphView extends AbstractView
          */
         public void update(int step, Field field, FieldStats stats)
         {
+        	if(step == 0) {
+        		clearImage();
+        		newRun();
+        	}
             if (classes.size() >= 2) {
                 Iterator<Class<?>> it = classes.iterator();
                 Class<?> class1 = it.next();

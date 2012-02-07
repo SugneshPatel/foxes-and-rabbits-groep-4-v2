@@ -38,7 +38,7 @@ public class BarView extends AbstractView
 
 	@Override
 	public void showStatus() {
-		barPanel.update();
+		barPanel.update(brain.getStep());
 		
 	}
 
@@ -99,9 +99,7 @@ public class BarView extends AbstractView
 
             Graphics g = barImage.getGraphics();
             g.copyArea(4, 0, width-4, height, -4, 0);            
-            g.setColor(Color.BLACK);
-            g.drawLine(width-4, 0, width-4, height);
-            g.drawLine(width-2, 0, width-2, height);
+          
             lastVal1 = height;
             lastVal2 = height;
             lastVal3 = height;
@@ -113,9 +111,12 @@ public class BarView extends AbstractView
         /**
          * Dispay a new point of data.
          */
-        public void update()
+        public void update(int step)
         {
-
+        		if(step == 0){
+        			clearImage();
+        		}
+        		
                 Graphics g = barImage.getGraphics();
 
                 int height = barImage.getHeight();
