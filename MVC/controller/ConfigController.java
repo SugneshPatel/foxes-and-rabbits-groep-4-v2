@@ -12,10 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import model.Simulator;
 
-public class ConfigController extends AbstractController implements ActionListener
+public class ConfigController extends AbstractController implements ActionListener, ChangeListener
 {
 	/**
 	 * 
@@ -120,6 +122,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		foxBreedingSlider.setMinorTickSpacing(5);
 		foxBreedingSlider.setPaintTicks(true);
 		foxBreedingSlider.setPaintLabels(true);
+		foxBreedingSlider.addChangeListener(this);
 		
 		foxMaxAgeSlider.setMajorTickSpacing(50);
 		foxMaxAgeSlider.setMinorTickSpacing(10);
@@ -308,6 +311,12 @@ public class ConfigController extends AbstractController implements ActionListen
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
