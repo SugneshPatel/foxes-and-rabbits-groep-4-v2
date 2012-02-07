@@ -20,13 +20,16 @@ public class Simulator extends AbstractModel implements Runnable
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 100;
     // The probability that a fox will be created in any given grid position.
-    protected static final double FOX_CREATION_PROBABILITY = 0.03;
+    protected static final double FOX_CREATION_PROBABILITY = 0.01;
     // The probability that a rabbit will be created in any given grid position.
-    protected static final double RABBIT_CREATION_PROBABILITY = 0.09;    
+    protected static final double RABBIT_CREATION_PROBABILITY = 0.08;    
     // The kans dat een jager gemaakt wordt op een bepaalde gegeven locatie
-    protected static final double HUNTER_CREATION_PROBABILITY = 0.01;
+    protected static final double HUNTER_CREATION_PROBABILITY = 0.002;
     // De kans dat een wolf gemaakt wordt op een bepaalde gegeven locatie.
-    protected static final double WOLF_CREATION_PROBABILITY = 0.02;
+    protected static final double WOLF_CREATION_PROBABILITY = 0.005;
+    
+    protected static final double GRASS_CREATION_PROBABILITY = 0.1;
+    
 
     // List of animals in the field.
     private List<Actor> animals;
@@ -158,6 +161,12 @@ public class Simulator extends AbstractModel implements Runnable
                     Location location = new Location(row, col);
                     Rabbit rabbit = new Rabbit(true, field, location, this);
                     animals.add(rabbit);
+                }
+            	
+                else if(rand.nextDouble() <= GRASS_CREATION_PROBABILITY) {
+                    Location location = new Location(row, col);
+                    Grass grass = new Grass(field, location, this);
+                    animals.add(grass);
                 }
                 // else leave the location empty.
             }
