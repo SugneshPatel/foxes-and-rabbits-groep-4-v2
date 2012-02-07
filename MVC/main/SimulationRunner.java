@@ -3,6 +3,12 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -77,10 +83,31 @@ public class SimulationRunner extends JFrame {
         
         //tot aan hier
         
+        // left panel
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BorderLayout());
+        leftPanel.add(buttonController.getButtons(), BorderLayout.NORTH);
+        
+        //legenda panel
+        JPanel legendaPanel = new JPanel();
+        legendaPanel.setLayout(new GridLayout(0, 2));
+        
+        try {
+			BufferedImage myPicture = ImageIO.read(new File("afbeelding.bugs_bunny22.gif"));
+			JLabel picLabel = new JLabel(new ImageIcon( myPicture));
+			legendaPanel.add(picLabel);
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        leftPanel.add(legendaPanel, BorderLayout.SOUTH);
+        
         // contents.setLayout(new BorderLayout());
         container.add(viewsLeft, BorderLayout.EAST);
         container.add(simulatorview.getField(), BorderLayout.CENTER);
-        container.add(buttonController.getButtons(), BorderLayout.WEST);
+        container.add(leftPanel, BorderLayout.WEST);
         container.add(VERSIELABEL, BorderLayout.SOUTH);
         pack();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

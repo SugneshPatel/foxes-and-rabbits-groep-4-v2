@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>MVC/afbeelding/bugs_bunny22.gif</name>
+			<type>1</type>
+			<location>C:/Users/Malcolm/Pictures/bugs_bunny22.gif</location>
+		</link>
+	</linkedResources>
 </projectDescription>
