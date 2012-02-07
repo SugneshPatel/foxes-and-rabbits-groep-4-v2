@@ -73,6 +73,8 @@ public class SimulationRunner extends JFrame {
 		pieView.setColor(Fox.class, Color.blue);
 		pieView.setColor(Hunter.class, Color.red);
 		pieView.setColor(Wolf.class, Color.black);
+		
+		AbstractView barView = new BarView(brain);
         
         JPanel viewsLeft = new JPanel();
         viewsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
@@ -80,6 +82,7 @@ public class SimulationRunner extends JFrame {
         
         viewsLeft.add(pieView.getField());
         viewsLeft.add(graphView.getField());
+        viewsLeft.add(barView.getField());
         
         //tot aan hier
         
