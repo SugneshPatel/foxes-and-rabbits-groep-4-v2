@@ -39,6 +39,9 @@ public class Simulator extends AbstractModel implements Runnable
     
     private FieldStats stats;
     
+    // het config bestand
+    protected static Config config;
+    
     
     /**
      * Create a simulation field with the given size.
@@ -47,7 +50,7 @@ public class Simulator extends AbstractModel implements Runnable
      */
     public Simulator()
     {
-        
+        config = new Config();
         animals = new ArrayList<Actor>();
         field = new Field(DEFAULT_WIDTH, DEFAULT_DEPTH);
         stats = new FieldStats();

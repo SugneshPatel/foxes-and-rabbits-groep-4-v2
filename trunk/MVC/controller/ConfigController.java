@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -18,7 +17,7 @@ public class ConfigController extends AbstractController implements ActionListen
 	 * 
 	 */
 	private static final long	serialVersionUID	= 5629702526729726101L;
-	private JButton addButton, removeButton;
+	private JButton foxesButton, rabbitButton, wolfButton, hunterButton;
 	
 	public ConfigController(Simulator brain){
 		super(brain);
@@ -26,30 +25,44 @@ public class ConfigController extends AbstractController implements ActionListen
 
 	@Override
 	public JPanel getButtons() {
-		addButton = new JButton("Add");
-		addButton.setPreferredSize(new Dimension(90,25));
-		addButton.setMinimumSize(new Dimension(90,10));
-		addButton.setMaximumSize(new Dimension(90,25));
-		addButton.addActionListener(this);
+		foxesButton = new JButton("Foxes");
+		foxesButton.setPreferredSize(new Dimension(90,25));
+		foxesButton.setMinimumSize(new Dimension(90,10));
+		foxesButton.setMaximumSize(new Dimension(90,25));
+		foxesButton.addActionListener(this);
         
         
-        removeButton = new JButton("Remove");
-        removeButton.setPreferredSize(new Dimension(90,25));
-        removeButton.setMinimumSize(new Dimension(90,10));
-        removeButton.setMaximumSize(new Dimension(90,25));
-        removeButton.addActionListener(this);
+        rabbitButton = new JButton("Rabbits");
+        rabbitButton.setPreferredSize(new Dimension(90,25));
+        rabbitButton.setMinimumSize(new Dimension(90,10));
+        rabbitButton.setMaximumSize(new Dimension(90,25));
+        rabbitButton.addActionListener(this);
+        
+        wolfButton = new JButton("Wolfs");
+        wolfButton.setPreferredSize(new Dimension(90,25));
+        wolfButton.setMinimumSize(new Dimension(90,10));
+        wolfButton.setMaximumSize(new Dimension(90,25));
+        wolfButton.addActionListener(this);
+        
+        hunterButton = new JButton("Hunters");
+        hunterButton.setPreferredSize(new Dimension(90,25));
+        hunterButton.setMinimumSize(new Dimension(90,10));
+        hunterButton.setMaximumSize(new Dimension(90,25));
+        hunterButton.addActionListener(this);
         
         
         //nieuw panel waarin buttons komen
-        JPanel buttonsLeft = new JPanel();
-        buttonsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
-        buttonsLeft.setLayout(new BoxLayout(buttonsLeft, BoxLayout.PAGE_AXIS));
+        JPanel buttonsTop = new JPanel();
+        buttonsTop.setBorder(new EmptyBorder(6, 6, 6, 6));
         
         //buttons toevoegen aan buttonsleft panel
-        buttonsLeft.add(addButton);
-        buttonsLeft.add(removeButton);
+        buttonsTop.add(foxesButton);
+        buttonsTop.add(rabbitButton);
+        buttonsTop.add(wolfButton);
+        buttonsTop.add(hunterButton);
         
-        return buttonsLeft;
+        
+        return buttonsTop;
 		
 	}
 
