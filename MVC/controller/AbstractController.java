@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Component;
+
 import javax.swing.*;
 
 import model.Simulator;
@@ -18,5 +20,10 @@ public abstract class AbstractController extends JPanel {
 	
 	public abstract JPanel getButtons();
 	public abstract JMenuBar getMenu();
+
+	public Component getConfigContent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
