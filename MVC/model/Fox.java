@@ -15,16 +15,16 @@ public class Fox extends Animal
     // Characteristics shared by all foxes (static fields).
     
     // The age at which a fox can start to breed.
-    private static final int BREEDING_AGE = 10;
+    private static int BREEDING_AGE = Config.getFoxBreedingAge();
     // The age to which a fox can live.
-    private static final int MAX_AGE = 150;
+    private static int MAX_AGE = Config.getFoxMaxAge();
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.35;
+    private static double BREEDING_PROBABILITY = Config.getFoxBreedingProbability();
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 5;
+    private static int MAX_LITTER_SIZE = Config.getFoxMaxLitterSize();
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 7;
+    private static int RABBIT_FOOD_VALUE = Config.getFoxRabbitFoodValue();
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     

@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -94,7 +95,9 @@ public class MenuController extends AbstractController implements ActionListener
 		
 		JPanel container = (JPanel)config.getContentPane();
 		
-		container.add(configController.getButtons());
+		container.setLayout(new BorderLayout());
+		
+		container.add(configController.getButtons(), BorderLayout.NORTH);
 		
 		config.pack();
 		config.setVisible(true);
