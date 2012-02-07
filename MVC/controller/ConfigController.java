@@ -103,15 +103,16 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		
 		
+		int tempBreedProbFox = (int) (brain.getConfig().getFoxBreedingProbability() * 100);
 		
 		//fox labels
-		foxBreedingLabel = new JLabel("Breeding age:");
-		JLabel foxMaxAgeLabel = new JLabel("Max age:");
-		JLabel foxBreedingProbabilityLabel = new JLabel("Breeding probability:");
-		JLabel foxMaxLitterSizeLabel = new JLabel("Max litter size:");
-		JLabel foxRabbitFoodValueLabel = new JLabel("Rabbit food value:");
+		foxBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getFoxBreedingAge() + "):");
+		JLabel foxMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getFoxMaxAge() + "):");
+		JLabel foxBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbFox + "):");
+		JLabel foxMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getFoxMaxLitterSize() + "):");
+		JLabel foxRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getFoxRabbitFoodValue() + "):");
 		
-		int tempBreedProbFox = (int) (brain.getConfig().getFoxBreedingProbability() * 100);
+		
 		
 		// fox sliders
 		JSlider foxBreedingSlider = new JSlider(0, brain.getConfig().getFoxMaxAge(), brain.getConfig().getFoxBreedingAge());
@@ -162,15 +163,14 @@ public class ConfigController extends AbstractController implements ActionListen
 		foxConfigPart.add(foxRabbitFoodValueSlider);
 		
 		
-		
+		int tempBreedProbRabbit = (int) (brain.getConfig().getRabbitBreedingProbability() * 100);
 		
 		//rabbit labels
-		JLabel rabbitBreedingLabel = new JLabel("Breeding age:");
-		JLabel rabbitMaxAgeLabel = new JLabel("Max age:");
-		JLabel rabbitBreedingProbabilityLabel = new JLabel("Breeding probability:");
-		JLabel rabbitMaxLitterSizeLabel = new JLabel("Max litter size:");
+		JLabel rabbitBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getRabbitBreedingAge() + "):");
+		JLabel rabbitMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getRabbitMaxAge() + "):");
+		JLabel rabbitBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbRabbit + "):");
+		JLabel rabbitMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getRabbitMaxLitterSize() + "):");
 		
-		int tempBreedProbRabbit = (int) (brain.getConfig().getRabbitBreedingProbability() * 100);
 		
 		// rabbit sliders
 		JSlider rabbitBreedingSlider = new JSlider(0, brain.getConfig().getRabbitMaxAge(), brain.getConfig().getRabbitBreedingAge());
@@ -211,16 +211,17 @@ public class ConfigController extends AbstractController implements ActionListen
 		rabbitConfigPart.add(rabbitMaxLitterSizeSlider);
 				
 		
+		int tempBreedProbWolf = (int) (brain.getConfig().getWolfBreedingProbability() * 100);
 		
 		//wolf labels
-		JLabel wolfBreedingLabel = new JLabel("Breeding age:");
-		JLabel wolfMaxAgeLabel = new JLabel("Max age:");
-		JLabel wolfBreedingProbabilityLabel = new JLabel("Breeding probability:");
-		JLabel wolfMaxLitterSizeLabel = new JLabel("Max litter size:");
-		JLabel wolfRabbitFoodValueLabel = new JLabel("Rabbit food value:");
-		JLabel wolfFoxFoodValueLabel = new JLabel("Fox food value:");
+		JLabel wolfBreedingLabel = new JLabel("Breeding age (" + brain.getConfig().getWolfBreedingAge() + "):");
+		JLabel wolfMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getWolfMaxAge() + "):");
+		JLabel wolfBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbWolf + "):");
+		JLabel wolfMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getWolfMaxLitterSize() + "):");
+		JLabel wolfRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getWolfRabbitFoodValue() + "):");
+		JLabel wolfFoxFoodValueLabel = new JLabel("Fox food value (" + brain.getConfig().getWolfFoxFoodValue() + "):");
 		
-		int tempBreedProbWolf = (int) (brain.getConfig().getWolfBreedingProbability() * 100);
+		
 		
 		// rabbit sliders
 		JSlider wolfBreedingSlider = new JSlider(0, brain.getConfig().getWolfMaxAge(), brain.getConfig().getWolfBreedingAge());
@@ -281,7 +282,7 @@ public class ConfigController extends AbstractController implements ActionListen
 				
 				
 		//hunter labels
-		JLabel hunterBulletLabel = new JLabel("Number of bullets:");
+		JLabel hunterBulletLabel = new JLabel("Number of bullets (" + brain.getConfig().getHunterBullets() + "):");
 		
 		// hunter sliders
 		JSlider hunterBulletSlider = new JSlider(0, 20, brain.getConfig().getHunterBullets());

@@ -1,7 +1,7 @@
 package view;
 
 
-import java.awt.BorderLayout;
+// import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Map;
 import java.awt.*;
@@ -24,8 +24,8 @@ public class GraphView extends AbstractView
 	private static GraphPanel graph;
 	private Set<Class<?>> classes;
 	
-	private static JLabel stepLabel;
-    private static JLabel countLabel;
+	// private static JLabel stepLabel;
+    // private static JLabel countLabel;
 	
 	public GraphView(Simulator brain) {
 		super(brain);

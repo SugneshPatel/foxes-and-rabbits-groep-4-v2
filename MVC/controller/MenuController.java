@@ -1,7 +1,6 @@
 package controller;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,22 +10,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import view.AbstractView;
-import view.GraphView;
-import view.PieView;
 
-import model.Fox;
-import model.Hunter;
-import model.Rabbit;
 import model.Simulator;
-import model.Wolf;
 
 public class MenuController extends AbstractController implements ActionListener {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4698842680020675242L;
-	private JMenuItem quitItem, configItem, graphItem, pieView;
+	private JMenuItem quitItem, configItem;
 	
 	public MenuController(Simulator brain){
 		super(brain);
