@@ -99,7 +99,6 @@ public class SimulationRunner extends JFrame {
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setBorder(new EmptyBorder(10, 0, 10, 10));
-        leftPanel.add(buttonController.getButtons(), BorderLayout.NORTH);
         leftPanel.add(buttonController.getPanel(), BorderLayout.NORTH);
         
         //legenda panel
