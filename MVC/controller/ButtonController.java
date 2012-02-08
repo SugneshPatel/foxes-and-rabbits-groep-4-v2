@@ -3,7 +3,13 @@ package controller;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
@@ -104,6 +110,21 @@ public class ButtonController extends AbstractController implements ActionListen
 		}
 		if (e.getSource()==killAllButton) {
 			brain.killAll();
+			try {
+				killAllSound();
+			}
+			catch (UnsupportedAudioFileException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 
@@ -112,6 +133,18 @@ public class ButtonController extends AbstractController implements ActionListen
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public void killAllSound() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+		AudioInputStream audioInput = AudioSystem.getAudioInputStream(ButtonController.class.getResource("/images/explosion-01.wav"));
+		buttonClickSound = AudioSystem.getClip();
+		buttonClickSound.open(audioInput);
+		buttonClickSound.start();
+	}
+	
+	private static Clip buttonClickSound;
+	 
+	
+	
 	
 	
 }
