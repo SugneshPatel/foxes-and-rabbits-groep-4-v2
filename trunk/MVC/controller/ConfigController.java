@@ -17,11 +17,18 @@ import javax.swing.event.ChangeListener;
 
 import model.Simulator;
 
+/**
+ * This configcontroller makes the JPanel for the new
+ * window config. It contains labels and slider to make
+ * adjustments to the variables used by the actors.
+ * 
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
+ */
 public class ConfigController extends AbstractController implements ActionListener, ChangeListener
 {
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= 5629702526729726101L;
 	
 	// fox labels
@@ -41,17 +48,21 @@ public class ConfigController extends AbstractController implements ActionListen
 	// hunter sliders
 	private JSlider hunterBulletSlider;
 	
+	/**
+	 * The constructor for the controller.
+	 * @param brain Used for the super constructor
+	 */
 	public ConfigController(Simulator brain){
 		super(brain);
 	}
 
+	/**
+	 * The implemented method to return a JPanel that can be used
+	 * in the layout of the required window.
+	 * @return JPanel
+	 */
 	@Override
-	public JPanel getButtons() {
-		return getConfigContent();
-		
-	}
-	
-	public JPanel getConfigContent() {
+	public JPanel getPanel() {
 		
 		// config panel
 		JPanel configPanel = new JPanel();
@@ -249,7 +260,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		
 		
-		// rabbit sliders
+		// wolf sliders
 		wolfBreedingSlider = new JSlider(0, brain.getConfig().getWolfMaxAge(), brain.getConfig().getWolfBreedingAge());
 		wolfMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getWolfMaxAge());
 		wolfBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbWolf);
@@ -338,17 +349,29 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		return configPanel;
 	}
-
+	
+	/**
+	 * Unused implement
+	 */
 	@Override
 	public JMenuBar getMenu() {
 		return null;
 	}
-
+	
+	/**
+	 * Unused implement
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 	}
-
+	
+	/**
+	 * Override for state changed.
+	 * If the value is changing it updates the label
+	 * if it stopped changing the value on which it is
+	 * released will be set.
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		JSlider source = (JSlider)e.getSource();

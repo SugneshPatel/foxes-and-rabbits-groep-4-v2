@@ -8,6 +8,8 @@ import model.Simulator;
  * It initiates a brain that can be used by all the subclasses.
  * 
  * @author Marco
+ * @author Malcolm
+ * @author Harold
  * @version 2012.02.06
  */
 public abstract class AbstractController extends JPanel {
@@ -19,14 +21,15 @@ public abstract class AbstractController extends JPanel {
 	
 	/**
 	 * The constructor for the abstractcontroller
-	 * 
 	 * @param brain The brain that is used for all the controllers
 	 */
 	public AbstractController(Simulator brain){
 		this.brain = brain;
 	}
+	
 	// Method to get the button/slider panels
-	public abstract JPanel getButtons();
+	public abstract JPanel getPanel();
+	
 	// Method to get the Menu
 	public abstract JMenuBar getMenu();
 }

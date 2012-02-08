@@ -84,7 +84,7 @@ public class SimulationRunner extends JFrame {
         // left panel
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BorderLayout());
-        leftPanel.add(buttonController.getButtons(), BorderLayout.NORTH);
+        leftPanel.add(buttonController.getPanel(), BorderLayout.NORTH);
         
         //legenda panel
         JPanel legendaPanel = new JPanel();
