@@ -97,7 +97,7 @@ public class SimulationRunner extends JFrame {
         legendaPanel.setLayout(new GridLayout(0, 2));
         
         try {
-			BufferedImage myPicture = ImageIO.read(new File("images.bugs_bunny22.gif"));
+			BufferedImage myPicture = ImageIO.read(new File("/FoxesAndRabbitsV2/MVC/images/bugs_bunny22.gif"));
 			JLabel picLabel = new JLabel(new ImageIcon( myPicture));
 			legendaPanel.add(picLabel);
 		}
