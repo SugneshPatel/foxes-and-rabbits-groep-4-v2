@@ -7,8 +7,10 @@ import java.util.Random;
  * A simple model of a wolf.
  * Wolf age, move, eat rabbits and foxes, and die.
  * 
- * @author Malcolm Kindermans
- * @version 2012.01.29
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public class Wolf extends Animal
 {
@@ -41,7 +43,7 @@ public class Wolf extends Animal
     }
     
     /**
-     * Maakt een wolf.
+     * Create a wolf
      * @param randomAge If true, the wolf wil have random age and hunger level.
      * @param fiel The field currently occupied
      * @param location The location within the field.
@@ -93,8 +95,8 @@ public class Wolf extends Animal
     }
     
     /**
-     * Retourneer de maximale leeftijd van een wolf.
-     * @return maximale leeftijd van een wolf
+     * Get wolf's max age
+     * @return Wolf's max age
      */
     public int getMaxAge()
     {
@@ -171,8 +173,8 @@ public class Wolf extends Animal
     }
     
     /**
-     * opvragen hoeveel voedsel de wolf in zich heeft
-     * @return de hoeveelheid voedsel die de wolf in zich heeft
+     * Get wolf's foodlevel
+     * @return Wolf's foodlevel
      */
     public int getFoodLevel()
     {
@@ -180,8 +182,8 @@ public class Wolf extends Animal
     }
     
     /**
-     * Retourneer de leeftijd waarop een wolf zich begint voort te planten.
-     * @return De leeftijd waarop een wolf zich begint voort te planten.
+     * Get wolf's breeding age
+     * @return Wolf's breeding age
      */
     public int getBreedingAge()
     {
@@ -189,8 +191,8 @@ public class Wolf extends Animal
     }
     
     /**
-     * Retourneer de voortplantingskans van dit dier
-     * @return de voortplantingskans van dit dier
+     * Get wolf's breeding probability
+     * @return Wolf's breeding probability
      */
     public double getBreedingProbability()
     {
@@ -198,8 +200,8 @@ public class Wolf extends Animal
     }
     
     /**
-     * Retourneer het maximale aantal jongen van een dier
-     * @return het maixmale aantal jongen van een dier
+     * Get wolf's max litter size
+     * @return Wolf's max litter size
      */
     public int getMaxLitterSize()
     {

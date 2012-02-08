@@ -5,18 +5,20 @@ import java.util.Random;
 
 /**
  * A simple model of a rabbit.
- * Rabbits age, move, breed, and die.
+ * Rabbits age, move, breed, eat, and die.
  * 
  * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public class Rabbit extends Animal
 {
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
-    
+    // foodlevel of the rabbit
     private int foodLevel;
-    // Individual characteristics (instance fields).
     
 
     /**
@@ -69,8 +71,8 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Retourneer de maximale leeftijd van een konijn.
-     * @return maximale leeftijd van een konijn
+     * Get rabbit's max age
+     * @return Rabbit's max age
      */
     public int getMaxAge()
     {
@@ -108,9 +110,7 @@ public class Rabbit extends Animal
                 Grass grass = (Grass) actor;
                 if(grass.isActive()) { 
                     grass.setDead();
-                    foodLevel = brain.getConfig().getRabbitGrassFoodValue();;
-                    // Remove the dead rabbit from the field.
-                   
+                    foodLevel = brain.getConfig().getRabbitGrassFoodValue();                                   
                 }
                 return where;
             }
@@ -118,6 +118,10 @@ public class Rabbit extends Animal
         return null;
     }
     
+    /**
+     * Decreases foodlevel. If foodlevel is 0 or below
+     * it kills the rabbit
+     */
     public void incrementHunger()
     {
         foodLevel--;
@@ -128,8 +132,8 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Retourneer de leeftijd waarop een konijn zich begint voort te planten.
-     * @return De leeftijd waarop een konijn zich begint voort te planten.
+     * Get rabbit's breeding age
+     * @return Rabbit's breeding age
      */
     public int getBreedingAge()
     {
@@ -137,8 +141,8 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Retourneer de voortplantingskans van dit dier
-     * @return de voortplantingskans van dit dier
+     * Get rabbit's breeding probability
+     * @return Rabbit's breeding probability
      */
     public double getBreedingProbability()
     {
@@ -146,14 +150,12 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Retourneer het maximale aantal jongen van een dier
-     * @return het maixmale aantal jongen van een dier
+     * Get rabbit's max litter size
+     * @return Rabbit's max litter size
      */
     public int getMaxLitterSize()
     {
     	return brain.getConfig().getRabbitMaxLitterSize();
-    }
-    
-    
+    }      
 }
 
