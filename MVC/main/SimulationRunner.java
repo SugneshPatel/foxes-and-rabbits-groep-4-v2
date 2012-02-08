@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 import controller.*;
 
@@ -62,7 +63,7 @@ public class SimulationRunner extends JFrame {
 		// container
 		JPanel container = (JPanel)getContentPane();
         container.setLayout(new BorderLayout());
-        container.setBorder(new EmptyBorder(6,6,6,6));
+        container.setBorder(new EmptyBorder(10, 10, 10, 10));
         
         // add menubar to frame
         setJMenuBar(menuController.getMenu());
@@ -97,18 +98,62 @@ public class SimulationRunner extends JFrame {
         // left panel
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BorderLayout());
+        leftPanel.setBorder(new EmptyBorder(10, 0, 10, 10));
+        leftPanel.add(buttonController.getButtons(), BorderLayout.NORTH);
         leftPanel.add(buttonController.getPanel(), BorderLayout.NORTH);
         
+        //legenda panel
         // legenda panel
         JPanel legendaPanel = new JPanel();
-        legendaPanel.setLayout(new GridLayout(0, 2));
         
-		ImageIcon icon = createImageIcon("/images/bugs_bunny22.gif", "a pretty but meaningless splat");
-		JLabel label1 = new JLabel("Image and Text", icon, JLabel.CENTER);
-		legendaPanel.add(label1);
+        TitledBorder legendaTitle = BorderFactory.createTitledBorder("Legenda");
+		legendaTitle.setTitleJustification(TitledBorder.CENTER);
+		legendaPanel.setBorder(legendaTitle);
+		
+        legendaPanel.setLayout(new GridLayout(0, 1));
         
-        leftPanel.add(legendaPanel, BorderLayout.SOUTH);
+        // rabbit icon
+		ImageIcon rabbitIcon = createImageIcon("/images/leg_rabbit_5x5.gif", "This is the color of a rabbit");
+		JLabel legendaRabbitLabel = new JLabel("Rabbit", rabbitIcon, JLabel.LEFT);
+		
+		// fox icon
+		ImageIcon foxIcon = createImageIcon("/images/leg_fox_5x5.gif", "This is the color of a fox");
+		JLabel legendaFoxLabel = new JLabel("Fox", foxIcon, JLabel.LEFT);
+		
+		// wolf icon
+		ImageIcon wolfIcon = createImageIcon("/images/leg_wolf_5x5.gif", "This is the color of a wolf");
+		JLabel legendaWolfLabel = new JLabel("Wolf", wolfIcon, JLabel.LEFT);
+		
+		// hunter icon
+		ImageIcon hunterIcon = createImageIcon("/images/leg_hunter_5x5.gif", "This is the color of a hunter");
+		JLabel legendaHunterLabel = new JLabel("Hunter", hunterIcon, JLabel.LEFT);
+		
+		// grass icon
+		ImageIcon grassIcon = createImageIcon("/images/leg_grass_5x5.gif", "This is the color of some grass");
+		JLabel legendaGrassLabel = new JLabel("Grass", grassIcon, JLabel.LEFT);
+		
+		
+		// icons toevoegen aan legenda
+		legendaPanel.add(legendaRabbitLabel);
+		legendaPanel.add(legendaFoxLabel);
+		legendaPanel.add(legendaWolfLabel);
+		legendaPanel.add(legendaHunterLabel);
+		legendaPanel.add(legendaGrassLabel);
+		
+		
+		// legendaPanel surrounding empty border
+		JPanel legendaSurroundingPanel = new JPanel();
+		legendaSurroundingPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		legendaSurroundingPanel.setLayout(new BorderLayout());
+		
+		
+		// legenda toevoegen aan surroundingPanel
+		legendaSurroundingPanel.add(legendaPanel, BorderLayout.CENTER);
+				
         
+        leftPanel.add(legendaSurroundingPanel, BorderLayout.SOUTH);
+        
+        // contents.setLayout(new BorderLayout());
         // add panels to container
         container.add(viewsLeft, BorderLayout.EAST);
         container.add(simulatorview.getField(), BorderLayout.CENTER);
