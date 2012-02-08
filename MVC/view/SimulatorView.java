@@ -9,14 +9,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * A graphical view of the simulation grid.
- * The view displays a colored rectangle for each location 
- * representing its contents. It uses a default background color.
- * Colors for each type of species can be defined using the
- * setColor method.
+ * Class that makes the field view of the simulation. It puts it
+ * in a panel so it can be used and updated.
  * 
- * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public class SimulatorView extends AbstractView
 {
@@ -30,48 +29,43 @@ public class SimulatorView extends AbstractView
 
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.gray;
-
+    // Label for the amount of steps
     private final String STEP_PREFIX = "Step: ";
+    // Label for the current population
     private final String POPULATION_PREFIX = "Population: ";
+    // Labels
     private JLabel stepLabel, population;
+    // Used view
     private FieldView fieldView;
     
     // A map for storing colors for participants in the simulation
     private Map<Class<?>, Color> colors;
-   
-    
-    
   
     /**
-     * Create a view of the given width and height.
-     * @param height The simulation's height.
-     * @param width  The simulation's width.
+     * Create a simulator view
      */
     public SimulatorView(Simulator brain)
     {
     	super(brain);
     
         colors = new LinkedHashMap<Class<?>, Color>();
-        fieldView = new FieldView(100, 100);
-        
+        fieldView = new FieldView(100, 100);      
     }
     
     public JPanel getField(){
     	
     	stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
-     
         
-        //JPanel die de buttons bevat
+        // add labels and views to the panel
+        JPanel fieldPanel = new JPanel();
+        fieldPanel.setLayout(new BorderLayout());
+        fieldPanel.add(stepLabel, BorderLayout.NORTH);
+        fieldPanel.add(fieldView, BorderLayout.CENTER);
+        fieldPanel.add(population, BorderLayout.SOUTH);
+        fieldPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         
-        JPanel rightSide = new JPanel();
-        rightSide.setLayout(new BorderLayout());
-        rightSide.add(stepLabel, BorderLayout.NORTH);
-        rightSide.add(fieldView, BorderLayout.CENTER);
-        rightSide.add(population, BorderLayout.SOUTH);
-        rightSide.setBorder(BorderFactory.createLineBorder(Color.black));
-        
-        return rightSide;
+        return fieldPanel;
     }
     
     /**
@@ -102,8 +96,6 @@ public class SimulatorView extends AbstractView
 
     /**
      * Show the current status of the field.
-     * @param step Which iteration step it is.
-     * @param field The field whose status is to be displayed.
      */
     public void showStatus()
     {
