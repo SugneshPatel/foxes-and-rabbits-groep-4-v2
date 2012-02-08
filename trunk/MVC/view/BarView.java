@@ -132,7 +132,7 @@ public class BarView extends AbstractView
                 int deathStarvation = brain.getConfig().getDeathByStarvation();
                 int deathBullet = brain.getConfig().getDeathByBullet();
                 int deathEaten = brain.getConfig().getDeathByEaten();
-                
+                           
                 // make bar 1
                 int y = height - ((height * deathCrowd) / yMax) - 1;
                 while (y<0) {

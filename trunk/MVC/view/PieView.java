@@ -99,6 +99,11 @@ public class PieView extends AbstractView
 		 */
 		public void update(Field field) {
 			
+			if(brain.getStep() == 0)
+			{
+				clearImage();
+			}
+			
 			if (classes.size() >= 2) {
 			Iterator<Class<?>> it = classes.iterator();
 	        Class<?> class1 = it.next();
