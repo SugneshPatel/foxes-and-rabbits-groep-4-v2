@@ -93,6 +93,11 @@ public class SimulatorView extends AbstractView
         }
     }
     
+    public FieldView getFieldView()
+    {
+    	return fieldView;
+    }
+    
 
     /**
      * Show the current status of the field.
@@ -128,6 +133,8 @@ public class SimulatorView extends AbstractView
         population.setText(POPULATION_PREFIX + brain.getFieldStats().getPopulationDetails(brain.getField()));
         fieldView.repaint();
     }
+    
+    
 
     
     /**

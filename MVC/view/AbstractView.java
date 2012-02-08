@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Component;
 
 
 import javax.swing.JPanel;
@@ -46,5 +47,10 @@ public abstract class AbstractView extends JPanel {
 	 * Get the views
 	 * @return JPanel with the view
 	 */
-	public abstract JPanel getField();	
+	public abstract JPanel getField();
+
+	public Component getFieldView() {
+		// TODO Auto-generated method stub
+		return null;
+	}	
 }
