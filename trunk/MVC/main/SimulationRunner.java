@@ -2,7 +2,6 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -193,7 +192,6 @@ public class SimulationRunner extends JFrame {
 	 * @return ImageIcon
 	 */
 	private ImageIcon createImageIcon(String path, String description) {
-		// TODO Auto-generated method stub
 		java.net.URL imgURL = getClass().getResource(path);
 		if(imgURL != null) {
 			return new ImageIcon(imgURL, description);
