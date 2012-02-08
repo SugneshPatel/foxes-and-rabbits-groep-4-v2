@@ -47,7 +47,7 @@ public class ConfigController extends AbstractController implements ActionListen
 
 	@Override
 	public JPanel getButtons() {
-		return null;
+		return getConfigContent();
 		
 	}
 	

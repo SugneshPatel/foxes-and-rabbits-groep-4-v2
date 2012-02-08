@@ -208,7 +208,7 @@ public class Simulator extends AbstractModel implements Runnable
 	public void run() {
 		run=true;
 		while(run) {
-			simulateOneStep();
+			simulate(1);
 			try {
 				Thread.sleep(100);
 			} catch (Exception e) {} 

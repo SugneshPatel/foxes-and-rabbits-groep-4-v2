@@ -75,7 +75,7 @@ public class MenuController extends AbstractController implements ActionListener
 		JPanel container = (JPanel)config.getContentPane();
 		
 		container.setLayout(new BorderLayout());
-		container.add(configController.getConfigContent(), BorderLayout.CENTER);
+		container.add(configController.getButtons(), BorderLayout.CENTER);
 		
 		config.pack();
 		config.setVisible(true);

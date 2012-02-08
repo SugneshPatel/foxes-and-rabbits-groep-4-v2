@@ -12,12 +12,18 @@ import javax.swing.border.EmptyBorder;
 
 import model.Simulator;
 
+/**
+ * The abstract controller that serves for all it's subclasses.
+ * It initiates a brain that can be used by all the subclasses.
+ * 
+ * @author Marco
+ * @version 2012.02.06
+ */
 public class ButtonController extends AbstractController implements ActionListener {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4557571779645953349L;
+	
+	
 	private JButton stepOneButton, stepHundredButton, runButton, stopButton, resetButton;
 	
 	
