@@ -1,8 +1,15 @@
 package model;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * The pure brain of the simulation. This is model that that
@@ -237,8 +244,22 @@ public class Simulator extends AbstractModel implements Runnable
         animals.clear();
         config.resetDeath();
         field.clear();
+        ImageIcon nukeIcon = createImageIcon("/images/skull1_100x100.gif", "nuke");
+        JLabel nukeIconLabel = new JLabel("", nukeIcon, JLabel.CENTER);
+        field.add(nukeIconLabel);
         stats.reset();
         statusUpdate();
+	}
+	
+	private ImageIcon createImageIcon(String path, String description) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if(imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		}
+		else {
+			System.err.println("Couldn't find file: " + path);
+			return null;
+		}
 	}
 }
 
