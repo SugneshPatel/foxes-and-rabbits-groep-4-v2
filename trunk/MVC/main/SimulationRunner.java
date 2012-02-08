@@ -88,47 +88,12 @@ public class SimulationRunner extends JFrame {
 		
 		// right panel
 		JPanel rightPanel = new JPanel();
-		rightPanel.setLayout(new GridLayout(0, 2));
-        
-        // legenda voor barview
-        JPanel legendaForBarview = new JPanel();
-        TitledBorder legendaForBarviewTitle = BorderFactory.createTitledBorder("Legend for cause of death");
-        legendaForBarviewTitle.setTitleJustification(TitledBorder.CENTER);
-        legendaForBarview.setBorder(legendaForBarviewTitle);
-        legendaForBarview.setLayout(new GridLayout(0, 1));
-        
-        legendaForBarview.setPreferredSize(new Dimension(200, 5));
-        legendaForBarview.setMinimumSize(new Dimension(200, 5));
-        legendaForBarview.setMaximumSize(new Dimension(200, 5));
-        
-        // overcrowding icon
- 		ImageIcon overcrowdingIcon = createImageIcon("/images/leg_overcrowd_8x8.gif", "Overcrowding as cause of death");
- 		JLabel legendaOvercrowdingLabel = new JLabel("Overcrowd", overcrowdingIcon, JLabel.LEFT);
- 		
- 		// starvation icon
- 		ImageIcon starvationIcon = createImageIcon("/images/leg_starvation_8x8.gif", "Starvation as cause of death");
- 		JLabel legendaStarvationLabel = new JLabel("Starvation", starvationIcon, JLabel.LEFT);
- 	 		
- 	 	// deathBullet icon
- 		ImageIcon deathBulletIcon = createImageIcon("/images/leg_deathBullet_8x8.gif", "Killed by a bullet");
- 		JLabel legendaDeathBulletLabel = new JLabel("Shot", deathBulletIcon, JLabel.LEFT);
- 	 		
- 	 	// eaten icon
- 		ImageIcon eatenIcon = createImageIcon("/images/leg_eaten_8x8.gif", "Eaten as cause of death");
- 		JLabel legendaEatenLabel = new JLabel("Eaten", eatenIcon, JLabel.LEFT);
-        
- 		// icons toevoegen aan legendaForBarview
- 		legendaForBarview.add(legendaOvercrowdingLabel);
- 		legendaForBarview.add(legendaStarvationLabel);
- 		legendaForBarview.add(legendaDeathBulletLabel);
- 		legendaForBarview.add(legendaEatenLabel);
- 		
+		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
         
         // add views to viewsleft
         rightPanel.add(pieView.getField());
         rightPanel.add(graphView.getField());
         rightPanel.add(barView.getField());
-        rightPanel.add(legendaForBarview);
         
         // left panel
         JPanel leftPanel = new JPanel();
@@ -165,6 +130,22 @@ public class SimulationRunner extends JFrame {
 		ImageIcon grassIcon = createImageIcon("/images/leg_grass_5x5.gif", "This is the color of some grass");
 		JLabel legendaGrassLabel = new JLabel("Grass", grassIcon, JLabel.LEFT);
 		
+		// overcrowding icon
+ 		ImageIcon overcrowdingIcon = createImageIcon("/images/leg_overcrowd_8x8.gif", "Overcrowding as cause of death");
+ 		JLabel legendaOvercrowdingLabel = new JLabel("Overcrowd", overcrowdingIcon, JLabel.LEFT);
+ 		
+ 		// starvation icon
+ 		ImageIcon starvationIcon = createImageIcon("/images/leg_starvation_8x8.gif", "Starvation as cause of death");
+ 		JLabel legendaStarvationLabel = new JLabel("Starvation", starvationIcon, JLabel.LEFT);
+ 	 		
+ 	 	// deathBullet icon
+ 		ImageIcon deathBulletIcon = createImageIcon("/images/leg_deathBullet_8x8.gif", "Killed by a bullet");
+ 		JLabel legendaDeathBulletLabel = new JLabel("Shot", deathBulletIcon, JLabel.LEFT);
+ 	 		
+ 	 	// eaten icon
+ 		ImageIcon eatenIcon = createImageIcon("/images/leg_eaten_8x8.gif", "Eaten as cause of death");
+ 		JLabel legendaEatenLabel = new JLabel("Eaten", eatenIcon, JLabel.LEFT);
+		
 		
 		// icons toevoegen aan legenda
 		legendaPanel.add(legendaRabbitLabel);
@@ -172,6 +153,10 @@ public class SimulationRunner extends JFrame {
 		legendaPanel.add(legendaWolfLabel);
 		legendaPanel.add(legendaHunterLabel);
 		legendaPanel.add(legendaGrassLabel);
+		legendaPanel.add(legendaOvercrowdingLabel);
+		legendaPanel.add(legendaStarvationLabel);
+		legendaPanel.add(legendaDeathBulletLabel);
+		legendaPanel.add(legendaEatenLabel);
 		
 		
 		// legendaPanel surrounding empty border
