@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * A simple predator-prey simulator, based on a rectangular field
- * containing rabbits and foxes.
+ * The pure brain of the simulation. This is model that that
+ * talks to all the other models of the simulation
  * 
  * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public class Simulator extends AbstractModel implements Runnable
 {
@@ -23,28 +26,25 @@ public class Simulator extends AbstractModel implements Runnable
     protected static final double FOX_CREATION_PROBABILITY = 0.01;
     // The probability that a rabbit will be created in any given grid position.
     protected static final double RABBIT_CREATION_PROBABILITY = 0.08;    
-    // The kans dat een jager gemaakt wordt op een bepaalde gegeven locatie
+    // The probability that a hunter will be created in any given grid position.
     protected static final double HUNTER_CREATION_PROBABILITY = 0.002;
-    // De kans dat een wolf gemaakt wordt op een bepaalde gegeven locatie.
+    // The probability that a wolf will be created in any given grid position.
     protected static final double WOLF_CREATION_PROBABILITY = 0.005;
-    
+    // The probability that grass will be created in any given grid position.
     protected static final double GRASS_CREATION_PROBABILITY = 0.1;
     
-
     // List of animals in the field.
     private List<Actor> animals;
     // The current state of the field.
     private Field field;
     // The current step of the simulation.
     private int step;
-    
+    // Whether the simulation is running
     private boolean run;
-    
+    // That stat's that belong to the field
     private FieldStats stats;
-    
-    // het config bestand
+    // Config file with variables
     protected static Config config;
-    
     
     /**
      * Create a simulation field with the given size.
@@ -57,14 +57,12 @@ public class Simulator extends AbstractModel implements Runnable
         animals = new ArrayList<Actor>();
         field = new Field(DEFAULT_WIDTH, DEFAULT_DEPTH);
         stats = new FieldStats();
-
-        
         // Setup a valid starting point.
         reset();
     }
     
     /**
-     * returns the config
+     * Get the config
      * @return config
      */
     public Config getConfig()
@@ -129,10 +127,8 @@ public class Simulator extends AbstractModel implements Runnable
         config.resetDeath();
         populate();
         
-        
         // Show the starting state in the view.
         statusUpdate();
- 
     }
     
     /**
@@ -174,36 +170,54 @@ public class Simulator extends AbstractModel implements Runnable
             }
         }
     }
-    // vanaf hier
+    
+    /**
+     * Get step
+     * @return Step
+     */
     public int getStep() {
     	return step;
     }
     
+    /**
+     * Get fieldstats
+     * @return Fieldstats
+     */
     public FieldStats getFieldStats() {
     	return stats;
     }
     
+    /**
+     * Get field
+     * @return field
+     */
     public Field getField() {
     	return field;
     }
     
-    public boolean isViable()
-    {
-        return stats.isViable(field);
-    	
+    /**
+     * Check whether none of the population is dead
+     */
+    public boolean isViable() {
+        return stats.isViable(field);   
     }
-    // tot hier
-    
-    
-    
+
+    /**
+     * Start a new thread that runs the run method
+     */
     public void start(){
     	new Thread(this).start();
     }
-    
+    /**
+     * Set's run to false thus stopping the thread/simulation
+     */
     public void stop() {
     	run = false;
     }
-
+    
+    /**
+     * Run's 1 step of the simulation
+     */
 	@Override
 	public void run() {
 		run=true;
