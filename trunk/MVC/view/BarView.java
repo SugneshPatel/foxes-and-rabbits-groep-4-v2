@@ -12,57 +12,65 @@ import javax.swing.JPanel;
 
 import model.Simulator;
 
+/**
+ * The bar view make a view of the deathcount of which animals die
+ * This view is put into a JPanel.
+ * 
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.08
+ */
 public class BarView extends AbstractView
 {
-
+	private static final long	serialVersionUID	= 106388220619050207L;
+	// instance variables
 	private BarPanel barPanel;
 	
-	public BarView(Simulator brain)
-	{
-		super(brain);
-		
-	}
-
 	/**
-	 * 
+	 * Creates new barview
+	 * @param brain The brain for the super
 	 */
-	private static final long	serialVersionUID	= 106388220619050207L;
-
+	public BarView(Simulator brain) {
+		super(brain);		
+	}
+	
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void setColor(Class<?> animalClass, Color color) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	/**
+	 * Updates the views to the according step
+	 */
 	@Override
 	public void showStatus() {
 		barPanel.update(brain.getStep());
 		
 	}
-
+	
+	/**
+	 * Returns a JPanel with the view
+	 */
 	@Override
 	public JPanel getField() {
-		barPanel = new BarPanel(200, 200, 500);
-		
-		
+		barPanel = new BarPanel(200, 200, 500);				
 		JPanel barView = new JPanel();
 		// graphView.setLayout(new BorderLayout());
 		barView.add(barPanel);
-		
-		
+
 		return barView;
 	}
 	
 	/**
-     * Nested class: a component to display the graph.
+     * Nested class: a component to display the bars.
      */
     class BarPanel extends JComponent
     {
-        
-
-		/**
-		 * 
-		 */
 		private static final long	serialVersionUID	= -93224324839379620L;
 
 		private static final double SCALE_FACTOR = 0.8;
@@ -74,7 +82,7 @@ public class BarView extends AbstractView
         private int yMax;
 
         /**
-         * Create a new, empty GraphPanel.
+         * Create a new, empty BarPanel.
          */
         public BarPanel(int width, int height, int startMax)
         {
@@ -110,7 +118,7 @@ public class BarView extends AbstractView
          * Dispay a new point of data.
          */
         public void update(int step)
-        {
+        {	
         		if(step == 0){
         			clearImage();
         		}
@@ -119,19 +127,13 @@ public class BarView extends AbstractView
 
                 int height = barImage.getHeight();
                
-                
+                // get deathcount numbers
                 int deathCrowd = brain.getConfig().getDeathByCrowd();
                 int deathStarvation = brain.getConfig().getDeathByStarvation();
                 int deathBullet = brain.getConfig().getDeathByBullet();
                 int deathEaten = brain.getConfig().getDeathByEaten();
                 
-                
-               
-
-                // calculate y, check whether it's out of screen. scale down if necessary.
-               
-                
-                
+                // make bar 1
                 int y = height - ((height * deathCrowd) / yMax) - 1;
                 while (y<0) {
                     scaleDown();
@@ -141,7 +143,7 @@ public class BarView extends AbstractView
                 g.fillRect(5, y, 40, 200);
                 lastVal1 = y;
                 
-              
+                // make bar 2
                 y = height - ((height * deathStarvation) / yMax) - 1;
                 while (y<0) {
                     scaleDown();
@@ -151,6 +153,7 @@ public class BarView extends AbstractView
                 g.fillRect(55, y, 40, 200);
                 lastVal2 = y;
                 
+                // make bar 3
                 y = height - ((height * deathBullet) / yMax) - 1;
                 while (y<0) {
                     scaleDown();
@@ -160,6 +163,7 @@ public class BarView extends AbstractView
                 g.fillRect(105, y, 40, 200);
                 lastVal3 = y;
                 
+                // make bar 4
                 y = height - ((height * deathEaten) / yMax) - 1;
                 while (y<0) {
                     scaleDown();
@@ -169,15 +173,11 @@ public class BarView extends AbstractView
                 g.fillRect(155, y, 40, 200);
                 lastVal4 = y;
                 
-                repaint();
-
-                // stepLabel.setText("" + step);
-                // countLabel.setText(stats.getPopulationDetails(field));
-            
+                repaint();                
         }
 
         /**
-         * Scale the current graph down vertically to make more room at the top.
+         * Scale the current bars down vertically to make more room at the top.
          */
         public void scaleDown()
         {
@@ -201,6 +201,8 @@ public class BarView extends AbstractView
             yMax = (int) (yMax / SCALE_FACTOR);
             lastVal1 = oldTop + (int) (lastVal1 * SCALE_FACTOR);
             lastVal2 = oldTop + (int) (lastVal2 * SCALE_FACTOR);
+            lastVal3 = oldTop + (int) (lastVal3 * SCALE_FACTOR);
+            lastVal4 = oldTop + (int) (lastVal4 * SCALE_FACTOR);
 
             repaint();
         }
