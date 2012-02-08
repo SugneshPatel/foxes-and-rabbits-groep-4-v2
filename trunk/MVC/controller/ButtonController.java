@@ -31,7 +31,7 @@ public class ButtonController extends AbstractController implements ActionListen
 	private static final long serialVersionUID = -4557571779645953349L;
 	
 	// instance variables 
-	private JButton stepOneButton, stepHundredButton, runButton, stopButton, resetButton;
+	private JButton stepOneButton, stepHundredButton, runButton, stopButton, resetButton, killAllButton;
 	
 	/**
 	 * The constructor for the controller.
@@ -95,6 +95,7 @@ public class ButtonController extends AbstractController implements ActionListen
         buttonsLeft.add(runButton);
         buttonsLeft.add(stopButton);
         buttonsLeft.add(resetButton);
+        buttonsLeft.add(killAllButton);
         
         // return the whole panel with all the buttons
         return buttonsLeft;
@@ -128,6 +129,11 @@ public class ButtonController extends AbstractController implements ActionListen
 		// reset simulation
 		if (e.getSource()==resetButton) {
 			brain.reset();
+		}
+		
+		// kill all
+		if (e.getSource()==killAllButton) {
+			brain.killAll();
 		}
 	}
 	
