@@ -36,6 +36,7 @@ public class SimulationRunner extends JFrame {
 	private AbstractView simulatorview;
 	private AbstractController buttonController;
 	private AbstractController menuController;
+	private static final Color ROCK_COLOR = new Color(139, 90, 0);
 	
 	// JLabel version
     private static final JLabel VERSIELABEL = new JLabel("Version 0.89");
@@ -52,6 +53,7 @@ public class SimulationRunner extends JFrame {
 		simulatorview.setColor(Hunter.class, Color.red);
 		simulatorview.setColor(Wolf.class, Color.black);
 		simulatorview.setColor(Grass.class, Color.green);
+		simulatorview.setColor(Rock.class, ROCK_COLOR);
 		buttonController = new ButtonController(brain);
 		menuController = new MenuController(brain);
 		
@@ -128,6 +130,10 @@ public class SimulationRunner extends JFrame {
 		// grass icon
 		ImageIcon grassIcon = createImageIcon("/images/leg_grass_8x8.gif", "This is the color of some grass");
 		JLabel legendaGrassLabel = new JLabel("Grass", grassIcon, JLabel.LEFT);
+		
+		/*
+		 * Kleur voor de steen in de legenda: (RGB 139,90,0)
+		 */
 		
 		// overcrowding icon
  		ImageIcon overcrowdingIcon = createImageIcon("/images/leg_overcrowd_8x8.gif", "Overcrowding as cause of death");
