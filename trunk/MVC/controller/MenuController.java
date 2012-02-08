@@ -68,8 +68,8 @@ public class MenuController extends AbstractController implements ActionListener
     	quitItem.addActionListener(this);
     	
     	// add items to a menu
-    	menu1.add(quitItem);
     	menu1.add(configItem);
+    	menu1.add(quitItem);
     	
     	// add menu's to the menubar
     	menubar.add(menu1);
