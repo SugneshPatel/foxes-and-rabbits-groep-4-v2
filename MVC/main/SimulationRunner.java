@@ -111,23 +111,23 @@ public class SimulationRunner extends JFrame {
         legendaPanel.setLayout(new GridLayout(0, 1));
         
         // rabbit icon
-		ImageIcon rabbitIcon = createImageIcon("/images/leg_rabbit_5x5.gif", "This is the color of a rabbit");
+		ImageIcon rabbitIcon = createImageIcon("/images/leg_rabbit_8x8.gif", "This is the color of a rabbit");
 		JLabel legendaRabbitLabel = new JLabel("Rabbit", rabbitIcon, JLabel.LEFT);
 		
 		// fox icon
-		ImageIcon foxIcon = createImageIcon("/images/leg_fox_5x5.gif", "This is the color of a fox");
+		ImageIcon foxIcon = createImageIcon("/images/leg_fox_8x8.gif", "This is the color of a fox");
 		JLabel legendaFoxLabel = new JLabel("Fox", foxIcon, JLabel.LEFT);
 		
 		// wolf icon
-		ImageIcon wolfIcon = createImageIcon("/images/leg_wolf_5x5.gif", "This is the color of a wolf");
+		ImageIcon wolfIcon = createImageIcon("/images/leg_wolf_8x8.gif", "This is the color of a wolf");
 		JLabel legendaWolfLabel = new JLabel("Wolf", wolfIcon, JLabel.LEFT);
 		
 		// hunter icon
-		ImageIcon hunterIcon = createImageIcon("/images/leg_hunter_5x5.gif", "This is the color of a hunter");
+		ImageIcon hunterIcon = createImageIcon("/images/leg_hunter_8x8.gif", "This is the color of a hunter");
 		JLabel legendaHunterLabel = new JLabel("Hunter", hunterIcon, JLabel.LEFT);
 		
 		// grass icon
-		ImageIcon grassIcon = createImageIcon("/images/leg_grass_5x5.gif", "This is the color of some grass");
+		ImageIcon grassIcon = createImageIcon("/images/leg_grass_8x8.gif", "This is the color of some grass");
 		JLabel legendaGrassLabel = new JLabel("Grass", grassIcon, JLabel.LEFT);
 		
 		// overcrowding icon
