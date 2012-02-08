@@ -2,6 +2,7 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -57,7 +58,7 @@ public class SimulationRunner extends JFrame {
 		
 		// frame settings
 		setTitle("Foxes and Rabbits");
-		setSize(800, 800);
+		setSize(5000, 5000);
 		setLocation(100, 50);
 		
 		// container
@@ -84,16 +85,50 @@ public class SimulationRunner extends JFrame {
 		
 		// new barview
 		AbstractView barView = new BarView(brain);
+		
+		// right panel
+		JPanel rightPanel = new JPanel();
+		rightPanel.setLayout(new GridLayout(0, 2));
         
-		// JPanel for the views on the left
-        JPanel viewsLeft = new JPanel();
-        viewsLeft.setBorder(new EmptyBorder(6, 6, 6, 6));
-        viewsLeft.setLayout(new BoxLayout(viewsLeft, BoxLayout.PAGE_AXIS));
+        // legenda voor barview
+        JPanel legendaForBarview = new JPanel();
+        TitledBorder legendaForBarviewTitle = BorderFactory.createTitledBorder("Legend for cause of death");
+        legendaForBarviewTitle.setTitleJustification(TitledBorder.CENTER);
+        legendaForBarview.setBorder(legendaForBarviewTitle);
+        legendaForBarview.setLayout(new GridLayout(0, 1));
+        
+        legendaForBarview.setPreferredSize(new Dimension(200, 5));
+        legendaForBarview.setMinimumSize(new Dimension(200, 5));
+        legendaForBarview.setMaximumSize(new Dimension(200, 5));
+        
+        // overcrowding icon
+ 		ImageIcon overcrowdingIcon = createImageIcon("/images/leg_overcrowd_8x8.gif", "Overcrowding as cause of death");
+ 		JLabel legendaOvercrowdingLabel = new JLabel("Overcrowd", overcrowdingIcon, JLabel.LEFT);
+ 		
+ 		// starvation icon
+ 		ImageIcon starvationIcon = createImageIcon("/images/leg_starvation_8x8.gif", "Starvation as cause of death");
+ 		JLabel legendaStarvationLabel = new JLabel("Starvation", starvationIcon, JLabel.LEFT);
+ 	 		
+ 	 	// deathBullet icon
+ 		ImageIcon deathBulletIcon = createImageIcon("/images/leg_deathBullet_8x8.gif", "Killed by a bullet");
+ 		JLabel legendaDeathBulletLabel = new JLabel("Shot", deathBulletIcon, JLabel.LEFT);
+ 	 		
+ 	 	// eaten icon
+ 		ImageIcon eatenIcon = createImageIcon("/images/leg_eaten_8x8.gif", "Eaten as cause of death");
+ 		JLabel legendaEatenLabel = new JLabel("Eaten", eatenIcon, JLabel.LEFT);
+        
+ 		// icons toevoegen aan legendaForBarview
+ 		legendaForBarview.add(legendaOvercrowdingLabel);
+ 		legendaForBarview.add(legendaStarvationLabel);
+ 		legendaForBarview.add(legendaDeathBulletLabel);
+ 		legendaForBarview.add(legendaEatenLabel);
+ 		
         
         // add views to viewsleft
-        viewsLeft.add(pieView.getField());
-        viewsLeft.add(graphView.getField());
-        viewsLeft.add(barView.getField());
+        rightPanel.add(pieView.getField());
+        rightPanel.add(graphView.getField());
+        rightPanel.add(barView.getField());
+        rightPanel.add(legendaForBarview);
         
         // left panel
         JPanel leftPanel = new JPanel();
@@ -101,7 +136,6 @@ public class SimulationRunner extends JFrame {
         leftPanel.setBorder(new EmptyBorder(10, 0, 10, 10));
         leftPanel.add(buttonController.getPanel(), BorderLayout.NORTH);
         
-        //legenda panel
         // legenda panel
         JPanel legendaPanel = new JPanel();
         
@@ -154,7 +188,7 @@ public class SimulationRunner extends JFrame {
         
         // contents.setLayout(new BorderLayout());
         // add panels to container
-        container.add(viewsLeft, BorderLayout.EAST);
+        container.add(rightPanel, BorderLayout.EAST);
         container.add(simulatorview.getField(), BorderLayout.CENTER);
         container.add(leftPanel, BorderLayout.WEST);
         container.add(VERSIELABEL, BorderLayout.SOUTH);
