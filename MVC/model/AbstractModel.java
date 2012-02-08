@@ -3,10 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
 
 import view.AbstractView;
-import view.SimulatorView;
 
 /**
  * Abstractmodel that can add views to the brain and update
