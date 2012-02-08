@@ -16,6 +16,7 @@ import controller.*;
 
 import model.*;
 import view.*;
+import images.*;
 
 public class SimulationRunner extends JFrame {
 	
@@ -96,7 +97,7 @@ public class SimulationRunner extends JFrame {
         legendaPanel.setLayout(new GridLayout(0, 2));
         
         try {
-			BufferedImage myPicture = ImageIO.read(new File("afbeelding.bugs_bunny22.gif"));
+			BufferedImage myPicture = ImageIO.read(new File("images.bugs_bunny22.gif"));
 			JLabel picLabel = new JLabel(new ImageIcon( myPicture));
 			legendaPanel.add(picLabel);
 		}
