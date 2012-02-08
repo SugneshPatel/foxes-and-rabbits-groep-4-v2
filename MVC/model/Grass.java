@@ -3,21 +3,34 @@ package model;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class make grass and allows it to grow
+ * and die if it has been eaten
+ * 
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
+ */
 public class Grass implements Actor
 {
-	// Whether the hunter is active or not.
+	// Whether the grass is active or not.
     private boolean alive;
-    // The animal's field.
+    // The grass' field.
     private Field field;
-    // The animal's position in the field.
+    // The grass' position in the field.
     private Location location;
-    // het simulatie brein
+    // The simulation brain
     protected Simulator brain;
-    
+    // randomizer
     private static final Random rand = Randomizer.getRandom();
     
-    
-	
+    /**
+     * Constructor to make a new piece of grass
+     * @param field The field it's on
+     * @param location The location on the field
+     * @param brain The used brain
+     */
 	public Grass(Field field, Location location, Simulator brain) {
 		this.brain = brain;
     	alive = true;
@@ -25,15 +38,17 @@ public class Grass implements Actor
         setLocation(location);
 	}
 	
-
+	/**
+	 * If the grass is active (alive)
+	 */
 	@Override
 	public boolean isActive() {
 		return alive;
 	}
 	
 	/**
-     * Place the hunter at the new location in the given field.
-     * @param newLocation The hunter's new location.
+     * Place the grass at the new location in the given field.
+     * @param newLocation The grass' new location.
      */
     public void setLocation(Location newLocation)
     {
@@ -45,8 +60,8 @@ public class Grass implements Actor
     }
     
     /**
-     * Return the hunter's location.
-     * @return The hunter's location.
+     * Return the grass' location.
+     * @return The grass' location.
      */
     public Location getLocation()
     {
@@ -54,8 +69,8 @@ public class Grass implements Actor
     }
     
     /**
-     * Return the hunter's field.
-     * @return The hunter's field.
+     * Return the grass' field.
+     * @return The grass' field.
      */
     public Field getField()
     {
@@ -63,9 +78,8 @@ public class Grass implements Actor
     }
     
     /**
-     * This is what the hunter does most of the time: it hunts for
-     * foxes and wolfes.
-     * @param field The field currently occupied.
+     * Makes the grass act, it grows new grass
+     * @param List of actors with new grass
      */
     public void act(List<Actor> newGrass)
     {
@@ -74,6 +88,10 @@ public class Grass implements Actor
         }
     }
     
+    /**
+     * Calculates the amount of grass there will grow
+     * @return Amount of grass
+     */
     protected int growGrass()
     {
         int grown = 0;
@@ -83,6 +101,10 @@ public class Grass implements Actor
         return grown;
     }
     
+    /**
+     * Grows new grass on the free locations
+     * @param newGrass The list of new grass
+     */
     public void grow(List<Actor> newGrass){
     	Field field = getField();
         List<Location> free = field.getFreeAdjacentLocations(getLocation());
@@ -93,6 +115,9 @@ public class Grass implements Actor
         }
     }
     
+    /**
+     * Kills the grass
+     */
     public void setDead(){
     	alive = false;
         if(location != null) {

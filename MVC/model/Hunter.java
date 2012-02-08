@@ -4,10 +4,12 @@ import java.util.Iterator;
 
 /**
  * A simple model of a hunter.
- * Foxes age, move, eat rabbits, and die.
+ * He can walk and shoot rabbits and foxes
  * 
- * @author Malcolm Kindermans
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public class Hunter implements Actor
 {
@@ -17,7 +19,7 @@ public class Hunter implements Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
-    // het simulatie brein
+    // The brain
     protected Simulator brain;
 
     /**
@@ -67,8 +69,8 @@ public class Hunter implements Actor
     
     /**
      * This is what the hunter does most of the time: it hunts for
-     * foxes and wolfes.
-     * @param field The field currently occupied.
+     * foxes and rabbits.
+     * @param newHunters The list of hunters
      */
     public void act(List<Actor> newHunters)
     {
@@ -111,9 +113,9 @@ public class Hunter implements Actor
     }
     
     /**
-     * Vertel de jager waar hij moet schieten en hoe vaak.
-     * @param bullets Hoe vaak een jager kan schieten
-     * @param location Waar de jager zelf op dit moment zich bevindt
+     * Makes the hunter shoot an animal
+     * @param bullets How many times he can shoot
+     * @param location Location of the hunter
      */
     public void shoot(int bullets, Location location)
     {
@@ -132,15 +134,6 @@ public class Hunter implements Actor
     				brain.getConfig().incrementDeathByBullet();
     			}
     		}
-    		/*
-    		else if(animal instanceof Wolf) {
-    			Wolf wolf = (Wolf) animal;
-    			if(wolf.isActive()) {
-    				wolf.setDead();
-    				shotsFired++;
-    			}
-    		}
-    		*/
     		else if(animal instanceof Fox) {
     			Fox fox = (Fox) animal;
     			if(fox.isActive()) {
@@ -150,41 +143,6 @@ public class Hunter implements Actor
     			}
     		}
     	}
-    }
-    
-    /**
-     * Tell the hunter to look for foxes and wolfes adjacent to its current location.
-     * Only the first live fox or wolf is shot.
-     * @param location Where in the field it is located.
-     * @return Where pray was found, or null if it wasn't.
-     */
-    public Location findFood(Location location)
-    {
-        Field field = getField();
-        List<Location> adjacent = field.adjacentLocations(getLocation());
-        Iterator<Location> it = adjacent.iterator();
-        while(it.hasNext()) {
-            Location where = it.next();
-            Object animal = field.getObjectAt(where);
-            if(animal instanceof Fox) {
-                Fox fox = (Fox) animal;
-                if(fox.isActive()) { 
-                    fox.setDead();
-                    // Remove the dead rabbit from the field.
-                    return where;
-                }
-            }
-            else if(animal instanceof Wolf) {
-            	Wolf wolf = (Wolf) animal;
-            	if(wolf.isActive()) {
-            		wolf.setDead();
-            		// Remove the dead wolf from the field.
-            		return where;
-            	}
-            }
-        }
-        return null;
-    }
-    
+    }   
 }
 

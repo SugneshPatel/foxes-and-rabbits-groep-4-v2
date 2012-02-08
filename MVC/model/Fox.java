@@ -8,7 +8,10 @@ import java.util.Random;
  * Foxes age, move, eat rabbits, and die.
  * 
  * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public class Fox extends Animal
 {
@@ -41,7 +44,7 @@ public class Fox extends Animal
     }
     
     /**
-     * Maakt een vos.
+     * Constructor for a fox
      * @param randomAge If true, the fox wil have random age and hunger level.
      * @param fiel The field currently occupied
      * @param location The location within the field.
@@ -93,8 +96,8 @@ public class Fox extends Animal
     }
     
     /**
-     * Retourneer de maximale leeftijd van een vos.
-     * @return maximale leeftijd van een vos
+     * Get the max age of the fox
+     * @return int Max age of the fox
      */
     public int getMaxAge()
     {
@@ -161,40 +164,35 @@ public class Fox extends Animal
     }
     
     /**
-     * opvragen hoeveel voedsel de vos in zich heeft
-     * @return de hoeveelheid voedsel die de vos in zich heeft
+     * Get amount of food a fox has
+     * @return foodlevel The amount of food
      */
-    public int getFoodLevel()
-    {
+    public int getFoodLevel() {
     	return foodLevel;
     }
     
     /**
-     * Retourneer de leeftijd waarop een vos zich begint voort te planten.
-     * @return De leeftijd waarop een vos zich begint voort te planten.
+     * Get breeding age
+     * @return Breeding age
      */
-    public int getBreedingAge()
-    {
+    public int getBreedingAge() {
     	return brain.getConfig().getFoxBreedingAge();
     }
     
     /**
-     * Retourneer de voortplantingskans van dit dier
-     * @return de voortplantingskans van dit dier
+     * Get breeding probability
+     * @return Breeding probability
      */
-    public double getBreedingProbability()
-    {
+    public double getBreedingProbability() {
     	return brain.getConfig().getFoxBreedingProbability();
     }
     
     /**
-     * Retourneer het maximale aantal jongen van een dier
-     * @return het maixmale aantal jongen van een dier
+     * Get max litter size
+     * @return Max litter size
      */
-    public int getMaxLitterSize()
-    {
+    public int getMaxLitterSize() {
     	return brain.getConfig().getFoxMaxLitterSize();
     }
-    
-}
+  }
 
