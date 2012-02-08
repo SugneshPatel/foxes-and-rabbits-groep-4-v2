@@ -228,5 +228,17 @@ public class Simulator extends AbstractModel implements Runnable
 			} catch (Exception e) {} 
 		}
 	}
+	
+	/**
+	 * Method to kill all actors on the field
+	 */
+	private void killAll(){
+		step = 0;
+        animals.clear();
+        config.resetDeath();
+        field.clear();
+        stats.reset();
+        statusUpdate();
+	}
 }
 

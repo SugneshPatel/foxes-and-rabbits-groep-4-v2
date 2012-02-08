@@ -1,7 +1,5 @@
 package view;
 
-
-// import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Map;
 import java.awt.*;
@@ -13,53 +11,62 @@ import javax.swing.JPanel;
 
 import model.*;
 
+/**
+ * Makes a graph view of the current population of the simulation.
+ * It puts it in a JPanel so it can be used.
+ * 
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
+ */
 public class GraphView extends AbstractView
 {
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= 8408351482084593575L;
 	private static final Color LIGHT_GRAY = new Color(0, 0, 0, 40);
+	// colors of animals
 	private Map<Class<?>, Color> colors;
+	// the view itself
 	private static GraphPanel graph;
+	// the classes
 	private Set<Class<?>> classes;
 	
-	// private static JLabel stepLabel;
-    // private static JLabel countLabel;
-	
+	/**
+	 * Creates a new graphview
+	 * @param brain The brain it uses
+	 */
 	public GraphView(Simulator brain) {
 		super(brain);
 		classes = new HashSet<Class<?>>();
         colors = new HashMap<Class<?>, Color>();
 	}
 
-
+	/**
+	 * Set colors according to class
+	 */
 	@Override
 	public void setColor(Class<?> animalClass, Color color) {
 		colors.put(animalClass, color);
         classes = colors.keySet();
 	}
 	
-
+	/**
+	 * Update status of the field at the given step
+	 */
 	@Override
 	public void showStatus() {
 		graph.update(brain.getStep(), brain.getField(), brain.getFieldStats());
 	}
-
+	
+	/**
+	 * Make a JPanel with the view in it.
+	 */
 	@Override
 	public JPanel getField() {
-		graph = new GraphPanel(200, 200, 500);
-		
-		JPanel graphView = new JPanel();
-		// graphView.setLayout(new BorderLayout());
+		graph = new GraphPanel(200, 200, 500);	
+		JPanel graphView = new JPanel();	
         graphView.add(graph);
-        // stepLabel = new JLabel("");
-        // countLabel = new JLabel(" ");
-        // graphView.add(stepLabel, BorderLayout.NORTH);
-        // graphView.add(countLabel, BorderLayout.SOUTH);
-
-      
-
+        
         return graphView;
 	}
 	
@@ -68,11 +75,6 @@ public class GraphView extends AbstractView
      */
     class GraphPanel extends JComponent
     {
-        
-
-		/**
-		 * 
-		 */
 		private static final long	serialVersionUID	= -93224324839379620L;
 
 		private static final double SCALE_FACTOR = 0.8;
@@ -92,6 +94,8 @@ public class GraphView extends AbstractView
             clearImage();
             lastVal1 = height;
             lastVal2 = height;
+            lastVal3 = height;
+            lastVal4 = height;
             yMax = startMax;
         }
 
@@ -132,8 +136,9 @@ public class GraphView extends AbstractView
                 Class<?> class3 = it.next();
                 Class<?> class4 = it.next();
                 
-
                 stats.reset();
+                
+                // get stats of all classes
                 int count1 = brain.getFieldStats().getCount(field, class1);
                 int count2 = brain.getFieldStats().getCount(field, class2);
                 int count3 = brain.getFieldStats().getCount(field, class3);
@@ -192,10 +197,7 @@ public class GraphView extends AbstractView
                 g.drawLine(width-3, lastVal4, width-2, y);
                 lastVal4 = y;
                 
-                repaint();
-
-                // stepLabel.setText("" + step);
-                // countLabel.setText(stats.getPopulationDetails(field));
+                repaint();         
             }
         }
 
@@ -224,6 +226,8 @@ public class GraphView extends AbstractView
             yMax = (int) (yMax / SCALE_FACTOR);
             lastVal1 = oldTop + (int) (lastVal1 * SCALE_FACTOR);
             lastVal2 = oldTop + (int) (lastVal2 * SCALE_FACTOR);
+            lastVal3 = oldTop + (int) (lastVal2 * SCALE_FACTOR);
+            lastVal4 = oldTop + (int) (lastVal2 * SCALE_FACTOR);
 
             repaint();
         }
@@ -278,8 +282,7 @@ public class GraphView extends AbstractView
          * @param g The graphics context that can be used to draw on this component.
          */
         public void paintComponent(Graphics g)
-        {
-            
+        {         
             if(graphImage != null) {
                 g.drawImage(graphImage, 0, 0, null);
             }
