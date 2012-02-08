@@ -1,23 +1,31 @@
 package model;
 
+/**
+ * The config class keeps track of the the variables needed for the simulation
+ * 
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
+ */
 public class Config
 {
 	
-	// fox variabelen
+	// fox variables
 	private static int FOX_BREEDING_AGE = 8;
 	private static int FOX_MAX_AGE = 150;
 	private static double FOX_BREEDING_PROBABILITY = 0.35;
 	private static int FOX_MAX_LITTER_SIZE = 3;
 	private static int FOX_RABBIT_FOOD_VALUE = 8;
 	
-	// rabbit variabelen
+	// rabbit variables
 	private static int RABBIT_BREEDING_AGE = 5;
 	private static int RABBIT_MAX_AGE = 40;
 	private static double RABBIT_BREEDING_PROBABILITY = 0.45;
 	private static int RABBIT_MAX_LITTER_SIZE = 4;
 	private static int RABBIT_GRASS_FOOD_VALUE = 4;
 	
-	// wolf variabelen
+	// wolf variables
 	private static int WOLF_BREEDING_AGE = 10;
 	private static int WOLF_MAX_AGE = 150;
 	private static double WOLF_BREEDING_PROBABILITY = 0.050;
@@ -25,10 +33,10 @@ public class Config
 	private static int WOLF_RABBIT_FOOD_VALUE = 7;
 	private static int WOLF_FOX_FOOD_VALUE = 20;
 	
-	// hunter variabelen
+	// hunter variables
 	private static int HUNTER_BULLETS = 1;
 	
-	// grass variabelen
+	// grass variables
 	private static double GRASS_BREEDING_PROBABILITY = 0.40;
 	private static int GRASS_MAX_LITTER_SIZE = 6;
 	
@@ -37,8 +45,9 @@ public class Config
 	private static int DEATH_BY_STARVATION = 0;
 	private static int DEATH_BY_BULLET = 0;
 	private static int DEATH_BY_EATEN = 0;
-	/*
-	 * SETTERS
+	
+	/**
+	 * Setters for all the variables
 	 */
 	
 	// fox setters
@@ -143,10 +152,11 @@ public class Config
 		DEATH_BY_EATEN++;
 	}
 	
-	/*
-	 * GETTERS
+	/**
+	 * Getters for all the variables
 	 */
-
+	
+	// fox getters
 	public int getFoxBreedingAge() {
 		return FOX_BREEDING_AGE;
 	}
@@ -166,7 +176,8 @@ public class Config
 	public int getFoxRabbitFoodValue() {
 		return FOX_RABBIT_FOOD_VALUE;
 	}
-
+	
+	// rabbit getters
 	public double getRabbitBreedingProbability() {
 		return RABBIT_BREEDING_PROBABILITY;
 	}
@@ -186,7 +197,8 @@ public class Config
 	public int getRabbitGrassFoodValue() {
 		return RABBIT_GRASS_FOOD_VALUE;
 	}
-
+	
+	// wolf getters
 	public double getWolfBreedingProbability() {
 		return WOLF_BREEDING_PROBABILITY;
 	}
@@ -210,13 +222,13 @@ public class Config
 	public int getWolfFoxFoodValue() {
 		return WOLF_FOX_FOOD_VALUE;
 	}
-
+	
+	// hunter getters
 	public int getHunterBullets() {
 		return HUNTER_BULLETS;
 	}
 	
 	//getters grass
-	
 	public double getGrassBreedingProbability() {
 		return GRASS_BREEDING_PROBABILITY;
 	}
@@ -242,8 +254,10 @@ public class Config
 		return DEATH_BY_EATEN;
 	}
 	
-	// reset count
 	
+	/**
+	 * Method to reset all the death counts to 0
+	 */
 	public void resetDeath(){
 		DEATH_BY_CROWD = 0;
 		DEATH_BY_STARVATION = 0;

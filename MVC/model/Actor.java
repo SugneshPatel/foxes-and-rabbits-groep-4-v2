@@ -1,19 +1,26 @@
 package model;
 import java.util.List;
 
-
+/**
+ * Abstractmodel that can add views to the brain and update
+ * all it views.
+ * 
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.03
+ */
 public interface Actor
 {
 	/**
-	 * Voer het gebruikelijke gedrag van de deelnemer uit.
-	 * @param newActors Een lijst waarin zojuist gemaakte deelnemers worden opgeslagen.
+	 * Make the actor Act
+	 * @param newActors List with all new actors
 	 */
 	void act(List<Actor> newActors);
 	
 	/**
-	 * Is de deelnemer nog steeds actief?
-	 * @return true als de deelnemer nog actief is, anders
-	 * false.
+	 * Method to determine of an actor is active
+	 * @return boolean If the actor is active or not
 	 */
 	boolean isActive();
 }
