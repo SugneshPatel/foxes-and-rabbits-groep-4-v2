@@ -11,7 +11,10 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -31,7 +34,6 @@ public class ButtonController extends AbstractController implements ActionListen
 	
 	
 	private JButton stepOneButton, stepHundredButton, runButton, stopButton, resetButton, killAllButton;
-	
 	
 	public ButtonController(Simulator brain){
 		super(brain);
@@ -95,21 +97,32 @@ public class ButtonController extends AbstractController implements ActionListen
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==stepOneButton) {
 			brain.simulate(1);
+			
+			
 		}
 		if (e.getSource()==stepHundredButton) {
 			brain.simulate(100);
+			
+			
 		}
 		if (e.getSource()==runButton) {
 			brain.start();
+			
+			
 		}
 		if (e.getSource()==stopButton) {
 			brain.stop();
+			
+			
 		}
 		if (e.getSource()==resetButton) {
 			brain.reset();
+			
+			
 		}
 		if (e.getSource()==killAllButton) {
 			brain.killAll();
+			makeSkull();
 			try {
 				killAllSound();
 			}
@@ -142,7 +155,30 @@ public class ButtonController extends AbstractController implements ActionListen
 	}
 	
 	private static Clip buttonClickSound;
-	 
+	
+	private ImageIcon createImageIcon(String path, String description) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if(imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		}
+		else {
+			System.err.println("Couldn't find file: " + path);
+			return null;
+		}
+	}
+	
+	public void makeSkull(){
+		
+		JFrame skull = new JFrame("Death to all");
+		skull.setLocation(400, 200);
+		JPanel skullContainer = (JPanel)skull.getContentPane();
+		ImageIcon skullIcon = createImageIcon("/images/skull1_100x100.gif", "Death to all");
+		JLabel skullLabel = new JLabel(skullIcon);
+		skullContainer.add(skullLabel);
+		skull.pack();
+		skull.setVisible(true);
+		
+	}
 	
 	
 	
