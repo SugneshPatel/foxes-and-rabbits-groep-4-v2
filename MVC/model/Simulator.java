@@ -140,7 +140,14 @@ public class Simulator extends AbstractModel implements Runnable
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-            	if(rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
+            	
+            	if(row > 29 && row < 36 & col > 29 && col < 46)
+            	{
+            		Location location = new Location(row, col);
+            		Rock rock = new Rock(field, location, this);
+            		animals.add(rock);
+            	}
+            	else if(rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
             		Location location = new Location(row, col);
             		Hunter hunter = new Hunter(field, location, this);
             		animals.add(hunter);
