@@ -8,7 +8,10 @@ import java.util.HashMap;
  * for any class of object that is found within the field.
  * 
  * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.06
  */
 public class FieldStats
 {
@@ -48,14 +51,18 @@ public class FieldStats
         return buffer.toString();
     }
     
+    /**
+     * Method that counts the number of actors of the given class
+     * @param field The field of which you want the numbers
+     * @param animalClass The class of the animal to count
+     * @return
+     */
     public int getCount(Field field, Class<?> animalClass) {
     	int buffer = 0;
         if(!countsValid) {
             generateCounts(field);
         }
-         
             Counter info = counters.get(animalClass);
-            
             buffer = info.getCount();
       
         return buffer;

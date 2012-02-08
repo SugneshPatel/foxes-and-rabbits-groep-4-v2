@@ -10,7 +10,10 @@ import java.util.Random;
  * Each position is able to store a single animal.
  * 
  * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public class Field
 {
@@ -206,11 +209,11 @@ public class Field
     }
     
     /**
-     * Genereer een lijst met random locations.
-     * Deze lijst is drie keer zo groot als het aantal keer dat een jager kan schieten.
-     * @param bullets Aantal keer dat een jager kan schieten
-     * @param location Huidige locatie van de jager
-     * @return Lijst met random locaties
+     * Random list of locations
+     * 3 times the size a hunter can shoot
+     * @param bullets times a hunter can shoot
+     * @param location Location of the hunter
+     * @return List of random locations
      */
 	public List<Location> getRandomLocations(int bullets, Location location)
 	{
