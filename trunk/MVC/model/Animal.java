@@ -6,11 +6,14 @@ import java.util.Random;
  * A class representing shared characteristics of animals.
  * 
  * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Marco
+ * @author Malcolm
+ * @author Harold
+ * @version 2012.02.07
  */
 public abstract class Animal implements Actor
 {
-	// het simulatie brein
+	// the used brain
 	protected Simulator brain;
     // Whether the animal is alive or not.
     private boolean alive;
@@ -18,7 +21,7 @@ public abstract class Animal implements Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
-    // De leeftijd van het dier
+    // The animal's age
     private int age;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
@@ -92,9 +95,9 @@ public abstract class Animal implements Actor
     }
     
     /**
-     * Een dier kan zich voortplanten als het de 
-     * voorplantingsleeftijd heeft bereikt
-     * @return true als het dier zich kan voortplanten
+     * Method to determine if an animal has reached the age
+     * for it to be able to breed.
+     * @return boolean If the animal can breed
      */
     public boolean canBreed()
     {
@@ -102,7 +105,7 @@ public abstract class Animal implements Actor
     }
     
     /**
-     * Geef het dier een leeftijd
+     * Set the age of the animal
      * @param age
      */
     public void setAge(int age)
@@ -111,8 +114,8 @@ public abstract class Animal implements Actor
     }
     
     /**
-     * Retourneer de leeftijd van het dier
-     * @return de leeftijd van het dier
+     * Get the age of the animal
+     * @return age Age of the animal
      */
     public int getAge()
     {
@@ -120,8 +123,8 @@ public abstract class Animal implements Actor
     }
     
     /**
-     * Verhoog de leeftijd van het dier.
-     * Dit kan leiden tot de dood van het dier.
+     * Method to increase the animals age, if age is greater
+     * then max age it dies
      */
     public void incrementAge()
     {
@@ -132,8 +135,8 @@ public abstract class Animal implements Actor
     }
     
     /**
-     * Retourneer het aantal jongen dat dit dier zal voortbrengen
-     * @return het aantal jongen dat dit dier zal voorbrengen
+     * Method to return the amount of births the animal will give
+     * @return births The amount of births
      */
     public int breed()
     {
@@ -145,14 +148,14 @@ public abstract class Animal implements Actor
     }
     
     /**
-     * Retourneer de voortplantingsleeftijd van dit dier
-     * @return De voortplantingsleeftijd van dit dier
+     * Get the breeding age of the animal
+     * @return int The breeding age
      */
     abstract public int getBreedingAge();
     
     /**
-     * Retourneer de voortplantingskans van dit dier
-     * @return de voortplantingskans van dit dier
+     * get the breeding probability
+     * @return double The breeding probability
      */
     abstract public double getBreedingProbability();
     
@@ -164,14 +167,14 @@ public abstract class Animal implements Actor
     abstract public void act(List<Actor> newAnimals);
     
     /**
-     * Retourneer de maximale leeftijd van een dier
-     * @return De maximale leeftijd van een dier
+     * Get the max age of the animal
+     * @return int Max age
      */
     abstract public int getMaxAge();
     
     /**
-     * Retourneer het maximale aantal jongen van een dier
-     * @return het maixmale aantal jongen van een dier
+     * Get max litter size
+     * @return int Max litter size
      */
     abstract public int getMaxLitterSize();
     
