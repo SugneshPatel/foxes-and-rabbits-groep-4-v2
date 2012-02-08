@@ -4,11 +4,6 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -16,7 +11,6 @@ import controller.*;
 
 import model.*;
 import view.*;
-import images.*;
 
 public class SimulationRunner extends JFrame {
 	
@@ -96,15 +90,9 @@ public class SimulationRunner extends JFrame {
         JPanel legendaPanel = new JPanel();
         legendaPanel.setLayout(new GridLayout(0, 2));
         
-        try {
-			BufferedImage myPicture = ImageIO.read(new File("/FoxesAndRabbitsV2/MVC/images/bugs_bunny22.gif"));
-			JLabel picLabel = new JLabel(new ImageIcon( myPicture));
-			legendaPanel.add(picLabel);
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ImageIcon icon = createImageIcon("/images/bugs_bunny22.gif", "a pretty but meaningless splat");
+		JLabel label1 = new JLabel("Image and Text", icon, JLabel.CENTER);
+		legendaPanel.add(label1);
         
         leftPanel.add(legendaPanel, BorderLayout.SOUTH);
         
@@ -118,6 +106,18 @@ public class SimulationRunner extends JFrame {
         setVisible(true);
         
         brain.reset();
+	}
+
+	private ImageIcon createImageIcon(String path, String description) {
+		// TODO Auto-generated method stub
+		java.net.URL imgURL = getClass().getResource(path);
+		if(imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		}
+		else {
+			System.err.println("Couldn't find file: " + path);
+			return null;
+		}
 	}
 	
 }
