@@ -117,8 +117,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		creationTitle.setTitleJustification(TitledBorder.CENTER);
 		creationPanel.setBorder(creationTitle);
 		creationPanel.setLayout(new BorderLayout());
-		
-		
+			
 		// fox config part
 		JPanel foxConfigPart = new JPanel();
 		foxConfigPart.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -150,9 +149,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		wolfPanel.add(wolfConfigPart, BorderLayout.CENTER);
 		hunterPanel.add(hunterConfigPart, BorderLayout.CENTER);
 		creationPanel.add(creationConfigPart, BorderLayout.CENTER);
-		
-		
-		
+			
 		int tempBreedProbFox = (int) (brain.getConfig().getFoxBreedingProbability() * 100);
 		double tempBreedProbFox2 = (double) (brain.getConfig().getFoxBreedingProbability());
 		
@@ -162,8 +159,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		foxBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbFox2 + "):");
 		foxMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getFoxMaxLitterSize() + "):");
 		foxRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getFoxRabbitFoodValue() + "):");
-		
-		
+			
 		// fox sliders
 		foxBreedingSlider = new JSlider(0, brain.getConfig().getFoxMaxAge(), brain.getConfig().getFoxBreedingAge());
 		foxMaxAgeSlider = new JSlider(1, 200, brain.getConfig().getFoxMaxAge());
@@ -215,8 +211,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		foxConfigPart.add(foxRabbitFoodValueLabel);
 		foxConfigPart.add(foxRabbitFoodValueSlider);
-		
-		
+			
 		int tempBreedProbRabbit = (int) (brain.getConfig().getRabbitBreedingProbability() * 100);
 		double tempBreedProbRabbit2 = (double) (brain.getConfig().getRabbitBreedingProbability());
 		
@@ -225,8 +220,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		rabbitMaxAgeLabel = new JLabel("Max age (" + brain.getConfig().getRabbitMaxAge() + "):");
 		rabbitBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbRabbit2 + "):");
 		rabbitMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getRabbitMaxLitterSize() + "):");
-		
-		
+			
 		// rabbit sliders
 		rabbitBreedingSlider = new JSlider(0, brain.getConfig().getRabbitMaxAge(), brain.getConfig().getRabbitBreedingAge());
 		rabbitMaxAgeSlider = new JSlider(1, 200, brain.getConfig().getRabbitMaxAge());
@@ -269,7 +263,6 @@ public class ConfigController extends AbstractController implements ActionListen
 		rabbitConfigPart.add(rabbitMaxLitterSizeLabel);
 		rabbitConfigPart.add(rabbitMaxLitterSizeSlider);
 				
-		
 		int tempBreedProbWolf = (int) (brain.getConfig().getWolfBreedingProbability() * 100);
 		double tempBreedProbWolf2 = (double) (brain.getConfig().getWolfBreedingProbability());
 		
@@ -280,8 +273,6 @@ public class ConfigController extends AbstractController implements ActionListen
 		wolfMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getWolfMaxLitterSize() + "):");
 		wolfRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getWolfRabbitFoodValue() + "):");
 		wolfFoxFoodValueLabel = new JLabel("Fox food value (" + brain.getConfig().getWolfFoxFoodValue() + "):");
-		
-		
 		
 		// wolf sliders
 		wolfBreedingSlider = new JSlider(0, brain.getConfig().getWolfMaxAge(), brain.getConfig().getWolfBreedingAge());
@@ -344,9 +335,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		wolfConfigPart.add(wolfFoxFoodValueLabel);
 		wolfConfigPart.add(wolfFoxFoodValueSlider);
-		
-				
-				
+			
 		//hunter labels
 		hunterBulletLabel = new JLabel("Number of bullets (" + brain.getConfig().getHunterBullets() + "):");
 		
@@ -361,10 +350,8 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		hunterConfigPart.add(hunterBulletLabel);
 		hunterConfigPart.add(hunterBulletSlider);
-		
-		
-		// tijdelijke variabelen voor creation gedeelte
-
+			
+		// temporary creation variables
 		int tempCreateProbFoxI = (int) (brain.getConfig().getFOX_CREATION_PROBABILITY() * 100);
 		int tempCreateProbRabbitI = (int) (brain.getConfig().getRABBIT_CREATION_PROBABILITY() * 100);
 		int tempCreateProbHunterI = (int) (brain.getConfig().getHUNTER_CREATION_PROBABILITY() * 1000);
@@ -429,10 +416,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		creationConfigPart.add(grassCreationProbLabel);
 		creationConfigPart.add(grassCreationProbSlider);
-		
 				
-					
-		
 		actorConfigPanel.add(foxPanel);
 		actorConfigPanel.add(rabbitPanel);
 		actorConfigPanel.add(wolfPanel);
@@ -442,8 +426,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		configPanel.add(actorConfigPanel, BorderLayout.CENTER);
 		configPanel.add(creationConfigPanel, BorderLayout.EAST);
-		
-		
+			
 		return configPanel;
 	}
 	

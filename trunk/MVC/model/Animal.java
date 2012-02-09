@@ -11,8 +11,7 @@ import java.util.Random;
  * @author Harold
  * @version 2012.02.07
  */
-public abstract class Animal implements Actor
-{
+public abstract class Animal implements Actor {
 	// the used brain
 	protected Simulator brain;
     // Whether the animal is alive or not.
@@ -32,8 +31,7 @@ public abstract class Animal implements Actor
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Animal(Field field, Location location, Simulator brain)
-    {
+    public Animal(Field field, Location location, Simulator brain) {
     	this.brain = brain;
         alive = true;
         this.field = field;
@@ -44,8 +42,7 @@ public abstract class Animal implements Actor
      * Check whether the animal is alive or not.
      * @return true if the animal is still alive.
      */
-    public boolean isActive()
-    {
+    public boolean isActive() {
         return alive;
     }
 
@@ -53,8 +50,7 @@ public abstract class Animal implements Actor
      * Indicate that the animal is no longer alive.
      * It is removed from the field.
      */
-    public void setDead()
-    {
+    public void setDead() {
         alive = false;
         if(location != null) {
             field.clear(location);
@@ -67,8 +63,7 @@ public abstract class Animal implements Actor
      * Return the animal's location.
      * @return The animal's location.
      */
-    public Location getLocation()
-    {
+    public Location getLocation() {
         return location;
     }
     
@@ -76,8 +71,7 @@ public abstract class Animal implements Actor
      * Return the animal's field.
      * @return The animal's field.
      */
-    public Field getField()
-    {
+    public Field getField() {
         return field;
     }
     
@@ -85,8 +79,7 @@ public abstract class Animal implements Actor
      * Place the animal at the new location in the given field.
      * @param newLocation The animal's new location.
      */
-    public void setLocation(Location newLocation)
-    {
+    public void setLocation(Location newLocation) {
         if(location != null) {
             field.clear(location);
         }
@@ -99,8 +92,7 @@ public abstract class Animal implements Actor
      * for it to be able to breed.
      * @return boolean If the animal can breed
      */
-    public boolean canBreed()
-    {
+    public boolean canBreed() {
     	return age >= getBreedingAge();
     }
     
@@ -108,8 +100,7 @@ public abstract class Animal implements Actor
      * Set the age of the animal
      * @param age
      */
-    public void setAge(int age)
-    {
+    public void setAge(int age) {
     	this.age = age;
     }
     
@@ -117,8 +108,7 @@ public abstract class Animal implements Actor
      * Get the age of the animal
      * @return age Age of the animal
      */
-    public int getAge()
-    {
+    public int getAge() {
     	return age;
     }
     
@@ -126,8 +116,7 @@ public abstract class Animal implements Actor
      * Method to increase the animals age, if age is greater
      * then max age it dies
      */
-    public void incrementAge()
-    {
+    public void incrementAge() {
         setAge(getAge() + 1);
         if(getAge() > getMaxAge()) {
             setDead();
@@ -138,8 +127,7 @@ public abstract class Animal implements Actor
      * Method to return the amount of births the animal will give
      * @return births The amount of births
      */
-    public int breed()
-    {
+    public int breed() {
         int births = 0;
         if(canBreed() && rand.nextDouble() <= getBreedingProbability()) {
             births = rand.nextInt(getMaxLitterSize()) + 1;

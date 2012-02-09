@@ -6,9 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
 import controller.*;
-
 import model.*;
 import view.*;
 
@@ -157,7 +155,6 @@ public class SimulationRunner extends JFrame {
  		ImageIcon waterIcon = createImageIcon("/images/leg_water_8x8.gif", "Water");
  		JLabel legendaWaterIcon = new JLabel("Water", waterIcon, JLabel.LEFT);
 		
-		
 		// add labels to legenda
 		legendaPanel.add(legendaRabbitLabel);
 		legendaPanel.add(legendaFoxLabel);
@@ -170,18 +167,15 @@ public class SimulationRunner extends JFrame {
 		legendaPanel.add(legendaStarvationLabel);
 		legendaPanel.add(legendaDeathBulletLabel);
 		legendaPanel.add(legendaEatenLabel);
-		
-		
+			
 		// legendaPanel surrounding empty border
 		JPanel legendaSurroundingPanel = new JPanel();
 		legendaSurroundingPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		legendaSurroundingPanel.setLayout(new BorderLayout());
-		
-		
+			
 		// add legenda to Surroundingpanel
 		legendaSurroundingPanel.add(legendaPanel, BorderLayout.CENTER);
-				
-        
+				       
         leftPanel.add(legendaSurroundingPanel, BorderLayout.SOUTH);
         
         // contents.setLayout(new BorderLayout());

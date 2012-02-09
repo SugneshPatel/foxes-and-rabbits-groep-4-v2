@@ -21,8 +21,7 @@ public class Counter
      * Provide a name for one of the simulation types.
      * @param name  A name, e.g. "Fox".
      */
-    public Counter(String name)
-    {
+    public Counter(String name) {
         this.name = name;
         count = 0;
     }
@@ -30,32 +29,28 @@ public class Counter
     /**
      * @return The short description of this type.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
     /**
      * @return The current count for this type.
      */
-    public int getCount()
-    {
+    public int getCount() {
         return count;
     }
 
     /**
      * Increment the current count by one.
      */
-    public void increment()
-    {
+    public void increment() {
         count++;
     }
     
     /**
      * Reset the current count to zero.
      */
-    public void reset()
-    {
+    public void reset() {
         count = 0;
     }
 }

@@ -3,14 +3,11 @@ package controller;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
-
 import model.Simulator;
 
 /**
@@ -122,6 +119,4 @@ public class MenuController extends AbstractController implements ActionListener
 		config.pack();
 		config.setVisible(true);
 	}
-
-
 }
