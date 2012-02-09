@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 /**
- * This makes a steady object on a location. In this case a rock
+ * This makes a steady object on a location. In this case water
  * which can do nothing.
  * 
  * @author Marco
@@ -14,7 +14,7 @@ import java.util.List;
 public class Water implements Actor
 {
 	private Field field;
-    // The rock's position in the field.
+    // The water's position in the field.
     private Location location;
     // The brain
     protected Simulator brain;
@@ -27,8 +27,8 @@ public class Water implements Actor
 	}
 	
 	/**
-     * Place the rock at the new location in the given field.
-     * @param newLocation The rock's new location.
+     * Place the water at the new location in the given field.
+     * @param newLocation The water's new location.
      */
     public void setLocation(Location newLocation)
     {
@@ -50,8 +50,8 @@ public class Water implements Actor
 	}
 	
 	 /**
-     * Return the rock's location.
-     * @return The rock's location.
+     * Return the water's location.
+     * @return The water's location.
      */
     public Location getLocation()
     {
@@ -59,8 +59,8 @@ public class Water implements Actor
     }
     
     /**
-     * Return the rock's field.
-     * @return The rock's field.
+     * Return the water's field.
+     * @return The water's field.
      */
     public Field getField()
     {
