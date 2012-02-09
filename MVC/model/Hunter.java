@@ -120,7 +120,7 @@ public class Hunter implements Actor
     public void shoot(int bullets, Location location)
     {
     	Field field = getField();
-    	List<Location> randomLocations = field.getRandomLocations(bullets, getLocation());
+    	List<Location> randomLocations = field.getHunterRangeList(getLocation());
     	Iterator<Location> it = randomLocations.iterator();
     	int shotsFired = 0;
     	while(it.hasNext() && shotsFired < bullets) {

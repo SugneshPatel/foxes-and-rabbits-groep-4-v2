@@ -67,9 +67,10 @@ public class Simulator extends AbstractModel implements Runnable
      */
     public void simulate(int numSteps)
     {
-        for(int step = 1; step <= numSteps && isViable(); step++) {
+        for(int step = 1; step <= numSteps && isViable(field); step++) {
             simulateOneStep();
         }
+        
     }
     
     /**
@@ -202,7 +203,7 @@ public class Simulator extends AbstractModel implements Runnable
     /**
      * Check whether none of the population is dead
      */
-    public boolean isViable() {
+    public boolean isViable(Field field) {
         return stats.isViable(field);   
     }
 
