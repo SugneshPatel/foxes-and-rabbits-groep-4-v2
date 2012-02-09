@@ -13,7 +13,7 @@ import java.util.Random;
  * @author Marco
  * @author Malcolm
  * @author Harold
- * @version 2012.02.07
+ * @version 2012.02.09
  */
 public class Field
 {
@@ -240,7 +240,11 @@ public class Field
         }
         return locations;
 	}
-
+	
+	/**
+	 * Method to return the location of the water in the field
+	 * @return
+	 */
 	public List<Location> getWaterLocations() {
 		List<Location> waterLocations = new LinkedList<Location>();
 		for(int x = 75; x <= depth; x++) {
