@@ -59,8 +59,8 @@ public class SimulationRunner extends JFrame {
 		
 		// frame settings
 		setTitle("Foxes and Rabbits");
-		setSize(5000, 5000);
-		setLocation(100, 50);
+		setSize(800, 800);
+		setLocation(1, 1);
 		
 		// container
 		JPanel container = (JPanel)getContentPane();
@@ -131,9 +131,9 @@ public class SimulationRunner extends JFrame {
 		ImageIcon grassIcon = createImageIcon("/images/leg_grass_8x8.gif", "This is the color of some grass");
 		JLabel legendaGrassLabel = new JLabel("Grass", grassIcon, JLabel.LEFT);
 		
-		/*
-		 * Kleur voor de steen in de legenda: (RGB 139,90,0)
-		 */
+		// rock icon
+		ImageIcon rockIcon = createImageIcon("/images/leg_rock_8x8.gif", "This is the color of a rock");
+		JLabel legendaRockLabel = new JLabel("Rock", rockIcon, JLabel.LEFT);
 		
 		// overcrowding icon
  		ImageIcon overcrowdingIcon = createImageIcon("/images/leg_overcrowd_8x8.gif", "Overcrowding as cause of death");
@@ -158,6 +158,7 @@ public class SimulationRunner extends JFrame {
 		legendaPanel.add(legendaWolfLabel);
 		legendaPanel.add(legendaHunterLabel);
 		legendaPanel.add(legendaGrassLabel);
+		legendaPanel.add(legendaRockLabel);
 		legendaPanel.add(legendaOvercrowdingLabel);
 		legendaPanel.add(legendaStarvationLabel);
 		legendaPanel.add(legendaDeathBulletLabel);

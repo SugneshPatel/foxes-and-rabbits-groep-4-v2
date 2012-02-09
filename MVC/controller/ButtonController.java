@@ -170,9 +170,9 @@ public class ButtonController extends AbstractController implements ActionListen
 	public void makeSkull(){
 		
 		JFrame skull = new JFrame("Death to all");
-		skull.setLocation(400, 200);
+		skull.setLocation(100, 50);
 		JPanel skullContainer = (JPanel)skull.getContentPane();
-		ImageIcon skullIcon = createImageIcon("/images/skull1_100x100.gif", "Death to all");
+		ImageIcon skullIcon = createImageIcon("/images/skull1_600x600.gif", "Death to all");
 		JLabel skullLabel = new JLabel(skullIcon);
 		skullContainer.add(skullLabel);
 		skull.pack();
