@@ -148,7 +148,7 @@ public class MenuController extends AbstractController implements ActionListener
 	 * Shows the how to use screen
 	 */
 	public void showHowToUse() {
-		JOptionPane.showMessageDialog(this, "Here is an short explanation of the program:\n\n" +
+		JOptionPane.showMessageDialog(this, "Here is a short explanation of the program:\n\n" +
 				"The grid view shows the actual population and how it is moving around de field.\n" +
 				"On the righthand side are 3 diagrams, the first 2 show the population and the last\n" +
 				"shows the cause of death.\n\n" +
