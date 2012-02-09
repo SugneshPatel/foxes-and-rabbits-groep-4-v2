@@ -153,7 +153,7 @@ public class MenuController extends AbstractController implements ActionListener
 				"On the righthand side are 3 diagrams, the first 2 show the population and the last\n" +
 				"shows the cause of death.\n\n" +
 				"In the options menu clicking the config button let's you adjust the settings of animals\n" +
-				"and the simulation. When changed the will automatically get set.\n\n" +
+				"and the simulation. When changed they will automatically get set.\n\n" +
 				"Enjoy! Oh, don't forget to try the kill all button!");
 	}
 }
