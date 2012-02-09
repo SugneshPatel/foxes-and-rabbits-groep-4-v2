@@ -39,6 +39,10 @@ public class ConfigController extends AbstractController implements ActionListen
 	private JLabel wolfBreedingLabel, wolfMaxAgeLabel, wolfBreedingProbabilityLabel, wolfMaxLitterSizeLabel, wolfRabbitFoodValueLabel, wolfFoxFoodValueLabel;
 	// hunter labels
 	private JLabel hunterBulletLabel;
+	// field labels
+	private JLabel fieldWidthLabel, fieldDepthLabel;
+	// creation labels
+	private JLabel foxCreationProbLabel, rabbitCreationProbLabel, hunterCreationProbLabel, wolfCreationProbLabel, grassCreationProbLabel;
 	// fox sliders
 	private JSlider foxBreedingSlider, foxMaxAgeSlider, foxBreedingProbabilitySlider, foxRabbitFoodValueSlider, foxMaxLitterSizeSlider;
 	// rabbit sliders
@@ -47,6 +51,10 @@ public class ConfigController extends AbstractController implements ActionListen
 	private JSlider wolfBreedingSlider, wolfMaxAgeSlider, wolfBreedingProbabilitySlider, wolfMaxLitterSizeSlider, wolfRabbitFoodValueSlider, wolfFoxFoodValueSlider;
 	// hunter sliders
 	private JSlider hunterBulletSlider;
+	// field sliders
+	private JSlider fieldWidthSlider, fieldDepthSlider;
+	// creation sliders
+	private JSlider foxCreationProbSlider, rabbitCreationProbSlider, hunterCreationProbSlider, wolfCreationProbSlider, grassCreationProbSlider;
 	
 	/**
 	 * The constructor for the controller.
@@ -66,8 +74,18 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		// config panel
 		JPanel configPanel = new JPanel();
-		configPanel.setBorder(new EmptyBorder(10,10,10,10));
-		configPanel.setLayout(new GridLayout(2, 2));
+		configPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		configPanel.setLayout(new BorderLayout());
+		
+		// actorConfig panel
+		JPanel actorConfigPanel = new JPanel();
+		actorConfigPanel.setBorder(new EmptyBorder(10,10,10,10));
+		actorConfigPanel.setLayout(new GridLayout(0, 2));
+		
+		// creationConfig panel
+		JPanel creationConfigPanel = new JPanel();
+		creationConfigPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		creationConfigPanel.setLayout(new GridLayout(0, 1));
 		
 		// fox panel
 		JPanel foxPanel = new JPanel();
@@ -97,6 +115,19 @@ public class ConfigController extends AbstractController implements ActionListen
 		hunterPanel.setBorder(hunterTitle);
 		hunterPanel.setLayout(new BorderLayout());
 		
+		// field panel
+		JPanel fieldPanel = new JPanel();
+		TitledBorder fieldTitle = BorderFactory.createTitledBorder("Field config");
+		fieldTitle.setTitleJustification(TitledBorder.CENTER);
+		fieldPanel.setBorder(fieldTitle);
+		fieldPanel.setLayout(new BorderLayout());
+		
+		// creation panel
+		JPanel creationPanel = new JPanel();
+		TitledBorder creationTitle = BorderFactory.createTitledBorder("Creation config");
+		creationTitle.setTitleJustification(TitledBorder.CENTER);
+		creationPanel.setBorder(creationTitle);
+		creationPanel.setLayout(new BorderLayout());
 		
 		
 		// fox config part
@@ -119,13 +150,23 @@ public class ConfigController extends AbstractController implements ActionListen
 		hunterConfigPart.setBorder(new EmptyBorder(10, 10, 10, 10));
 		hunterConfigPart.setLayout(new GridLayout(0, 2));
 		
+		// field config part
+		JPanel fieldConfigPart = new JPanel();
+		fieldConfigPart.setBorder(new EmptyBorder(10, 10, 10, 10));
+		fieldConfigPart.setLayout(new GridLayout(0, 2));
 		
+		// creation config part
+		JPanel creationConfigPart = new JPanel();
+		creationConfigPart.setBorder(new EmptyBorder(10, 10, 10, 10));
+		creationConfigPart.setLayout(new GridLayout(0, 2));		
 		
 		// configparts toevoegen aan panels
 		foxPanel.add(foxConfigPart, BorderLayout.CENTER);
 		rabbitPanel.add(rabbitConfigPart, BorderLayout.CENTER);
 		wolfPanel.add(wolfConfigPart, BorderLayout.CENTER);
 		hunterPanel.add(hunterConfigPart, BorderLayout.CENTER);
+		fieldPanel.add(fieldConfigPart, BorderLayout.CENTER);
+		creationPanel.add(creationConfigPart, BorderLayout.CENTER);
 		
 		
 		
@@ -138,7 +179,6 @@ public class ConfigController extends AbstractController implements ActionListen
 		foxBreedingProbabilityLabel = new JLabel("Breeding probability (" + tempBreedProbFox2 + "):");
 		foxMaxLitterSizeLabel = new JLabel("Max litter size (" + brain.getConfig().getFoxMaxLitterSize() + "):");
 		foxRabbitFoodValueLabel = new JLabel("Rabbit food value (" + brain.getConfig().getFoxRabbitFoodValue() + "):");
-		
 		
 		
 		// fox sliders
@@ -338,13 +378,125 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		hunterConfigPart.add(hunterBulletLabel);
 		hunterConfigPart.add(hunterBulletSlider);
+		
+		
+
+		// field labels
+		fieldWidthLabel = new JLabel("Field width (" + brain.getConfig().getDEFAULT_WIDTH() + "):");
+		fieldDepthLabel = new JLabel("Field depth (" + brain.getConfig().getDEFAULT_DEPTH() + "):");
+		
+		// field sliders
+		fieldWidthSlider = new JSlider(0, 2000, brain.getConfig().getDEFAULT_WIDTH());
+		fieldDepthSlider = new JSlider(0, 2000, brain.getConfig().getDEFAULT_DEPTH());
+		
+		fieldWidthSlider.setMajorTickSpacing(500);
+		fieldWidthSlider.setMinorTickSpacing(250);
+		fieldWidthSlider.setPaintTicks(true);
+		fieldWidthSlider.setPaintLabels(true);
+		fieldWidthSlider.addChangeListener(this);
+		
+		fieldDepthSlider.setMajorTickSpacing(500);
+		fieldDepthSlider.setMinorTickSpacing(250);
+		fieldDepthSlider.setPaintTicks(true);
+		fieldDepthSlider.setPaintLabels(true);
+		fieldDepthSlider.addChangeListener(this);
+		
+		fieldConfigPart.add(fieldWidthLabel);
+		fieldConfigPart.add(fieldWidthSlider);
+		
+		fieldConfigPart.add(fieldDepthLabel);
+		fieldConfigPart.add(fieldDepthSlider);
+		
+		
+		// tijdelijke variabelen voor creation gedeelte
+
+		int tempCreateProbFoxI = (int) (brain.getConfig().getFOX_CREATION_PROBABILITY() * 100);
+		double tempCreateProbFoxD = (double) (brain.getConfig().getFOX_CREATION_PROBABILITY());
+		
+		int tempCreateProbRabbitI = (int) (brain.getConfig().getRABBIT_CREATION_PROBABILITY() * 100);
+		double tempCreateProbRabbitD = (double) (brain.getConfig().getRABBIT_CREATION_PROBABILITY());
+		
+		int tempCreateProbHunterI = (int) (brain.getConfig().getHUNTER_CREATION_PROBABILITY() * 100);
+		double tempCreateProbHunterD = (double) (brain.getConfig().getHUNTER_CREATION_PROBABILITY());
+		
+		int tempCreateProbWolfI = (int) (brain.getConfig().getWOLF_CREATION_PROBABILITY() * 100);
+		double tempCreateProbWolfD = (double) (brain.getConfig().getWOLF_CREATION_PROBABILITY());
+		
+		int tempCreateProbGrassI = (int) (brain.getConfig().getGRASS_CREATION_PROBABILITY() * 100);
+		double tempCreateProbGrassD = (double) (brain.getConfig().getGRASS_CREATION_PROBABILITY());
+		
+		// creation probability labels
+		foxCreationProbLabel = new JLabel("Fox Creation Prob. (" + brain.getConfig().getFOX_CREATION_PROBABILITY() + "):");
+		rabbitCreationProbLabel = new JLabel("Rabbit Creation Prob. (" + brain.getConfig().getRABBIT_CREATION_PROBABILITY() + "):");
+		hunterCreationProbLabel = new JLabel("Hunter Creation Prob. (" + brain.getConfig().getHUNTER_CREATION_PROBABILITY() + "):");
+		wolfCreationProbLabel = new JLabel("Wolf Creation Prob. (" + brain.getConfig().getWOLF_CREATION_PROBABILITY() + "):");
+		grassCreationProbLabel = new JLabel("Grass Creation Prob. (" + brain.getConfig().getGRASS_CREATION_PROBABILITY() + "):");
+		
+		// creation sliders
+		foxCreationProbSlider = new JSlider(0, 100, tempCreateProbFoxI);
+		rabbitCreationProbSlider = new JSlider(0, 100, tempCreateProbRabbitI);
+		hunterCreationProbSlider = new JSlider(0, 100, tempCreateProbHunterI);
+		wolfCreationProbSlider = new JSlider(0, 100, tempCreateProbWolfI);
+		grassCreationProbSlider = new JSlider(0, 100, tempCreateProbGrassI);
+		
+		foxCreationProbSlider.setMajorTickSpacing(25);
+		foxCreationProbSlider.setMinorTickSpacing(5);
+		foxCreationProbSlider.setPaintTicks(true);
+		foxCreationProbSlider.setPaintLabels(true);
+		foxCreationProbSlider.addChangeListener(this);
+		
+		rabbitCreationProbSlider.setMajorTickSpacing(25);
+		rabbitCreationProbSlider.setMinorTickSpacing(5);
+		rabbitCreationProbSlider.setPaintTicks(true);
+		rabbitCreationProbSlider.setPaintLabels(true);
+		rabbitCreationProbSlider.addChangeListener(this);
+		
+		hunterCreationProbSlider.setMajorTickSpacing(25);
+		hunterCreationProbSlider.setMinorTickSpacing(5);
+		hunterCreationProbSlider.setPaintTicks(true);
+		hunterCreationProbSlider.setPaintLabels(true);
+		hunterCreationProbSlider.addChangeListener(this);
+		
+		wolfCreationProbSlider.setMajorTickSpacing(25);
+		wolfCreationProbSlider.setMinorTickSpacing(5);
+		wolfCreationProbSlider.setPaintTicks(true);
+		wolfCreationProbSlider.setPaintLabels(true);
+		wolfCreationProbSlider.addChangeListener(this);
+		
+		grassCreationProbSlider.setMajorTickSpacing(25);
+		grassCreationProbSlider.setMinorTickSpacing(5);
+		grassCreationProbSlider.setPaintTicks(true);
+		grassCreationProbSlider.setPaintLabels(true);
+		grassCreationProbSlider.addChangeListener(this);
+		
+		creationConfigPart.add(foxCreationProbLabel);
+		creationConfigPart.add(foxCreationProbSlider);
+		
+		creationConfigPart.add(rabbitCreationProbLabel);
+		creationConfigPart.add(rabbitCreationProbSlider);
+		
+		creationConfigPart.add(hunterCreationProbLabel);
+		creationConfigPart.add(hunterCreationProbSlider);
+		
+		creationConfigPart.add(wolfCreationProbLabel);
+		creationConfigPart.add(wolfCreationProbSlider);
+		
+		creationConfigPart.add(grassCreationProbLabel);
+		creationConfigPart.add(grassCreationProbSlider);
+		
 				
 					
 		
-		configPanel.add(foxPanel);
-		configPanel.add(rabbitPanel);
-		configPanel.add(wolfPanel);
-		configPanel.add(hunterPanel);
+		actorConfigPanel.add(foxPanel);
+		actorConfigPanel.add(rabbitPanel);
+		actorConfigPanel.add(wolfPanel);
+		actorConfigPanel.add(hunterPanel);
+		
+		creationConfigPanel.add(fieldPanel);
+		creationConfigPanel.add(creationPanel);
+		
+		configPanel.add(actorConfigPanel, BorderLayout.CENTER);
+		configPanel.add(creationConfigPanel, BorderLayout.EAST);
 		
 		
 		return configPanel;
@@ -555,6 +707,71 @@ public class ConfigController extends AbstractController implements ActionListen
 			else {
 				int fps = (int)source.getValue();
 				brain.getConfig().setHunterBullets(fps);
+			}
+		}
+		else if(source==foxCreationProbSlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				foxCreationProbLabel.setText("Fox creatin prob. (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setFOX_CREATION_PROBABILITY(temp);
+			}
+		}
+		else if(source==rabbitCreationProbSlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				rabbitCreationProbLabel.setText("Rabbit creation prob. (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setRABBIT_CREATION_PROBABILITY(temp);
+			}
+		}
+		else if(source==hunterCreationProbSlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				hunterCreationProbLabel.setText("Hunter creation prob. (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setHUNTER_CREATION_PROBABILITY(temp);
+			}
+		}
+		else if(source==wolfCreationProbSlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				wolfCreationProbLabel.setText("Wolf creation prob. (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setWOLF_CREATION_PROBABILITY(temp);
+			}
+		}
+		else if(source==grassCreationProbSlider) {
+			if (source.getValueIsAdjusting()) {
+				double fps = (double)source.getValue();
+				double temp1 = fps / 100;
+				String temp = Double.toString(temp1);
+				grassCreationProbLabel.setText("Grass creation prob. (" + temp + "):");
+			}
+			else {
+				double fps = (double)source.getValue();
+				double temp = fps / 100;
+				brain.getConfig().setGRASS_CREATION_PROBABILITY(temp);
 			}
 		}
 	}
