@@ -154,7 +154,7 @@ public class SimulationRunner extends JFrame {
  		JLabel legendaEatenLabel = new JLabel("Eaten", eatenIcon, JLabel.LEFT);
 		
 		
-		// icons toevoegen aan legenda
+		// add labels to legenda
 		legendaPanel.add(legendaRabbitLabel);
 		legendaPanel.add(legendaFoxLabel);
 		legendaPanel.add(legendaWolfLabel);
@@ -173,7 +173,7 @@ public class SimulationRunner extends JFrame {
 		legendaSurroundingPanel.setLayout(new BorderLayout());
 		
 		
-		// legenda toevoegen aan surroundingPanel
+		// add legenda to Surroundingpanel
 		legendaSurroundingPanel.add(legendaPanel, BorderLayout.CENTER);
 				
         
