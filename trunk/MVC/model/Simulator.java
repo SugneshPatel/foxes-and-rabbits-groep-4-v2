@@ -14,8 +14,7 @@ import java.util.Iterator;
  * @author Harold
  * @version 2012.02.07
  */
-public class Simulator extends AbstractModel implements Runnable
-{    
+public class Simulator extends AbstractModel implements Runnable {    
     // List of animals in the field.
     private List<Actor> animals;
     // The current state of the field.
@@ -34,8 +33,7 @@ public class Simulator extends AbstractModel implements Runnable
      * @param depth Depth of the field. Must be greater than zero.
      * @param width Width of the field. Must be greater than zero.
      */
-    public Simulator()
-    {
+    public Simulator() {
         config = new Config();
         animals = new ArrayList<Actor>();
         field = new Field(config.getDEFAULT_WIDTH(), config.getDEFAULT_DEPTH());
@@ -46,8 +44,7 @@ public class Simulator extends AbstractModel implements Runnable
      * Get the config
      * @return config
      */
-    public Config getConfig()
-    {
+    public Config getConfig() {
     	return config;
     }
     
@@ -55,8 +52,7 @@ public class Simulator extends AbstractModel implements Runnable
      * Run the simulation from its current state for a reasonably long period,
      * e.g. 500 steps.
      */
-    public void runLongSimulation()
-    {
+    public void runLongSimulation() {
         simulate(500);
     }
     
@@ -65,12 +61,10 @@ public class Simulator extends AbstractModel implements Runnable
      * Stop before the given number of steps if it ceases to be viable.
      * @param numSteps The number of steps to run for.
      */
-    public void simulate(int numSteps)
-    {
+    public void simulate(int numSteps) {
         for(int step = 1; step <= numSteps && isViable(field); step++) {
             simulateOneStep();
-        }
-        
+        }     
     }
     
     /**
@@ -78,8 +72,7 @@ public class Simulator extends AbstractModel implements Runnable
      * Iterate over the whole field updating the state of each
      * fox and rabbit.
      */
-    public void simulateOneStep()
-    {
+    public void simulateOneStep() {
         step++;
 
         // Provide space for newborn animals.
@@ -91,19 +84,16 @@ public class Simulator extends AbstractModel implements Runnable
             if(! actor.isActive()) {
                 it.remove();
             }
-        }
-               
+        }         
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
         statusUpdate();
-   
     }
         
     /**
      * Reset the simulation to a starting position.
      */
-    public void reset()
-    {
+    public void reset() {
         step = 0;
         animals.clear();
         config.resetDeath();
@@ -116,8 +106,7 @@ public class Simulator extends AbstractModel implements Runnable
     /**
      * Randomly populate the field with foxes and rabbits.
      */
-    private void populate()
-    {
+    private void populate() {
     	List<Location> waterLocations = field.getWaterLocations();
     	
         Random rand = Randomizer.getRandom();
@@ -244,7 +233,7 @@ public class Simulator extends AbstractModel implements Runnable
 	/**
 	 * Method to kill all actors on the field
 	 */
-	public void killAll(){
+	public void killAll() {
 		step = 0;
         animals.clear();
         config.resetDeath();

@@ -12,8 +12,7 @@ import java.util.Random;
  * @author Harold
  * @version 2012.02.07
  */
-public class Wolf extends Animal
-{
+public class Wolf extends Animal {
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -29,8 +28,7 @@ public class Wolf extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Wolf(boolean randomAge, Field field, Location location, Simulator brain)
-    {
+    public Wolf(boolean randomAge, Field field, Location location, Simulator brain) {
         super(field, location, brain);
         if(randomAge) {
             setAge(rand.nextInt(brain.getConfig().getWolfMaxAge()));
@@ -49,8 +47,7 @@ public class Wolf extends Animal
      * @param location The location within the field.
      * @param foodLevel The starting foodLevel of a wolf.
      */
-    public Wolf(boolean randomAge, Field field, Location location, int foodLevel, Simulator brain)
-    {
+    public Wolf(boolean randomAge, Field field, Location location, int foodLevel, Simulator brain) {
     	super(field, location, brain);
     	if(randomAge) {
     		setAge(rand.nextInt(brain.getConfig().getWolfMaxAge()));
@@ -69,8 +66,7 @@ public class Wolf extends Animal
      * @param field The field currently occupied.
      * @param newWolfes A list to add newly born wolfs to.
      */
-    public void act(List<Actor> newWolfes)
-    {
+    public void act(List<Actor> newWolfes) {
         incrementAge();
         incrementHunger();
         if(isActive()) {
@@ -98,16 +94,14 @@ public class Wolf extends Animal
      * Get wolf's max age
      * @return Wolf's max age
      */
-    public int getMaxAge()
-    {
+    public int getMaxAge() {
     	return brain.getConfig().getWolfMaxAge();
     }
     
     /**
      * Make this wolf more hungry. This could result in the wolf's death.
      */
-    public void incrementHunger()
-    {
+    public void incrementHunger() {
         foodLevel--;
         if(foodLevel <= 0) {
             setDead();
@@ -121,8 +115,7 @@ public class Wolf extends Animal
      * @param location Where in the field it is located.
      * @return Where food was found, or null if it wasn't.
      */
-    public Location findFood(Location location)
-    {
+    public Location findFood(Location location) {
         Field field = getField();
         List<Location> adjacent = field.adjacentLocations(getLocation());
         Iterator<Location> it = adjacent.iterator();
@@ -158,8 +151,7 @@ public class Wolf extends Animal
      * New births will be made into free adjacent locations.
      * @param newWolfes A list to add newly born wolfs to.
      */
-    private void giveBirth(List<Actor> newWolfes)
-    {
+    private void giveBirth(List<Actor> newWolfes) {
         // New wolfes are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
@@ -176,8 +168,7 @@ public class Wolf extends Animal
      * Get wolf's foodlevel
      * @return Wolf's foodlevel
      */
-    public int getFoodLevel()
-    {
+    public int getFoodLevel()  {
     	return foodLevel;
     }
     
@@ -185,8 +176,7 @@ public class Wolf extends Animal
      * Get wolf's breeding age
      * @return Wolf's breeding age
      */
-    public int getBreedingAge()
-    {
+    public int getBreedingAge()  {
     	return brain.getConfig().getWolfBreedingAge();
     }
     
@@ -194,8 +184,7 @@ public class Wolf extends Animal
      * Get wolf's breeding probability
      * @return Wolf's breeding probability
      */
-    public double getBreedingProbability()
-    {
+    public double getBreedingProbability() {
     	return brain.getConfig().getWolfBreedingProbability();
     }
     
@@ -203,10 +192,8 @@ public class Wolf extends Animal
      * Get wolf's max litter size
      * @return Wolf's max litter size
      */
-    public int getMaxLitterSize()
-    {
+    public int getMaxLitterSize() {
     	return brain.getConfig().getWolfMaxLitterSize();
-    }
-    
+    }   
 }
 

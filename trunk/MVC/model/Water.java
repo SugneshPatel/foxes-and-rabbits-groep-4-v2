@@ -11,8 +11,7 @@ import java.util.List;
  * @author Harold
  * @version 2012.02.07
  */
-public class Water implements Actor
-{
+public class Water implements Actor {
 	private Field field;
     // The water's position in the field.
     private Location location;
@@ -30,8 +29,7 @@ public class Water implements Actor
      * Place the water at the new location in the given field.
      * @param newLocation The water's new location.
      */
-    public void setLocation(Location newLocation)
-    {
+    public void setLocation(Location newLocation) {
         if(location != null) {
             field.clear(location);
         }
@@ -53,8 +51,7 @@ public class Water implements Actor
      * Return the water's location.
      * @return The water's location.
      */
-    public Location getLocation()
-    {
+    public Location getLocation() {
         return location;
     }
     
@@ -62,9 +59,7 @@ public class Water implements Actor
      * Return the water's field.
      * @return The water's field.
      */
-    public Field getField()
-    {
+    public Field getField() {
         return field;
     }
-
 }
