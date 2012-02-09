@@ -39,7 +39,7 @@ public class HunterShootRabbitTest
 
 	@Test
 	public void testShoot() {
-		hunter.shoot(100, new Location(10, 8));
+		hunter.shoot(100, new Location(10, 10));
 		assertEquals("Konijn niet doodgeschoten", false, rabbit.isActive());
 	}
 }
