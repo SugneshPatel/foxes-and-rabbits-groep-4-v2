@@ -10,8 +10,7 @@ import java.util.List;
  * @author Harold
  * @version 2012.02.03
  */
-public interface Actor
-{
+public interface Actor {
 	/**
 	 * Make the actor Act
 	 * @param newActors List with all new actors

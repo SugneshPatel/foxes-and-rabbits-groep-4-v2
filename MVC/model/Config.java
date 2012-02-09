@@ -8,8 +8,7 @@ package model;
  * @author Harold
  * @version 2012.02.07
  */
-public class Config
-{
+public class Config {
 	
 	// creation variables
 	private static int DEFAULT_WIDTH = 100;
@@ -55,7 +54,7 @@ public class Config
 	private static int DEATH_BY_BULLET = 0;
 	private static int DEATH_BY_EATEN = 0;
 	
-	/**
+	/*
 	 * Setters for all the variables
 	 */
 	
@@ -80,8 +79,6 @@ public class Config
 		FOX_RABBIT_FOOD_VALUE = i;
 	}
 	
-
-
 	// rabbit setters
 	public void setRabbitBreedingAge(int i) {
 		RABBIT_BREEDING_AGE = i;
@@ -102,8 +99,7 @@ public class Config
 	public void setRabbitGrassFoodValue(int i) {
 		RABBIT_GRASS_FOOD_VALUE = i;
 	}
-	
-	
+		
 	// wolf setters
 	public void setWolfBreedingAge(int i) {
 		WOLF_BREEDING_AGE = i;
@@ -128,7 +124,6 @@ public class Config
 	public void setWolfFoxFoodValue(int i) {
 		WOLF_FOX_FOOD_VALUE = i;
 	}
-	
 	
 	// hunter setters
 	public void setHunterBullets(int i) {
@@ -161,9 +156,7 @@ public class Config
 		DEATH_BY_EATEN++;
 	}
 	
-	
-	// creation setters
-
+	// width and depth setters
 	public void setDEFAULT_WIDTH(int dEFAULT_WIDTH) {
 		DEFAULT_WIDTH = dEFAULT_WIDTH;
 	}
@@ -171,7 +164,8 @@ public class Config
 	public void setDEFAULT_DEPTH(int dEFAULT_DEPTH) {
 		DEFAULT_DEPTH = dEFAULT_DEPTH;
 	}
-
+	
+	// creation probability setters
 	public void setFOX_CREATION_PROBABILITY(double fOX_CREATION_PROBABILITY) {
 		FOX_CREATION_PROBABILITY = fOX_CREATION_PROBABILITY;
 	}
@@ -196,7 +190,7 @@ public class Config
 		GRASS_CREATION_PROBABILITY = gRASS_CREATION_PROBABILITY;
 	}
 	
-	/**
+	/*
 	 * Getters for all the variables
 	 */
 	
@@ -308,7 +302,8 @@ public class Config
 		DEATH_BY_BULLET = 0;
 		DEATH_BY_EATEN = 0;
 	}
-
+	
+	// getters width and depth
 	public int getDEFAULT_WIDTH() {
 		return DEFAULT_WIDTH;
 	}
@@ -316,7 +311,8 @@ public class Config
 	public int getDEFAULT_DEPTH() {
 		return DEFAULT_DEPTH;
 	}
-
+	
+	// getters creation probabilities
 	public double getFOX_CREATION_PROBABILITY() {
 		return FOX_CREATION_PROBABILITY;
 	}
@@ -332,7 +328,6 @@ public class Config
 	public double getWOLF_CREATION_PROBABILITY() {
 		return WOLF_CREATION_PROBABILITY;
 	}
-
 
 	public double getGRASS_CREATION_PROBABILITY() {
 		return GRASS_CREATION_PROBABILITY;
