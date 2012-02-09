@@ -40,16 +40,6 @@ public class Simulator extends AbstractModel implements Runnable
         animals = new ArrayList<Actor>();
         field = new Field(config.getDEFAULT_WIDTH(), config.getDEFAULT_DEPTH());
         stats = new FieldStats();
-        // Setup a valid starting point.
-        reset();
-    }
-    
-    public Simulator(int i)
-    {
-    	config = new Config();
-    	animals = new ArrayList<Actor>();
-    	field = new Field(config.getDEFAULT_WIDTH(), config.getDEFAULT_DEPTH());
-    	stats = new FieldStats();
     }
     
     /**
