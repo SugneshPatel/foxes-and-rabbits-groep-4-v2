@@ -11,6 +11,15 @@ package model;
 public class Config
 {
 	
+	// creation variables
+	private static int DEFAULT_WIDTH = 100;
+	private static int DEFAULT_DEPTH = 100;
+	private static double FOX_CREATION_PROBABILITY = 0.01;
+	private static double RABBIT_CREATION_PROBABILITY = 0.08;
+	private static double HUNTER_CREATION_PROBABILITY = 0.02;
+	private static double WOLF_CREATION_PROBABILITY = 0.01;
+	private static double GRASS_CREATION_PROBABILITY = 0.1;
+	
 	// fox variables
 	private static int FOX_BREEDING_AGE = 8;
 	private static int FOX_MAX_AGE = 150;
@@ -152,6 +161,41 @@ public class Config
 		DEATH_BY_EATEN++;
 	}
 	
+	
+	// creation setters
+
+	public void setDEFAULT_WIDTH(int dEFAULT_WIDTH) {
+		DEFAULT_WIDTH = dEFAULT_WIDTH;
+	}
+
+	public void setDEFAULT_DEPTH(int dEFAULT_DEPTH) {
+		DEFAULT_DEPTH = dEFAULT_DEPTH;
+	}
+
+	public void setFOX_CREATION_PROBABILITY(double fOX_CREATION_PROBABILITY) {
+		FOX_CREATION_PROBABILITY = fOX_CREATION_PROBABILITY;
+	}
+
+	public void setRABBIT_CREATION_PROBABILITY(
+			double rABBIT_CREATION_PROBABILITY) {
+		RABBIT_CREATION_PROBABILITY = rABBIT_CREATION_PROBABILITY;
+	}
+
+	public void setHUNTER_CREATION_PROBABILITY(
+			double hUNTER_CREATION_PROBABILITY) {
+		HUNTER_CREATION_PROBABILITY = hUNTER_CREATION_PROBABILITY;
+	}
+
+	public void setWOLF_CREATION_PROBABILITY(
+			double wOLF_CREATION_PROBABILITY) {
+		WOLF_CREATION_PROBABILITY = wOLF_CREATION_PROBABILITY;
+	}
+
+	public void setGRASS_CREATION_PROBABILITY(
+			double gRASS_CREATION_PROBABILITY) {
+		GRASS_CREATION_PROBABILITY = gRASS_CREATION_PROBABILITY;
+	}
+	
 	/**
 	 * Getters for all the variables
 	 */
@@ -264,4 +308,34 @@ public class Config
 		DEATH_BY_BULLET = 0;
 		DEATH_BY_EATEN = 0;
 	}
+
+	public int getDEFAULT_WIDTH() {
+		return DEFAULT_WIDTH;
+	}
+
+	public int getDEFAULT_DEPTH() {
+		return DEFAULT_DEPTH;
+	}
+
+	public double getFOX_CREATION_PROBABILITY() {
+		return FOX_CREATION_PROBABILITY;
+	}
+
+	public double getRABBIT_CREATION_PROBABILITY() {
+		return RABBIT_CREATION_PROBABILITY;
+	}
+
+	public double getHUNTER_CREATION_PROBABILITY() {
+		return HUNTER_CREATION_PROBABILITY;
+	}
+
+	public double getWOLF_CREATION_PROBABILITY() {
+		return WOLF_CREATION_PROBABILITY;
+	}
+
+
+	public double getGRASS_CREATION_PROBABILITY() {
+		return GRASS_CREATION_PROBABILITY;
+	}
+
 }
