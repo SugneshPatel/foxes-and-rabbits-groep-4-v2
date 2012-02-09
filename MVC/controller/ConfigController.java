@@ -39,8 +39,6 @@ public class ConfigController extends AbstractController implements ActionListen
 	private JLabel wolfBreedingLabel, wolfMaxAgeLabel, wolfBreedingProbabilityLabel, wolfMaxLitterSizeLabel, wolfRabbitFoodValueLabel, wolfFoxFoodValueLabel;
 	// hunter labels
 	private JLabel hunterBulletLabel;
-	// field labels
-	private JLabel fieldWidthLabel, fieldDepthLabel;
 	// creation labels
 	private JLabel foxCreationProbLabel, rabbitCreationProbLabel, hunterCreationProbLabel, wolfCreationProbLabel, grassCreationProbLabel;
 	// fox sliders
@@ -51,8 +49,6 @@ public class ConfigController extends AbstractController implements ActionListen
 	private JSlider wolfBreedingSlider, wolfMaxAgeSlider, wolfBreedingProbabilitySlider, wolfMaxLitterSizeSlider, wolfRabbitFoodValueSlider, wolfFoxFoodValueSlider;
 	// hunter sliders
 	private JSlider hunterBulletSlider;
-	// field sliders
-	private JSlider fieldWidthSlider, fieldDepthSlider;
 	// creation sliders
 	private JSlider foxCreationProbSlider, rabbitCreationProbSlider, hunterCreationProbSlider, wolfCreationProbSlider, grassCreationProbSlider;
 	
@@ -115,13 +111,6 @@ public class ConfigController extends AbstractController implements ActionListen
 		hunterPanel.setBorder(hunterTitle);
 		hunterPanel.setLayout(new BorderLayout());
 		
-		// field panel
-		JPanel fieldPanel = new JPanel();
-		TitledBorder fieldTitle = BorderFactory.createTitledBorder("Field config");
-		fieldTitle.setTitleJustification(TitledBorder.CENTER);
-		fieldPanel.setBorder(fieldTitle);
-		fieldPanel.setLayout(new BorderLayout());
-		
 		// creation panel
 		JPanel creationPanel = new JPanel();
 		TitledBorder creationTitle = BorderFactory.createTitledBorder("Creation config");
@@ -150,11 +139,6 @@ public class ConfigController extends AbstractController implements ActionListen
 		hunterConfigPart.setBorder(new EmptyBorder(10, 10, 10, 10));
 		hunterConfigPart.setLayout(new GridLayout(0, 2));
 		
-		// field config part
-		JPanel fieldConfigPart = new JPanel();
-		fieldConfigPart.setBorder(new EmptyBorder(10, 10, 10, 10));
-		fieldConfigPart.setLayout(new GridLayout(0, 2));
-		
 		// creation config part
 		JPanel creationConfigPart = new JPanel();
 		creationConfigPart.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -165,7 +149,6 @@ public class ConfigController extends AbstractController implements ActionListen
 		rabbitPanel.add(rabbitConfigPart, BorderLayout.CENTER);
 		wolfPanel.add(wolfConfigPart, BorderLayout.CENTER);
 		hunterPanel.add(hunterConfigPart, BorderLayout.CENTER);
-		fieldPanel.add(fieldConfigPart, BorderLayout.CENTER);
 		creationPanel.add(creationConfigPart, BorderLayout.CENTER);
 		
 		
@@ -380,50 +363,13 @@ public class ConfigController extends AbstractController implements ActionListen
 		hunterConfigPart.add(hunterBulletSlider);
 		
 		
-
-		// field labels
-		fieldWidthLabel = new JLabel("Field width (" + brain.getConfig().getDEFAULT_WIDTH() + "):");
-		fieldDepthLabel = new JLabel("Field depth (" + brain.getConfig().getDEFAULT_DEPTH() + "):");
-		
-		// field sliders
-		fieldWidthSlider = new JSlider(0, 2000, brain.getConfig().getDEFAULT_WIDTH());
-		fieldDepthSlider = new JSlider(0, 2000, brain.getConfig().getDEFAULT_DEPTH());
-		
-		fieldWidthSlider.setMajorTickSpacing(500);
-		fieldWidthSlider.setMinorTickSpacing(250);
-		fieldWidthSlider.setPaintTicks(true);
-		fieldWidthSlider.setPaintLabels(true);
-		fieldWidthSlider.addChangeListener(this);
-		
-		fieldDepthSlider.setMajorTickSpacing(500);
-		fieldDepthSlider.setMinorTickSpacing(250);
-		fieldDepthSlider.setPaintTicks(true);
-		fieldDepthSlider.setPaintLabels(true);
-		fieldDepthSlider.addChangeListener(this);
-		
-		fieldConfigPart.add(fieldWidthLabel);
-		fieldConfigPart.add(fieldWidthSlider);
-		
-		fieldConfigPart.add(fieldDepthLabel);
-		fieldConfigPart.add(fieldDepthSlider);
-		
-		
 		// tijdelijke variabelen voor creation gedeelte
 
 		int tempCreateProbFoxI = (int) (brain.getConfig().getFOX_CREATION_PROBABILITY() * 100);
-		double tempCreateProbFoxD = (double) (brain.getConfig().getFOX_CREATION_PROBABILITY());
-		
 		int tempCreateProbRabbitI = (int) (brain.getConfig().getRABBIT_CREATION_PROBABILITY() * 100);
-		double tempCreateProbRabbitD = (double) (brain.getConfig().getRABBIT_CREATION_PROBABILITY());
-		
 		int tempCreateProbHunterI = (int) (brain.getConfig().getHUNTER_CREATION_PROBABILITY() * 100);
-		double tempCreateProbHunterD = (double) (brain.getConfig().getHUNTER_CREATION_PROBABILITY());
-		
 		int tempCreateProbWolfI = (int) (brain.getConfig().getWOLF_CREATION_PROBABILITY() * 100);
-		double tempCreateProbWolfD = (double) (brain.getConfig().getWOLF_CREATION_PROBABILITY());
-		
 		int tempCreateProbGrassI = (int) (brain.getConfig().getGRASS_CREATION_PROBABILITY() * 100);
-		double tempCreateProbGrassD = (double) (brain.getConfig().getGRASS_CREATION_PROBABILITY());
 		
 		// creation probability labels
 		foxCreationProbLabel = new JLabel("Fox Creation Prob. (" + brain.getConfig().getFOX_CREATION_PROBABILITY() + "):");
@@ -492,7 +438,6 @@ public class ConfigController extends AbstractController implements ActionListen
 		actorConfigPanel.add(wolfPanel);
 		actorConfigPanel.add(hunterPanel);
 		
-		creationConfigPanel.add(fieldPanel);
 		creationConfigPanel.add(creationPanel);
 		
 		configPanel.add(actorConfigPanel, BorderLayout.CENTER);
