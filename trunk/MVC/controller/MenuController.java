@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Simulator;
 
@@ -25,7 +26,7 @@ public class MenuController extends AbstractController implements ActionListener
 	private static final long serialVersionUID = 4698842680020675242L;
 	
 	// instance variables
-	private JMenuItem quitItem, configItem;
+	private JMenuItem quitItem, configItem, aboutItem, howToUseItem;
 	
 	/**
 	 * The constructor for the controller.
@@ -63,10 +64,16 @@ public class MenuController extends AbstractController implements ActionListener
     	configItem.addActionListener(this);
     	quitItem = new JMenuItem("Quit");
     	quitItem.addActionListener(this);
+    	howToUseItem = new JMenuItem("How to use");
+    	howToUseItem.addActionListener(this);
+    	aboutItem = new JMenuItem("About");
+    	aboutItem.addActionListener(this);
     	
     	// add items to a menu
     	menu1.add(configItem);
     	menu1.add(quitItem);
+    	helpMenu.add(howToUseItem);
+    	helpMenu.add(aboutItem);
     	
     	// add menu's to the menubar
     	menubar.add(menu1);
@@ -89,6 +96,16 @@ public class MenuController extends AbstractController implements ActionListener
 		// open the config window
 		if (e.getSource()==configItem) {
 			config();
+		}
+		
+		// open the about window
+		if (e.getSource()==aboutItem) {
+			showAbout();
+		}
+		
+		// open the how to use window
+		if (e.getSource()==howToUseItem) {
+			showHowToUse();
 		}
 	}
 	
@@ -118,5 +135,25 @@ public class MenuController extends AbstractController implements ActionListener
 		container.add(configController.getPanel(), BorderLayout.CENTER);
 		config.pack();
 		config.setVisible(true);
+	}
+	
+	/**
+	 * Shows the about screen
+	 */
+	public void showAbout() {
+		JOptionPane.showMessageDialog(this, "This version of the simulation is made by:\n\nMarco\nMalcolm\nHarold\n\n Current version: 2012-02-09.");
+	}
+	
+	/**
+	 * Shows the how to use screen
+	 */
+	public void showHowToUse() {
+		JOptionPane.showMessageDialog(this, "Here is an short explanation of the program:\n\n" +
+				"The grid view shows the actual population and how it is moving around de field.\n" +
+				"On the righthand side are 3 diagrams, the first 2 show the population and the last\n" +
+				"shows the cause of death.\n\n" +
+				"In the options menu clicking the config button let's you adjust the settings of animals\n" +
+				"and the simulation. When changed the will automatically get set.\n\n" +
+				"Enjoy! Oh, don't forget to try the kill all button!");
 	}
 }

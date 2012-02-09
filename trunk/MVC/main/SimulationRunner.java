@@ -209,5 +209,4 @@ public class SimulationRunner extends JFrame {
 			return null;
 		}
 	}
-	
 }
