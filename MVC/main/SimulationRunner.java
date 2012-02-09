@@ -23,12 +23,6 @@ public class SimulationRunner extends JFrame {
 	
 	private static final long serialVersionUID = 6038091542956952261L;
 	
-	// main method
-	public static void main(String[] args)
-	{
-		new SimulationRunner();
-	}
-	
 	// instance variables
 	private Simulator brain;
 	private AbstractView simulatorview;
