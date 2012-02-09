@@ -21,8 +21,7 @@ import model.Simulator;
  * @author Harold
  * @version 2012.02.08
  */
-public class BarView extends AbstractView
-{
+public class BarView extends AbstractView {
 	private static final long	serialVersionUID	= 106388220619050207L;
 	// instance variables
 	private BarPanel barPanel;
@@ -40,8 +39,7 @@ public class BarView extends AbstractView
 	 */
 	@Override
 	public void setColor(Class<?> animalClass, Color color) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 	
 	/**
@@ -69,8 +67,7 @@ public class BarView extends AbstractView
 	/**
      * Nested class: a component to display the bars.
      */
-    class BarPanel extends JComponent
-    {
+    class BarPanel extends JComponent {
 		private static final long	serialVersionUID	= -93224324839379620L;
 
 		private static final double SCALE_FACTOR = 0.8;
@@ -84,8 +81,7 @@ public class BarView extends AbstractView
         /**
          * Create a new, empty BarPanel.
          */
-        public BarPanel(int width, int height, int startMax)
-        {
+        public BarPanel(int width, int height, int startMax) {
         	barImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             clearImage();
             lastVal1 = height;
@@ -98,8 +94,7 @@ public class BarView extends AbstractView
         /**
          * Indicate a new simulation run on this panel.
          */
-        public void newRun()
-        {
+        public void newRun() {
             int height = barImage.getHeight();
             int width = barImage.getWidth();
 
@@ -117,8 +112,7 @@ public class BarView extends AbstractView
         /**
          * Dispay a new point of data.
          */
-        public void update(int step)
-        {	
+        public void update(int step) {	
         		if(step == 0){
         			clearImage();
         		}
@@ -179,8 +173,7 @@ public class BarView extends AbstractView
         /**
          * Scale the current bars down vertically to make more room at the top.
          */
-        public void scaleDown()
-        {
+        public void scaleDown() {
             Graphics g = barImage.getGraphics();
             int height = barImage.getHeight();
             int width = barImage.getWidth();
@@ -210,16 +203,14 @@ public class BarView extends AbstractView
         /**
          * Cause immediate update of the panel.
          */
-        public void repaintNow()
-        {
+        public void repaintNow() {
             paintImmediately(0, 0, barImage.getWidth(), barImage.getHeight());
         }
 
         /**
          * Clear the image on this panel.
          */
-        public void clearImage()
-        {
+        public void clearImage() {
             Graphics g = barImage.getGraphics();
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, barImage.getWidth(), barImage.getHeight());
@@ -236,16 +227,14 @@ public class BarView extends AbstractView
          * 
          * @return The preferred dimension for this component.
          */
-        public Dimension getPreferredSize()
-        {
+        public Dimension getPreferredSize() {
             return new Dimension(barImage.getWidth(), barImage.getHeight());
         }
 
         /**
          * This component is opaque.
          */
-        public boolean isOpaque()
-        {
+        public boolean isOpaque() {
             return true;
         }
 
@@ -256,9 +245,7 @@ public class BarView extends AbstractView
          * 
          * @param g The graphics context that can be used to draw on this component.
          */
-        public void paintComponent(Graphics g)
-        {
-            
+        public void paintComponent(Graphics g) {   
             if(barImage != null) {
                 g.drawImage(barImage, 0, 0, null);
             }

@@ -17,16 +17,11 @@ import java.util.Map;
  * @author Harold
  * @version 2012.02.07
  */
-public class SimulatorView extends AbstractView
-{
-    /**
-	 * 
-	 */
+public class SimulatorView extends AbstractView {
 	private static final long	serialVersionUID	= 1L;
 
 	// Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
-
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.gray;
     // Label for the amount of steps
@@ -44,10 +39,8 @@ public class SimulatorView extends AbstractView
     /**
      * Create a simulator view
      */
-    public SimulatorView(Simulator brain)
-    {
+    public SimulatorView(Simulator brain) {
     	super(brain);
-    
         colors = new LinkedHashMap<Class<?>, Color>();
         fieldView = new FieldView(100, 100);      
     }
@@ -73,16 +66,14 @@ public class SimulatorView extends AbstractView
      * @param animalClass The animal's Class object.
      * @param color The color to be used for the given class.
      */
-    public void setColor(Class<?> animalClass, Color color)
-    {
+    public void setColor(Class<?> animalClass, Color color) {
         colors.put(animalClass, color);
     }
 
     /**
      * @return The color to be used for a given class of animal.
      */
-    private Color getColor(Class<?> animalClass)
-    {
+    private Color getColor(Class<?> animalClass) {
         Color col = colors.get(animalClass);
         if(col == null) {
             // no color defined for this class
@@ -93,8 +84,7 @@ public class SimulatorView extends AbstractView
         }
     }
     
-    public FieldView getFieldView()
-    {
+    public FieldView getFieldView() {
     	return fieldView;
     }
     
@@ -102,16 +92,14 @@ public class SimulatorView extends AbstractView
     /**
      * Show the current status of the field.
      */
-    public void showStatus()
-    {
+    public void showStatus() {
         if(!isVisible()) {
             setVisible(true);
         }
         
         stepLabel.setText(STEP_PREFIX + brain.getStep());
         
-        brain.getFieldStats().reset();
-        
+        brain.getFieldStats().reset();  
         
         fieldView.preparePaint();
         
@@ -126,17 +114,13 @@ public class SimulatorView extends AbstractView
                     fieldView.drawMark(col, row, EMPTY_COLOR);
                 }
             }
-        }
-       
+        }   
         brain.getFieldStats().countFinished();
 
         population.setText(POPULATION_PREFIX + brain.getFieldStats().getPopulationDetails(brain.getField()));
         fieldView.repaint();
     }
-    
-    
-
-    
+      
     /**
      * Provide a graphical view of a rectangular field. This is 
      * a nested class (a class defined inside a class) which
@@ -145,11 +129,8 @@ public class SimulatorView extends AbstractView
      * This is rather advanced GUI stuff - you can ignore this 
      * for your project if you like.
      */
-    private class FieldView extends JPanel
-    {
-        /**
-		 * 
-		 */
+    private class FieldView extends JPanel {
+       
 		private static final long	serialVersionUID	= 1L;
 
 		private final int GRID_VIEW_SCALING_FACTOR = 6;
@@ -163,8 +144,7 @@ public class SimulatorView extends AbstractView
         /**
          * Create a new FieldView component.
          */
-        public FieldView(int height, int width)
-        {
+        public FieldView(int height, int width) {
             gridHeight = height;
             gridWidth = width;
             size = new Dimension(0, 0);
@@ -173,8 +153,7 @@ public class SimulatorView extends AbstractView
         /**
          * Tell the GUI manager how big we would like to be.
          */
-        public Dimension getPreferredSize()
-        {
+        public Dimension getPreferredSize() {
             return new Dimension(gridWidth * GRID_VIEW_SCALING_FACTOR,
                                  gridHeight * GRID_VIEW_SCALING_FACTOR);
         }
@@ -183,8 +162,7 @@ public class SimulatorView extends AbstractView
          * Prepare for a new round of painting. Since the component
          * may be resized, compute the scaling factor again.
          */
-        public void preparePaint()
-        {
+        public void preparePaint() {
             if(! size.equals(getSize())) {  // if the size has changed...
                 size = getSize();
                 fieldImage = fieldView.createImage(size.width, size.height);
@@ -204,8 +182,7 @@ public class SimulatorView extends AbstractView
         /**
          * Paint on grid location on this field in a given color.
          */
-        public void drawMark(int x, int y, Color color)
-        {
+        public void drawMark(int x, int y, Color color) {
             g.setColor(color);
             g.fillRect(x * xScale, y * yScale, xScale-1, yScale-1);
         }
@@ -214,8 +191,7 @@ public class SimulatorView extends AbstractView
          * The field view component needs to be redisplayed. Copy the
          * internal image to screen.
          */
-        public void paintComponent(Graphics g)
-        {
+        public void paintComponent(Graphics g) {
             if(fieldImage != null) {
                 Dimension currentSize = getSize();
                 if(size.equals(currentSize)) {
@@ -227,8 +203,6 @@ public class SimulatorView extends AbstractView
                 }
             }
         }
-    }
-    
-    
+    }      
 }
 

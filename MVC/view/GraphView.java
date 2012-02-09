@@ -20,8 +20,7 @@ import model.*;
  * @author Harold
  * @version 2012.02.07
  */
-public class GraphView extends AbstractView
-{
+public class GraphView extends AbstractView {
 	private static final long	serialVersionUID	= 8408351482084593575L;
 	private static final Color LIGHT_GRAY = new Color(0, 0, 0, 40);
 	// colors of animals
@@ -73,8 +72,7 @@ public class GraphView extends AbstractView
 	/**
      * Nested class: a component to display the graph.
      */
-    class GraphPanel extends JComponent
-    {
+    class GraphPanel extends JComponent {
 		private static final long	serialVersionUID	= -93224324839379620L;
 
 		private static final double SCALE_FACTOR = 0.8;
@@ -88,8 +86,7 @@ public class GraphView extends AbstractView
         /**
          * Create a new, empty GraphPanel.
          */
-        public GraphPanel(int width, int height, int startMax)
-        {
+        public GraphPanel(int width, int height, int startMax) {
             graphImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             clearImage();
             lastVal1 = height;
@@ -102,8 +99,7 @@ public class GraphView extends AbstractView
         /**
          * Indicate a new simulation run on this panel.
          */
-        public void newRun()
-        {
+        public void newRun() {
             int height = graphImage.getHeight();
             int width = graphImage.getWidth();
 
@@ -123,8 +119,7 @@ public class GraphView extends AbstractView
         /**
          * Dispay a new point of data.
          */
-        public void update(int step, Field field, FieldStats stats)
-        {
+        public void update(int step, Field field, FieldStats stats) {
         	if(step == 0) {
         		clearImage();
         		newRun();
@@ -204,8 +199,7 @@ public class GraphView extends AbstractView
         /**
          * Scale the current graph down vertically to make more room at the top.
          */
-        public void scaleDown()
-        {
+        public void scaleDown() {
             Graphics g = graphImage.getGraphics();
             int height = graphImage.getHeight();
             int width = graphImage.getWidth();
@@ -235,16 +229,14 @@ public class GraphView extends AbstractView
         /**
          * Cause immediate update of the panel.
          */
-        public void repaintNow()
-        {
+        public void repaintNow() {
             paintImmediately(0, 0, graphImage.getWidth(), graphImage.getHeight());
         }
 
         /**
          * Clear the image on this panel.
          */
-        public void clearImage()
-        {
+        public void clearImage() {
             Graphics g = graphImage.getGraphics();
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, graphImage.getWidth(), graphImage.getHeight());
@@ -261,16 +253,14 @@ public class GraphView extends AbstractView
          * 
          * @return The preferred dimension for this component.
          */
-        public Dimension getPreferredSize()
-        {
+        public Dimension getPreferredSize() {
             return new Dimension(graphImage.getWidth(), graphImage.getHeight());
         }
 
         /**
          * This component is opaque.
          */
-        public boolean isOpaque()
-        {
+        public boolean isOpaque() {
             return true;
         }
 
@@ -281,8 +271,7 @@ public class GraphView extends AbstractView
          * 
          * @param g The graphics context that can be used to draw on this component.
          */
-        public void paintComponent(Graphics g)
-        {         
+        public void paintComponent(Graphics g) {         
             if(graphImage != null) {
                 g.drawImage(graphImage, 0, 0, null);
             }
