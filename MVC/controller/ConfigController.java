@@ -367,7 +367,7 @@ public class ConfigController extends AbstractController implements ActionListen
 
 		int tempCreateProbFoxI = (int) (brain.getConfig().getFOX_CREATION_PROBABILITY() * 100);
 		int tempCreateProbRabbitI = (int) (brain.getConfig().getRABBIT_CREATION_PROBABILITY() * 100);
-		int tempCreateProbHunterI = (int) (brain.getConfig().getHUNTER_CREATION_PROBABILITY() * 100);
+		int tempCreateProbHunterI = (int) (brain.getConfig().getHUNTER_CREATION_PROBABILITY() * 1000);
 		int tempCreateProbWolfI = (int) (brain.getConfig().getWOLF_CREATION_PROBABILITY() * 100);
 		int tempCreateProbGrassI = (int) (brain.getConfig().getGRASS_CREATION_PROBABILITY() * 100);
 		
@@ -381,7 +381,7 @@ public class ConfigController extends AbstractController implements ActionListen
 		// creation sliders
 		foxCreationProbSlider = new JSlider(0, 100, tempCreateProbFoxI);
 		rabbitCreationProbSlider = new JSlider(0, 100, tempCreateProbRabbitI);
-		hunterCreationProbSlider = new JSlider(0, 100, tempCreateProbHunterI);
+		hunterCreationProbSlider = new JSlider(0, 1000, tempCreateProbHunterI);
 		wolfCreationProbSlider = new JSlider(0, 100, tempCreateProbWolfI);
 		grassCreationProbSlider = new JSlider(0, 100, tempCreateProbGrassI);
 		
@@ -397,8 +397,8 @@ public class ConfigController extends AbstractController implements ActionListen
 		rabbitCreationProbSlider.setPaintLabels(true);
 		rabbitCreationProbSlider.addChangeListener(this);
 		
-		hunterCreationProbSlider.setMajorTickSpacing(25);
-		hunterCreationProbSlider.setMinorTickSpacing(5);
+		hunterCreationProbSlider.setMajorTickSpacing(250);
+		hunterCreationProbSlider.setMinorTickSpacing(50);
 		hunterCreationProbSlider.setPaintTicks(true);
 		hunterCreationProbSlider.setPaintLabels(true);
 		hunterCreationProbSlider.addChangeListener(this);
@@ -683,13 +683,13 @@ public class ConfigController extends AbstractController implements ActionListen
 		else if(source==hunterCreationProbSlider) {
 			if (source.getValueIsAdjusting()) {
 				double fps = (double)source.getValue();
-				double temp1 = fps / 100;
+				double temp1 = fps / 1000;
 				String temp = Double.toString(temp1);
 				hunterCreationProbLabel.setText("Hunter creation prob. (" + temp + "):");
 			}
 			else {
 				double fps = (double)source.getValue();
-				double temp = fps / 100;
+				double temp = fps / 1000;
 				brain.getConfig().setHUNTER_CREATION_PROBABILITY(temp);
 			}
 		}

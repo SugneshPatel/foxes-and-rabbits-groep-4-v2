@@ -123,7 +123,7 @@ public class Hunter implements Actor
     	List<Location> randomLocations = field.getRandomLocations(bullets, getLocation());
     	Iterator<Location> it = randomLocations.iterator();
     	int shotsFired = 0;
-    	while(it.hasNext() && shotsFired <= bullets) {
+    	while(it.hasNext() && shotsFired < bullets) {
     		Location where = it.next();
     		Object animal = field.getObjectAt(where);
     		if(animal instanceof Rabbit) {
