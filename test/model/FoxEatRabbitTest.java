@@ -19,7 +19,7 @@ public class FoxEatRabbitTest
 
 	@Before
 	public void setUp() throws Exception {
-		brain = new Simulator(1);
+		brain = new Simulator();
 		field = brain.getField();
 		rabbit = new Rabbit(false, field, new Location(10,10), brain);
 		fox = new Fox(false, field, new Location(10,11), 1, brain);
