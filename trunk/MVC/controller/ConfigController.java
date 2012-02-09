@@ -166,10 +166,10 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		// fox sliders
 		foxBreedingSlider = new JSlider(0, brain.getConfig().getFoxMaxAge(), brain.getConfig().getFoxBreedingAge());
-		foxMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getFoxMaxAge());
-		foxBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbFox);
-		foxRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getFoxRabbitFoodValue());
-		foxMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getFoxMaxLitterSize());
+		foxMaxAgeSlider = new JSlider(1, 200, brain.getConfig().getFoxMaxAge());
+		foxBreedingProbabilitySlider = new JSlider(1, 100, tempBreedProbFox);
+		foxRabbitFoodValueSlider = new JSlider(1, 25, brain.getConfig().getFoxRabbitFoodValue());
+		foxMaxLitterSizeSlider = new JSlider(1, 20, brain.getConfig().getFoxMaxLitterSize());
 		
 		foxBreedingSlider.setMajorTickSpacing(25);
 		foxBreedingSlider.setMinorTickSpacing(5);
@@ -229,9 +229,9 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		// rabbit sliders
 		rabbitBreedingSlider = new JSlider(0, brain.getConfig().getRabbitMaxAge(), brain.getConfig().getRabbitBreedingAge());
-		rabbitMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getRabbitMaxAge());
-		rabbitBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbRabbit);
-		rabbitMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getRabbitMaxLitterSize());
+		rabbitMaxAgeSlider = new JSlider(1, 200, brain.getConfig().getRabbitMaxAge());
+		rabbitBreedingProbabilitySlider = new JSlider(1, 100, tempBreedProbRabbit);
+		rabbitMaxLitterSizeSlider = new JSlider(1, 20, brain.getConfig().getRabbitMaxLitterSize());
 		
 		rabbitBreedingSlider.setMajorTickSpacing(25);
 		rabbitBreedingSlider.setMinorTickSpacing(5);
@@ -285,11 +285,11 @@ public class ConfigController extends AbstractController implements ActionListen
 		
 		// wolf sliders
 		wolfBreedingSlider = new JSlider(0, brain.getConfig().getWolfMaxAge(), brain.getConfig().getWolfBreedingAge());
-		wolfMaxAgeSlider = new JSlider(0, 200, brain.getConfig().getWolfMaxAge());
-		wolfBreedingProbabilitySlider = new JSlider(0, 100, tempBreedProbWolf);
-		wolfMaxLitterSizeSlider = new JSlider(0, 20, brain.getConfig().getWolfMaxLitterSize());
-		wolfRabbitFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfRabbitFoodValue());
-		wolfFoxFoodValueSlider = new JSlider(0, 25, brain.getConfig().getWolfFoxFoodValue());
+		wolfMaxAgeSlider = new JSlider(1, 200, brain.getConfig().getWolfMaxAge());
+		wolfBreedingProbabilitySlider = new JSlider(1, 100, tempBreedProbWolf);
+		wolfMaxLitterSizeSlider = new JSlider(1, 20, brain.getConfig().getWolfMaxLitterSize());
+		wolfRabbitFoodValueSlider = new JSlider(1, 25, brain.getConfig().getWolfRabbitFoodValue());
+		wolfFoxFoodValueSlider = new JSlider(1, 25, brain.getConfig().getWolfFoxFoodValue());
 		
 		wolfBreedingSlider.setMajorTickSpacing(25);
 		wolfBreedingSlider.setMinorTickSpacing(5);
