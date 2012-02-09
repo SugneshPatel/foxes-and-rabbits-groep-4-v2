@@ -13,8 +13,7 @@ import java.util.HashMap;
  * @author Harold
  * @version 2012.02.06
  */
-public class FieldStats
-{
+public class FieldStats {
     // Counters for each type of entity (fox, rabbit, etc.) in the simulation.
     private HashMap<Class<?>, Counter> counters;
     // Whether the counters are currently up to date.
@@ -23,8 +22,7 @@ public class FieldStats
     /**
      * Construct a FieldStats object.
      */
-    public FieldStats()
-    {
+    public FieldStats() {
         // Set up a collection for counters for each type of animal that
         // we might find
         counters = new HashMap<Class<?>, Counter>();
@@ -35,8 +33,7 @@ public class FieldStats
      * Get details of what is in the field.
      * @return A string describing what is in the field.
      */
-    public String getPopulationDetails(Field field)
-    {
+    public String getPopulationDetails(Field field) {
         StringBuffer buffer = new StringBuffer();
         if(!countsValid) {
             generateCounts(field);
@@ -72,8 +69,7 @@ public class FieldStats
      * Invalidate the current set of statistics; reset all 
      * counts to zero.
      */
-    public void reset()
-    {
+    public void reset() {
         countsValid = false;
         for(Class<?> key : counters.keySet()) {
             Counter count = counters.get(key);
@@ -85,8 +81,7 @@ public class FieldStats
      * Increment the count for one class of animal.
      * @param animalClass The class of animal to increment.
      */
-    public void incrementCount(Class<?> animalClass)
-    {
+    public void incrementCount(Class<?> animalClass) {
         Counter count = counters.get(animalClass);
         if(count == null) {
             // We do not have a counter for this species yet.
@@ -100,8 +95,7 @@ public class FieldStats
     /**
      * Indicate that an animal count has been completed.
      */
-    public void countFinished()
-    {
+    public void countFinished() {
         countsValid = true;
     }
 
@@ -110,8 +104,7 @@ public class FieldStats
      * I.e., should it continue to run.
      * @return true If there is more than one species alive.
      */
-    public boolean isViable(Field field)
-    {
+    public boolean isViable(Field field) {
         // How many counts are non-zero.
         int nonZero = 0;
         if(!countsValid) {
@@ -133,8 +126,7 @@ public class FieldStats
      * is made for the information.
      * @param field The field to generate the stats for.
      */
-    private void generateCounts(Field field)
-    {
+    private void generateCounts(Field field) {
         reset();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {

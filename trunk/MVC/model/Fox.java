@@ -13,8 +13,7 @@ import java.util.Random;
  * @author Harold
  * @version 2012.02.07
  */
-public class Fox extends Animal
-{
+public class Fox extends Animal {
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -30,8 +29,7 @@ public class Fox extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Fox(boolean randomAge, Field field, Location location, Simulator brain)
-    {
+    public Fox(boolean randomAge, Field field, Location location, Simulator brain) {
         super(field, location, brain);
         if(randomAge) {
             setAge(rand.nextInt(brain.getConfig().getFoxMaxAge()));
@@ -50,8 +48,7 @@ public class Fox extends Animal
      * @param location The location within the field.
      * @param foodLevel The starting foodLevel of a fox.
      */
-    public Fox(boolean randomAge, Field field, Location location, int foodLevel, Simulator brain)
-    {
+    public Fox(boolean randomAge, Field field, Location location, int foodLevel, Simulator brain) {
     	super(field, location, brain);
     	if(randomAge) {
     		setAge(rand.nextInt(brain.getConfig().getFoxMaxAge()));
@@ -70,8 +67,7 @@ public class Fox extends Animal
      * @param field The field currently occupied.
      * @param newFoxes A list to add newly born foxes to.
      */
-    public void act(List<Actor> newFoxes)
-    {
+    public void act(List<Actor> newFoxes) {
         incrementAge();
         incrementHunger();
         if(isActive()) {
@@ -99,16 +95,14 @@ public class Fox extends Animal
      * Get the max age of the fox
      * @return int Max age of the fox
      */
-    public int getMaxAge()
-    {
+    public int getMaxAge() {
     	return brain.getConfig().getFoxMaxAge();
     }
     
     /**
      * Make this fox more hungry. This could result in the fox's death.
      */
-    public void incrementHunger()
-    {
+    public void incrementHunger() {
         foodLevel--;
         if(foodLevel <= 0) {
             setDead();
@@ -122,8 +116,7 @@ public class Fox extends Animal
      * @param location Where in the field it is located.
      * @return Where food was found, or null if it wasn't.
      */
-    public Location findFood(Location location)
-    {
+    public Location findFood(Location location) {
         Field field = getField();
         List<Location> adjacent = field.adjacentLocations(getLocation());
         Iterator<Location> it = adjacent.iterator();
@@ -149,8 +142,7 @@ public class Fox extends Animal
      * New births will be made into free adjacent locations.
      * @param newFoxes A list to add newly born foxes to.
      */
-    private void giveBirth(List<Actor> newFoxes)
-    {
+    private void giveBirth(List<Actor> newFoxes) {
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
