@@ -19,7 +19,7 @@ public class HunterShootRabbitTest
 	
 	@Before
 	public void setUp() throws Exception {
-		brain = new Simulator();
+		brain = new Simulator(1);
 		field = brain.getField();
 		rabbit = new Rabbit(false, field, new Location(10, 8), brain);
 		hunter = new Hunter(field, new Location(10, 10), brain);
