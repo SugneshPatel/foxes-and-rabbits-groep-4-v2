@@ -247,7 +247,7 @@ public class Field
 	 */
 	public List<Location> getWaterLocations() {
 		List<Location> waterLocations = new LinkedList<Location>();
-		for(int x = 75; x <= depth; x++) {
+		for(int x = 75; x <= 100; x++) {
     		int v = (25 + x - 100);
     		for(int y = 100; y >= 100 - v; y--) {
     			Location location = new Location(x, y);
@@ -261,6 +261,86 @@ public class Field
     			waterLocations.add(location);
     		}
     	}
+		
+		for(int x = 79; x <= 85; x++) {
+    		for(int y = 90; y >= 89; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 88; x <= 100; x++) {
+    		for(int y = 86; y >= 75; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 84; x <= 87; x++) {
+    		for(int y = 88; y >= 85; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 85; x <= 87; x++) {
+    		for(int y = 84; y >= 82; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 86; x <= 87; x++) {
+    		for(int y = 81; y >= 80; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 92; x <= 100; x++) {
+    		for(int y = 74; y >= 73; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 93; x <= 100; x++) {
+    		for(int y = 72; y >= 72; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 95; x <= 98; x++) {
+    		for(int y = 71; y >= 70; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		waterLocations.add(new Location(77, 95));
+		waterLocations.add(new Location(77, 96));
+		waterLocations.add(new Location(77, 97));
+		
+		waterLocations.add(new Location(80, 88));
+		waterLocations.add(new Location(81, 88));
+		
+		waterLocations.add(new Location(83, 88));
+		
+		waterLocations.add(new Location(87, 75));
+		waterLocations.add(new Location(87, 76));
+		
+		waterLocations.add(new Location(88, 74));
+		waterLocations.add(new Location(89, 74));
+		
+		waterLocations.add(new Location(94, 71));
+		waterLocations.add(new Location(99, 71));
+		waterLocations.add(new Location(100, 71));
+		
+		waterLocations.add(new Location(100, 70));
+		
+		waterLocations.add(new Location(96, 69));
+		waterLocations.add(new Location(97, 69));
 		
 		return waterLocations;
 	}
