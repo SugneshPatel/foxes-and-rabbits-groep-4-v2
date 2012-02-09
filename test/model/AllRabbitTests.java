@@ -8,7 +8,6 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ RabbitTest.class,
 				RabbitIncrementAgeTest.class,
 				RabbitGiveNoBirthTest.class,
-				RabbitGiveBirthTest1.class
 				})
 public class AllRabbitTests
 {

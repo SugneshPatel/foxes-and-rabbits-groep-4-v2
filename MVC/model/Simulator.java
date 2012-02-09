@@ -122,7 +122,23 @@ public class Simulator extends AbstractModel implements Runnable
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
             	
-            	if(row > 29 && row < 36 & col > 29 && col < 46)
+            	if(	(row > 29 && row < 36 && col > 29 && col < 46) || 
+            		(row == 29 && col > 30 && col < 37) || 
+            		(row == 28 && col > 32 && col < 36) ||
+            		(row == 36 && col > 30 && col < 44) ||
+            		(row == 37 && col > 32 && col < 44) ||
+            		(row == 38 && col > 33 && col < 45) ||
+            		(row == 39 && col > 33 && col < 44) ||
+            		(row == 40 && col > 32 && col < 42) ||
+            		(row == 41 && col > 35 && col < 40) ||
+            		(row == 42 && col > 36 && col < 39) ||
+            		(row == 43 && col > 36 && col < 38) ||
+            		(row == 29 && col > 37 && col < 43) ||
+            		(row == 28 && col > 40 && col < 43) ||
+            		(row == 31 && col > 45 && col < 48) ||
+            		(row == 32 && col > 45 && col < 49) ||
+            		(row == 33 && col > 45 && col < 48) ||
+            		(row == 34 && col > 45 && col < 47))
             	{
             		Location location = new Location(row, col);
             		Rock rock = new Rock(field, location, this);
