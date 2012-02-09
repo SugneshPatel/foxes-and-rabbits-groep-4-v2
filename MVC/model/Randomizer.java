@@ -7,8 +7,7 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public class Randomizer
-{
+public class Randomizer {
     // The default seed for control of randomization.
     private static final int SEED = 1111;
     // A shared Random object, if required.
@@ -19,16 +18,14 @@ public class Randomizer
     /**
      * Constructor for objects of class Randomizer
      */
-    public Randomizer()
-    {
+    public Randomizer() {
     }
 
     /**
      * Provide a random generator.
      * @return A random object.
      */
-    public static Random getRandom()
-    {
+    public static Random getRandom() {
         if(useShared) {
             return rand;
         }
@@ -42,8 +39,7 @@ public class Randomizer
      * This will have no effect if randomization is not through
      * a shared Random generator.
      */
-    public static void reset()
-    {
+    public static void reset() {
         if(useShared) {
             rand.setSeed(SEED);
         }

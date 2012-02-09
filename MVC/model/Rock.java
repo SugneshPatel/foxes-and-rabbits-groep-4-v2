@@ -11,8 +11,7 @@ import java.util.List;
  * @author Harold
  * @version 2012.02.07
  */
-public class Rock implements Actor
-{
+public class Rock implements Actor {
 	private Field field;
     // The rock's position in the field.
     private Location location;
@@ -22,16 +21,14 @@ public class Rock implements Actor
 	public Rock(Field field, Location location, Simulator brain){
 		this.brain = brain;
 		this.field = field;
-		setLocation(location);
-		
+		setLocation(location);	
 	}
 	
 	/**
      * Place the rock at the new location in the given field.
      * @param newLocation The rock's new location.
      */
-    public void setLocation(Location newLocation)
-    {
+    public void setLocation(Location newLocation) {
         if(location != null) {
             field.clear(location);
         }
@@ -41,8 +38,7 @@ public class Rock implements Actor
 	
 	@Override
 	public void act(List<Actor> newActors) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
@@ -54,8 +50,7 @@ public class Rock implements Actor
      * Return the rock's location.
      * @return The rock's location.
      */
-    public Location getLocation()
-    {
+    public Location getLocation() {
         return location;
     }
     
@@ -63,9 +58,7 @@ public class Rock implements Actor
      * Return the rock's field.
      * @return The rock's field.
      */
-    public Field getField()
-    {
+    public Field getField() {
         return field;
     }
-
 }
