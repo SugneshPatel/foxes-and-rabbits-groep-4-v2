@@ -1,4 +1,5 @@
 package model;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
@@ -118,6 +119,8 @@ public class Simulator extends AbstractModel implements Runnable
      */
     private void populate()
     {
+    	List<Location> waterLocations = field.getWaterLocations();
+    	
         Random rand = Randomizer.getRandom();
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
@@ -144,6 +147,11 @@ public class Simulator extends AbstractModel implements Runnable
             		Location location = new Location(row, col);
             		Rock rock = new Rock(field, location, this);
             		animals.add(rock);
+            	}
+            	else if(waterLocations.contains(new Location(row, col))) {
+            		Location location = new Location(row, col);
+            		Water water = new Water(field, location, this);
+            		animals.add(water);
             	}
             	else if(rand.nextDouble() <= config.getHUNTER_CREATION_PROBABILITY()) {
             		Location location = new Location(row, col);

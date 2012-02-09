@@ -37,6 +37,7 @@ public class SimulationRunner extends JFrame {
 	private AbstractController buttonController;
 	private AbstractController menuController;
 	private static final Color ROCK_COLOR = new Color(139, 90, 0);
+	private static final Color WATER_COLOR = new Color(36, 180, 226);
 	
 	// JLabel version
     private static final JLabel VERSIELABEL = new JLabel("Version 0.89");
@@ -54,6 +55,7 @@ public class SimulationRunner extends JFrame {
 		simulatorview.setColor(Wolf.class, Color.black);
 		simulatorview.setColor(Grass.class, Color.green);
 		simulatorview.setColor(Rock.class, ROCK_COLOR);
+		simulatorview.setColor(Water.class, WATER_COLOR);
 		buttonController = new ButtonController(brain);
 		menuController = new MenuController(brain);
 		

@@ -240,5 +240,25 @@ public class Field
         }
         return locations;
 	}
+
+	public List<Location> getWaterLocations() {
+		List<Location> waterLocations = new LinkedList<Location>();
+		for(int x = 75; x <= depth; x++) {
+    		int v = (25 + x - 100);
+    		for(int y = 100; y >= 100 - v; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		for(int x = 78; x <= 83; x++) {
+    		for(int y = 96; y >= 91; y--) {
+    			Location location = new Location(x, y);
+    			waterLocations.add(location);
+    		}
+    	}
+		
+		return waterLocations;
+	}
 }
 
