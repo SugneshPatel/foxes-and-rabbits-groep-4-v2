@@ -20,8 +20,7 @@ import model.*;
  * @author Harold
  * @version 2012.02.07
  */
-public class PieView extends AbstractView
-{
+public class PieView extends AbstractView {
 	private static final long	serialVersionUID	= 3821761906525880524L;
 	// colors that belong to an actor
 	private Map<Class<?>, Color> colors;
@@ -77,7 +76,7 @@ public class PieView extends AbstractView
 		/**
 		 * Make a new viewofpie
 		 */
-		public ViewOfPie(){
+		public ViewOfPie() {
 			pieImage = new BufferedImage(200, 200, BufferedImage.TYPE_INT_RGB);
 			clearImage();
 		}
@@ -85,8 +84,7 @@ public class PieView extends AbstractView
 		/**
 		 * Clears the image
 		 */
-		public void clearImage()
-        {
+		public void clearImage() {
             Graphics g = pieImage.getGraphics();
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, pieImage.getWidth(), pieImage.getHeight());
@@ -99,8 +97,7 @@ public class PieView extends AbstractView
 		 */
 		public void update(Field field) {
 			
-			if(brain.getStep() == 0)
-			{
+			if(brain.getStep() == 0) {
 				clearImage();
 			}
 			
@@ -145,33 +142,29 @@ public class PieView extends AbstractView
 			g.fillArc(10, 10, 180, 180, hoek1 + hoek2 + hoek3, hoek4);
 			
 			repaint();
-		
 		 }
 		}
 		
 		@Override
-		 public Dimension getPreferredSize()
-	        {
-	            return new Dimension(pieImage.getWidth(), pieImage.getHeight());
-	        }
+		 public Dimension getPreferredSize() {
+	        return new Dimension(pieImage.getWidth(), pieImage.getHeight());
+	     }
 		 
 		/**
 		 * repaint now
 		 */
-		 public void repaintNow()
-	        {
-	            paintImmediately(0, 0, pieImage.getWidth(), pieImage.getHeight());
-	        }
+		 public void repaintNow() {
+	        paintImmediately(0, 0, pieImage.getWidth(), pieImage.getHeight());
+	     }
 
 		/**
 		 * Paints the pieview
 		 */
-		 public void paintComponent(Graphics g)
-	        {
+		 public void paintComponent(Graphics g) {
 	            
-	            if(pieImage != null) {
-	                g.drawImage(pieImage, 0, 0, null);
-	            }
-	        }
-}
+	         if(pieImage != null) {
+	            g.drawImage(pieImage, 0, 0, null);
+	         }
+	     }
+	}
 }
