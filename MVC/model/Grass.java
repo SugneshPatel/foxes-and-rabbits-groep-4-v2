@@ -12,8 +12,7 @@ import java.util.Random;
  * @author Harold
  * @version 2012.02.07
  */
-public class Grass implements Actor
-{
+public class Grass implements Actor {
 	// Whether the grass is active or not.
     private boolean alive;
     // The grass' field.
@@ -50,8 +49,7 @@ public class Grass implements Actor
      * Place the grass at the new location in the given field.
      * @param newLocation The grass' new location.
      */
-    public void setLocation(Location newLocation)
-    {
+    public void setLocation(Location newLocation) {
         if(location != null) {
             field.clear(location);
         }
@@ -63,8 +61,7 @@ public class Grass implements Actor
      * Return the grass' location.
      * @return The grass' location.
      */
-    public Location getLocation()
-    {
+    public Location getLocation() {
         return location;
     }
     
@@ -72,8 +69,7 @@ public class Grass implements Actor
      * Return the grass' field.
      * @return The grass' field.
      */
-    public Field getField()
-    {
+    public Field getField() {
         return field;
     }
     
@@ -81,8 +77,7 @@ public class Grass implements Actor
      * Makes the grass act, it grows new grass
      * @param List of actors with new grass
      */
-    public void act(List<Actor> newGrass)
-    {
+    public void act(List<Actor> newGrass) {
         if(isActive()) {           
             grow(newGrass);
         }
@@ -92,8 +87,7 @@ public class Grass implements Actor
      * Calculates the amount of grass there will grow
      * @return Amount of grass
      */
-    protected int growGrass()
-    {
+    public int growGrass() {
         int grown = 0;
         if(rand.nextDouble() <= brain.getConfig().getGrassBreedingProbability()) {
             grown = rand.nextInt((brain.getConfig().getGrassMaxLitterSize()==0 ? brain.getConfig().getGrassMaxLitterSize() +1 : brain.getConfig().getGrassMaxLitterSize()));
@@ -118,7 +112,7 @@ public class Grass implements Actor
     /**
      * Kills the grass
      */
-    public void setDead(){
+    public void setDead() {
     	alive = false;
         if(location != null) {
             field.clear(location);
@@ -126,5 +120,4 @@ public class Grass implements Actor
             field = null;
         }
     }
-
 }

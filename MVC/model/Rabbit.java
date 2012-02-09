@@ -13,8 +13,7 @@ import java.util.Random;
  * @author Harold
  * @version 2012.02.07
  */
-public class Rabbit extends Animal
-{
+public class Rabbit extends Animal {
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     // foodlevel of the rabbit
@@ -29,8 +28,7 @@ public class Rabbit extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Rabbit(boolean randomAge, Field field, Location location, Simulator brain)
-    {
+    public Rabbit(boolean randomAge, Field field, Location location, Simulator brain) {
         super(field, location, brain);
         setAge(0);
         foodLevel = brain.getConfig().getRabbitGrassFoodValue();
@@ -45,8 +43,7 @@ public class Rabbit extends Animal
      * around. Sometimes it will breed or die of old age.
      * @param newRabbits A list to add newly born rabbits to.
      */
-    public void act(List<Actor> newRabbits)
-    {
+    public void act(List<Actor> newRabbits) {
         incrementAge();
         incrementHunger();
         if(isActive()) {
@@ -74,8 +71,7 @@ public class Rabbit extends Animal
      * Get rabbit's max age
      * @return Rabbit's max age
      */
-    public int getMaxAge()
-    {
+    public int getMaxAge() {
     	return brain.getConfig().getRabbitMaxAge();
     }
     
@@ -84,8 +80,7 @@ public class Rabbit extends Animal
      * New births will be made into free adjacent locations.
      * @param newRabbits A list to add newly born rabbits to.
      */
-    private void giveBirth(List<Actor> newRabbits)
-    {
+    private void giveBirth(List<Actor> newRabbits) {
         // New rabbits are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
@@ -98,8 +93,13 @@ public class Rabbit extends Animal
         }
     }
     
-    public Location findFood(Location location)
-    {
+    /**
+     * Lets the rabbit find food. If he finds grass his foodlevel will be
+     * boosted
+     * @param location Location of the rabbit
+     * @return
+     */
+    public Location findFood(Location location) {
         Field field = getField();
         List<Location> adjacent = field.adjacentLocations(getLocation());
         Iterator<Location> it = adjacent.iterator();
@@ -122,8 +122,7 @@ public class Rabbit extends Animal
      * Decreases foodlevel. If foodlevel is 0 or below
      * it kills the rabbit
      */
-    public void incrementHunger()
-    {
+    public void incrementHunger() {
         foodLevel--;
         if(foodLevel <= 0) {
             setDead();
@@ -135,8 +134,7 @@ public class Rabbit extends Animal
      * Get rabbit's breeding age
      * @return Rabbit's breeding age
      */
-    public int getBreedingAge()
-    {
+    public int getBreedingAge() {
     	return brain.getConfig().getRabbitBreedingAge();
     }
     
@@ -144,8 +142,7 @@ public class Rabbit extends Animal
      * Get rabbit's breeding probability
      * @return Rabbit's breeding probability
      */
-    public double getBreedingProbability()
-    {
+    public double getBreedingProbability() {
     	return brain.getConfig().getRabbitBreedingProbability();
     }
     
@@ -153,8 +150,7 @@ public class Rabbit extends Animal
      * Get rabbit's max litter size
      * @return Rabbit's max litter size
      */
-    public int getMaxLitterSize()
-    {
+    public int getMaxLitterSize() {
     	return brain.getConfig().getRabbitMaxLitterSize();
     }      
 }
