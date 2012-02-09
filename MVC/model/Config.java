@@ -22,9 +22,9 @@ public class Config {
 	// fox variables
 	private static int FOX_BREEDING_AGE = 8;
 	private static int FOX_MAX_AGE = 150;
-	private static double FOX_BREEDING_PROBABILITY = 0.35;
-	private static int FOX_MAX_LITTER_SIZE = 3;
-	private static int FOX_RABBIT_FOOD_VALUE = 8;
+	private static double FOX_BREEDING_PROBABILITY = 0.37;
+	private static int FOX_MAX_LITTER_SIZE = 4;
+	private static int FOX_RABBIT_FOOD_VALUE = 13;
 	
 	// rabbit variables
 	private static int RABBIT_BREEDING_AGE = 5;
@@ -36,13 +36,13 @@ public class Config {
 	// wolf variables
 	private static int WOLF_BREEDING_AGE = 10;
 	private static int WOLF_MAX_AGE = 150;
-	private static double WOLF_BREEDING_PROBABILITY = 0.050;
-	private static int WOLF_MAX_LITTER_SIZE = 5;
-	private static int WOLF_RABBIT_FOOD_VALUE = 7;
-	private static int WOLF_FOX_FOOD_VALUE = 20;
+	private static double WOLF_BREEDING_PROBABILITY = 0.060;
+	private static int WOLF_MAX_LITTER_SIZE = 6;
+	private static int WOLF_RABBIT_FOOD_VALUE = 16;
+	private static int WOLF_FOX_FOOD_VALUE = 23;
 	
 	// hunter variables
-	private static int HUNTER_BULLETS = 1;
+	private static int HUNTER_BULLETS = 3;
 	
 	// grass variables
 	private static double GRASS_BREEDING_PROBABILITY = 0.40;
