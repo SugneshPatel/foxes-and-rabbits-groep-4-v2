@@ -16,7 +16,7 @@ public class Config
 	private static int DEFAULT_DEPTH = 100;
 	private static double FOX_CREATION_PROBABILITY = 0.01;
 	private static double RABBIT_CREATION_PROBABILITY = 0.08;
-	private static double HUNTER_CREATION_PROBABILITY = 0.005;
+	private static double HUNTER_CREATION_PROBABILITY = 0.002;
 	private static double WOLF_CREATION_PROBABILITY = 0.01;
 	private static double GRASS_CREATION_PROBABILITY = 0.1;
 	
