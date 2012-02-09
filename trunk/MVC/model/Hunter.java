@@ -11,8 +11,7 @@ import java.util.Iterator;
  * @author Harold
  * @version 2012.02.07
  */
-public class Hunter implements Actor
-{
+public class Hunter implements Actor {
 	// Whether the hunter is active or not.
     private boolean alive;
     // The animal's field.
@@ -28,8 +27,7 @@ public class Hunter implements Actor
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Hunter(Field field, Location location, Simulator brain)
-    {
+    public Hunter(Field field, Location location, Simulator brain) {
     	this.brain = brain;
     	alive = true;
         this.field = field;
@@ -40,8 +38,7 @@ public class Hunter implements Actor
      * Place the hunter at the new location in the given field.
      * @param newLocation The hunter's new location.
      */
-    public void setLocation(Location newLocation)
-    {
+    public void setLocation(Location newLocation) {
         if(location != null) {
             field.clear(location);
         }
@@ -53,8 +50,7 @@ public class Hunter implements Actor
      * Return the hunter's location.
      * @return The hunter's location.
      */
-    public Location getLocation()
-    {
+    public Location getLocation() {
         return location;
     }
     
@@ -62,8 +58,7 @@ public class Hunter implements Actor
      * Return the hunter's field.
      * @return The hunter's field.
      */
-    public Field getField()
-    {
+    public Field getField() {
         return field;
     }
     
@@ -72,8 +67,7 @@ public class Hunter implements Actor
      * foxes and rabbits.
      * @param newHunters The list of hunters
      */
-    public void act(List<Actor> newHunters)
-    {
+    public void act(List<Actor> newHunters) {
         if(isActive()) {           
             // Move towards a source of food if found.
             Location location = getLocation();
@@ -93,8 +87,7 @@ public class Hunter implements Actor
      * Indicate that the hunter is no longer active.
      * It is removed from the field.
      */
-    public void setDead()
-    {
+    public void setDead() {
         alive = false;
         if(location != null) {
             field.clear(location);
@@ -107,8 +100,7 @@ public class Hunter implements Actor
      * Check whether the hunter is alive or not.
      * @return true if the hunter is still alive.
      */
-    public boolean isActive()
-    {
+    public boolean isActive() {
         return alive;
     }
     
@@ -117,8 +109,7 @@ public class Hunter implements Actor
      * @param bullets How many times he can shoot
      * @param location Location of the hunter
      */
-    public void shoot(int bullets, Location location)
-    {
+    public void shoot(int bullets, Location location) {
     	Field field = getField();
     	List<Location> randomLocations = field.getHunterRangeList(getLocation());
     	Iterator<Location> it = randomLocations.iterator();
