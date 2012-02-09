@@ -152,6 +152,10 @@ public class SimulationRunner extends JFrame {
  	 	// eaten icon
  		ImageIcon eatenIcon = createImageIcon("/images/leg_eaten_8x8.gif", "Eaten as cause of death");
  		JLabel legendaEatenLabel = new JLabel("Eaten", eatenIcon, JLabel.LEFT);
+ 		
+ 		// eaten icon
+ 		ImageIcon waterIcon = createImageIcon("/images/leg_water_8x8.gif", "Water");
+ 		JLabel legendaWaterIcon = new JLabel("Water", waterIcon, JLabel.LEFT);
 		
 		
 		// add labels to legenda
@@ -161,6 +165,7 @@ public class SimulationRunner extends JFrame {
 		legendaPanel.add(legendaHunterLabel);
 		legendaPanel.add(legendaGrassLabel);
 		legendaPanel.add(legendaRockLabel);
+		legendaPanel.add(legendaWaterIcon);
 		legendaPanel.add(legendaOvercrowdingLabel);
 		legendaPanel.add(legendaStarvationLabel);
 		legendaPanel.add(legendaDeathBulletLabel);
