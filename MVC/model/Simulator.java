@@ -230,5 +230,9 @@ public class Simulator extends AbstractModel implements Runnable
         stats.reset();
         statusUpdate();
 	}
+
+	public List<Actor> getAnimals() {
+		return animals;
+	}
 }
 

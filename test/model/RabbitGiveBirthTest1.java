@@ -20,6 +20,9 @@ public class RabbitGiveBirthTest1
 	@Before
 	public void setUp() throws Exception {
 		brain = new Simulator();
+		brain.getAnimals().clear();
+		brain.getField().clear();
+		brain.getFieldStats().reset();
 		rabbit = new Rabbit(false, new Field(20, 20), new Location(10, 10), brain);
 		newRabbits = new ArrayList<Actor>();
 	}
