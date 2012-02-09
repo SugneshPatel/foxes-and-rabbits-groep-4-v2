@@ -142,6 +142,14 @@ public class Hunter implements Actor
     				brain.getConfig().incrementDeathByBullet();
     			}
     		}
+    		else if(animal instanceof Wolf) {
+    			Wolf wolf = (Wolf) animal;
+    			if(wolf.isActive()) {
+    				wolf.setDead();
+    				shotsFired++;
+    				brain.getConfig().incrementDeathByBullet();
+    			}
+    		}
     	}
     }   
 }
