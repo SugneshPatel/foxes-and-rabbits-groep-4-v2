@@ -13,8 +13,8 @@ import model.*;
 import view.*;
 
 /**
- * This class makes the mainwindow of the application, it adds buttons to it 
- * and the views that make me whole application.
+ * This class makes the main window of the application, it adds buttons to it 
+ * and the views that make the whole application.
  * 
  * @author Marco
  * @author Malcolm
