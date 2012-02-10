@@ -138,7 +138,7 @@ public class SimulationRunner extends JFrame {
  		JLabel legendaStarvationLabel = new JLabel("Starvation", starvationIcon, JLabel.LEFT);
  	 		
  	 	// deathBullet icon
- 		ImageIcon deathBulletIcon = createImageIcon("/images/leg_deathBullet_8x8.gif", "Killed by a bullet");
+ 		ImageIcon deathBulletIcon = createImageIcon("/images/leg_deathbullet_8x8.gif", "Killed by a bullet");
  		JLabel legendaDeathBulletLabel = new JLabel("Shot", deathBulletIcon, JLabel.LEFT);
  	 		
  	 	// eaten icon
